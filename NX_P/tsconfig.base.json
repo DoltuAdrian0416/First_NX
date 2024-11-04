@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@./Test_UI": ["Test_UI/src/index.ts"],
+      "@./orders": ["libs/orders/src/index.ts"],
+      "@./products": ["libs/products/src/index.ts"],
+      "@./ui": ["libs/shared/ui/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
