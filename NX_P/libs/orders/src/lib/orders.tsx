@@ -1,4 +1,4 @@
-import styles from './orders.module.css';
+import styles from './orders.module.scss';
 
 export function Orders() {
   return (
