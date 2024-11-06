@@ -1,0 +1,468 @@
+{
+  "version": "6.0",
+  "nxVersion": "20.0.8",
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {
+      "inventory-e2e": [
+        {
+          "file": "NX_P/apps/inventory-e2e/eslint.config.js",
+          "hash": "4703616457710285801"
+        },
+        {
+          "file": "NX_P/apps/inventory-e2e/playwright.config.ts",
+          "hash": "12572478335286534415"
+        },
+        {
+          "file": "NX_P/apps/inventory-e2e/project.json",
+          "hash": "3721747879235274142"
+        },
+        {
+          "file": "NX_P/apps/inventory-e2e/src/example.spec.ts",
+          "hash": "16019101014373124625"
+        },
+        {
+          "file": "NX_P/apps/inventory-e2e/tsconfig.json",
+          "hash": "13413400511057489941"
+        }
+      ],
+      "NX_P_TEST": [
+        {
+          "file": "NX_P/apps/NX_P_TEST/eslint.config.js",
+          "hash": "18206053935892145363"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST/index.html",
+          "hash": "5623905175420566713"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST/jest.config.ts",
+          "hash": "8132647596748318133"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST/project.json",
+          "hash": "11062989263644366811"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST/public/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST/src/app/app.module.css",
+          "hash": "8887387885984320532"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST/src/app/app.spec.tsx",
+          "hash": "17944794735590799462"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST/src/app/app.tsx",
+          "hash": "5977631390114998239"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST/src/app/nx-welcome.tsx",
+          "hash": "843464919130558895"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST/src/main.tsx",
+          "hash": "5124428165989303605"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST/src/styles.css",
+          "hash": "5195668842064076916"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST/tsconfig.app.json",
+          "hash": "14768608741124992156"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST/tsconfig.json",
+          "hash": "824604371006306276"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST/tsconfig.spec.json",
+          "hash": "11378287594513225419"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST/vite.config.ts",
+          "hash": "7675909769239565733"
+        }
+      ],
+      "NX_P_TEST-e2e": [
+        {
+          "file": "NX_P/apps/NX_P_TEST-e2e/eslint.config.js",
+          "hash": "4703616457710285801"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST-e2e/playwright.config.ts",
+          "hash": "6220074694154531309"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST-e2e/project.json",
+          "hash": "5498471929719891068"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST-e2e/src/example.spec.ts",
+          "hash": "16019101014373124625"
+        },
+        {
+          "file": "NX_P/apps/NX_P_TEST-e2e/tsconfig.json",
+          "hash": "13413400511057489941"
+        }
+      ],
+      "products": [
+        {
+          "file": "NX_P/libs/products/.babelrc",
+          "hash": "2946678488919325452"
+        },
+        {
+          "file": "NX_P/libs/products/README.md",
+          "hash": "10584224410186656541"
+        },
+        {
+          "file": "NX_P/libs/products/eslint.config.js",
+          "hash": "18206053935892145363"
+        },
+        {
+          "file": "NX_P/libs/products/project.json",
+          "hash": "15634714486394062390"
+        },
+        {
+          "file": "NX_P/libs/products/src/index.ts",
+          "hash": "7024162961491501222"
+        },
+        {
+          "file": "NX_P/libs/products/src/lib/products.module.scss",
+          "hash": "9824504850739023139"
+        },
+        {
+          "file": "NX_P/libs/products/src/lib/products.spec.tsx",
+          "hash": "16818468273304273545"
+        },
+        {
+          "file": "NX_P/libs/products/src/lib/products.tsx",
+          "hash": "9783503457879824181"
+        },
+        {
+          "file": "NX_P/libs/products/tsconfig.json",
+          "hash": "2717301636124270161"
+        },
+        {
+          "file": "NX_P/libs/products/tsconfig.lib.json",
+          "hash": "8018865716986400484"
+        },
+        {
+          "file": "NX_P/libs/products/tsconfig.spec.json",
+          "hash": "16829233919054324066"
+        },
+        {
+          "file": "NX_P/libs/products/vite.config.ts",
+          "hash": "4085059272090489384"
+        }
+      ],
+      "ui": [
+        {
+          "file": "NX_P/libs/shared/ui/.babelrc",
+          "hash": "2946678488919325452"
+        },
+        {
+          "file": "NX_P/libs/shared/ui/README.md",
+          "hash": "12971312433074001572"
+        },
+        {
+          "file": "NX_P/libs/shared/ui/eslint.config.js",
+          "hash": "3769833203182662347"
+        },
+        {
+          "file": "NX_P/libs/shared/ui/package.json",
+          "hash": "14900154279133858492"
+        },
+        {
+          "file": "NX_P/libs/shared/ui/project.json",
+          "hash": "15676660273585945034"
+        },
+        {
+          "file": "NX_P/libs/shared/ui/src/index.ts",
+          "hash": "5977848407072712979"
+        },
+        {
+          "file": "NX_P/libs/shared/ui/src/lib/ui.module.scss",
+          "hash": "9824504850739023139"
+        },
+        {
+          "file": "NX_P/libs/shared/ui/src/lib/ui.spec.tsx",
+          "hash": "7298740781061202243"
+        },
+        {
+          "file": "NX_P/libs/shared/ui/src/lib/ui.tsx",
+          "hash": "13039817125183572543"
+        },
+        {
+          "file": "NX_P/libs/shared/ui/tsconfig.json",
+          "hash": "7777951354717366821"
+        },
+        {
+          "file": "NX_P/libs/shared/ui/tsconfig.lib.json",
+          "hash": "3489893287793430731"
+        },
+        {
+          "file": "NX_P/libs/shared/ui/tsconfig.spec.json",
+          "hash": "16992467545950447943"
+        },
+        {
+          "file": "NX_P/libs/shared/ui/vite.config.ts",
+          "hash": "9480418598835530131"
+        }
+      ],
+      "inventory": [
+        {
+          "file": "NX_P/apps/inventory/eslint.config.js",
+          "hash": "18206053935892145363"
+        },
+        {
+          "file": "NX_P/apps/inventory/index.html",
+          "hash": "4352938922920679983"
+        },
+        {
+          "file": "NX_P/apps/inventory/project.json",
+          "hash": "7823340579753123078"
+        },
+        {
+          "file": "NX_P/apps/inventory/public/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "NX_P/apps/inventory/src/app/app.module.scss",
+          "hash": "8887387885984320532"
+        },
+        {
+          "file": "NX_P/apps/inventory/src/app/app.spec.tsx",
+          "hash": "537765181238638739"
+        },
+        {
+          "file": "NX_P/apps/inventory/src/app/app.tsx",
+          "hash": "17005504695311740914"
+        },
+        {
+          "file": "NX_P/apps/inventory/src/app/nx-welcome.tsx",
+          "hash": "14708174282304233720"
+        },
+        {
+          "file": "NX_P/apps/inventory/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "NX_P/apps/inventory/src/main.tsx",
+          "hash": "4731961929376199421"
+        },
+        {
+          "file": "NX_P/apps/inventory/src/styles.scss",
+          "hash": "5195668842064076916"
+        },
+        {
+          "file": "NX_P/apps/inventory/tsconfig.app.json",
+          "hash": "3374933587361460334"
+        },
+        {
+          "file": "NX_P/apps/inventory/tsconfig.json",
+          "hash": "11166545116916107487"
+        },
+        {
+          "file": "NX_P/apps/inventory/tsconfig.spec.json",
+          "hash": "2374680567064402239"
+        },
+        {
+          "file": "NX_P/apps/inventory/vite.config.ts",
+          "hash": "10493270733611841748"
+        }
+      ],
+      "Test_UI": [
+        {
+          "file": "NX_P/Test_UI/.babelrc",
+          "hash": "2946678488919325452"
+        },
+        {
+          "file": "NX_P/Test_UI/README.md",
+          "hash": "6246345998449984241"
+        },
+        {
+          "file": "NX_P/Test_UI/eslint.config.js",
+          "hash": "6898695751728726704"
+        },
+        {
+          "file": "NX_P/Test_UI/project.json",
+          "hash": "18157376797727235901"
+        },
+        {
+          "file": "NX_P/Test_UI/src/index.ts",
+          "hash": "11397817860179800862"
+        },
+        {
+          "file": "NX_P/Test_UI/src/lib/Test_UI.module.css",
+          "hash": "125145030238681982"
+        },
+        {
+          "file": "NX_P/Test_UI/src/lib/Test_UI.spec.tsx",
+          "hash": "15079352802933199302"
+        },
+        {
+          "file": "NX_P/Test_UI/src/lib/Test_UI.tsx",
+          "hash": "1501516097547978139"
+        },
+        {
+          "file": "NX_P/Test_UI/src/lib/button.module.css",
+          "hash": "125145030238681982"
+        },
+        {
+          "file": "NX_P/Test_UI/src/lib/button.spec.tsx",
+          "hash": "10102082724729665505"
+        },
+        {
+          "file": "NX_P/Test_UI/src/lib/button.tsx",
+          "hash": "1904899782466585470"
+        },
+        {
+          "file": "NX_P/Test_UI/tsconfig.json",
+          "hash": "6768434952726690940"
+        },
+        {
+          "file": "NX_P/Test_UI/tsconfig.lib.json",
+          "hash": "15176923022261623274"
+        },
+        {
+          "file": "NX_P/Test_UI/tsconfig.spec.json",
+          "hash": "7277455390741021771"
+        },
+        {
+          "file": "NX_P/Test_UI/vite.config.ts",
+          "hash": "16688366485278101454"
+        }
+      ],
+      "orders": [
+        {
+          "file": "NX_P/libs/orders/.babelrc",
+          "hash": "2946678488919325452"
+        },
+        {
+          "file": "NX_P/libs/orders/README.md",
+          "hash": "15410685183069123632"
+        },
+        {
+          "file": "NX_P/libs/orders/eslint.config.js",
+          "hash": "18206053935892145363"
+        },
+        {
+          "file": "NX_P/libs/orders/project.json",
+          "hash": "10188920219722513667"
+        },
+        {
+          "file": "NX_P/libs/orders/src/index.ts",
+          "hash": "13381192486182117678"
+        },
+        {
+          "file": "NX_P/libs/orders/src/lib/orders.module.scss",
+          "hash": "9824504850739023139"
+        },
+        {
+          "file": "NX_P/libs/orders/src/lib/orders.spec.tsx",
+          "hash": "9128004178449829494"
+        },
+        {
+          "file": "NX_P/libs/orders/src/lib/orders.tsx",
+          "hash": "1802414022889169278"
+        },
+        {
+          "file": "NX_P/libs/orders/tsconfig.json",
+          "hash": "12937361759397702261"
+        },
+        {
+          "file": "NX_P/libs/orders/tsconfig.lib.json",
+          "hash": "8018865716986400484"
+        },
+        {
+          "file": "NX_P/libs/orders/tsconfig.spec.json",
+          "hash": "16829233919054324066"
+        },
+        {
+          "file": "NX_P/libs/orders/vite.config.ts",
+          "hash": "14464045204203770816"
+        }
+      ]
+    },
+    "nonProjectFiles": [
+      {
+        "file": ".gitignore",
+        "hash": "18318511172391054080"
+      },
+      {
+        "file": ".vscode/settings.json",
+        "hash": "11079310092638329298"
+      },
+      {
+        "file": "NX_P/.editorconfig",
+        "hash": "5443105041930014821"
+      },
+      {
+        "file": "NX_P/.github/workflows/ci.yml",
+        "hash": "14727427998618680472"
+      },
+      {
+        "file": "NX_P/.gitignore",
+        "hash": "7656280040663041639"
+      },
+      {
+        "file": "NX_P/.prettierignore",
+        "hash": "14688272390704683536"
+      },
+      {
+        "file": "NX_P/.prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": "NX_P/.vscode/extensions.json",
+        "hash": "4422400126597322578"
+      },
+      {
+        "file": "NX_P/README.md",
+        "hash": "5511008103113069941"
+      },
+      {
+        "file": "NX_P/eslint.config.js",
+        "hash": "2478217381773231556"
+      },
+      {
+        "file": "NX_P/jest.config.ts",
+        "hash": "3494843969422251966"
+      },
+      {
+        "file": "NX_P/jest.preset.js",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": "NX_P/nx.json",
+        "hash": "464674543262751063"
+      },
+      {
+        "file": "NX_P/package-lock.json",
+        "hash": "14036210815950623152"
+      },
+      {
+        "file": "NX_P/package.json",
+        "hash": "2852731707212669189"
+      },
+      {
+        "file": "NX_P/tsconfig.base.json",
+        "hash": "6171547773030385425"
+      },
+      {
+        "file": "NX_P/vitest.workspace.ts",
+        "hash": "14023491222425291751"
+      }
+    ]
+  }
+}
