@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@./Components": ["libs/Components/src/index.ts"],
       "@./Test_UI": ["Test_UI/src/index.ts"],
       "@./orders": ["libs/orders/src/index.ts"],
       "@./products": ["libs/products/src/index.ts"],
