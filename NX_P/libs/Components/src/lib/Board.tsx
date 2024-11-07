@@ -3,9 +3,9 @@ import styles from './Board.module.scss';
 import Square from './Square';
 
 export enum Values {
+  Empty,
   O,
   X,
-  Empty,
 }
 interface BoardProps {
   setWinner: (winner: string) => void;
@@ -54,7 +54,12 @@ export function Board(props: BoardProps) {
     rows.push(
       <Square
         onClick={() => {
-          if (props.locked) return;
+          if (props.locked) {
+            return;
+          }
+          if (markedRows[i] !== Values.Empty) {
+            return;
+          }
           const markedRowsCopy = [...markedRows];
           markedRowsCopy[i] = player === 0 ? Values.O : Values.X;
           setMarkedRows(markedRowsCopy);

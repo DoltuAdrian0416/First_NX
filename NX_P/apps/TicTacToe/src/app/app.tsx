@@ -1,21 +1,31 @@
-import { Board } from '@./Components';
+import { Board, UserForm } from '@./Components';
 import styles from './app.module.scss';
 import { useState } from 'react';
 export function App() {
   const [winner, setWinner] = useState('');
   const [reset, setReset] = useState(0);
+  const [player1, setPlayer1] = useState('');
+  const [player2, setPlayer2] = useState('');
+
   return (
     <div className={styles.wrapper}>
-      {winner && <h1>The winner is : {winner} </h1>}
-      <Board key={reset} setWinner={setWinner} locked={!!winner}></Board>;
-      <button
-        onClick={() => {
-          setWinner('');
-          setReset(reset + 1);
-        }}
-      >
-        Reset
-      </button>
+      {!player1 && !player2 && (
+        <UserForm setPlayer1={setPlayer1} setPlayer2={setPlayer2} />
+      )}
+      {player1 && player2 && (
+        <div className={styles.wrapper}>
+          {winner && <h1>The winner is : {winner} </h1>}
+          <Board key={reset} setWinner={setWinner} locked={!!winner}></Board>
+          <button
+            onClick={() => {
+              setWinner('');
+              setReset(reset + 1);
+            }}
+          >
+            Reset
+          </button>
+        </div>
+      )}
     </div>
   );
 }
