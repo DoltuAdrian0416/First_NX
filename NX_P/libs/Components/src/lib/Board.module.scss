@@ -1,8 +1,8 @@
 .board{
     display:grid;
     grid-template-columns: repeat(3 , 150px);
-    column-gap: 10px;
-    row-gap: 10px;
+    column-gap: 5px;
+    row-gap: 5px;
     margin-bottom: 20px;
 }
 .square{
