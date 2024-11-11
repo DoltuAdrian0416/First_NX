@@ -1,0 +1,9 @@
+{
+  "name": "TicTacToe-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/TicTacToe-e2e/src",
+  "implicitDependencies": ["TicTacToe"],
+  "// targets": "to see all targets run: nx show project TicTacToe-e2e --web",
+  "targets": {}
+}

@@ -1,0 +1,159 @@
+{
+  "nodes": {
+    "NX_P_TEST-e2e": {
+      "name": "NX_P_TEST-e2e",
+      "type": "e2e",
+      "data": {
+        "root": "NX_P/apps/NX_P_TEST-e2e",
+        "name": "NX_P_TEST-e2e",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "application",
+        "sourceRoot": "apps/NX_P_TEST-e2e/src",
+        "implicitDependencies": [
+          "NX_P_TEST"
+        ],
+        "targets": {},
+        "tags": []
+      }
+    },
+    "inventory-e2e": {
+      "name": "inventory-e2e",
+      "type": "e2e",
+      "data": {
+        "root": "NX_P/apps/inventory-e2e",
+        "name": "inventory-e2e",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "application",
+        "sourceRoot": "apps/inventory-e2e/src",
+        "implicitDependencies": [
+          "inventory"
+        ],
+        "targets": {},
+        "tags": []
+      }
+    },
+    "NX_P_TEST": {
+      "name": "NX_P_TEST",
+      "type": "app",
+      "data": {
+        "root": "NX_P/apps/NX_P_TEST",
+        "name": "NX_P_TEST",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "apps/NX_P_TEST/src",
+        "projectType": "application",
+        "tags": [],
+        "targets": {},
+        "implicitDependencies": []
+      }
+    },
+    "inventory": {
+      "name": "inventory",
+      "type": "app",
+      "data": {
+        "root": "NX_P/apps/inventory",
+        "name": "inventory",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "apps/inventory/src",
+        "projectType": "application",
+        "tags": [],
+        "targets": {},
+        "implicitDependencies": []
+      }
+    },
+    "ui": {
+      "name": "ui",
+      "type": "lib",
+      "data": {
+        "root": "NX_P/libs/shared/ui",
+        "sourceRoot": "libs/shared/ui/src",
+        "name": "ui",
+        "tags": [
+          "npm:public"
+        ],
+        "metadata": {
+          "targetGroups": {}
+        },
+        "targets": {
+          "nx-release-publish": {
+            "executor": "@nx/js:release-publish",
+            "dependsOn": [
+              "^nx-release-publish"
+            ],
+            "options": {},
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "library",
+        "implicitDependencies": []
+      }
+    },
+    "products": {
+      "name": "products",
+      "type": "lib",
+      "data": {
+        "root": "NX_P/libs/products",
+        "name": "products",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "libs/products/src",
+        "projectType": "library",
+        "tags": [],
+        "targets": {},
+        "implicitDependencies": []
+      }
+    },
+    "orders": {
+      "name": "orders",
+      "type": "lib",
+      "data": {
+        "root": "NX_P/libs/orders",
+        "name": "orders",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "libs/orders/src",
+        "projectType": "library",
+        "tags": [],
+        "targets": {},
+        "implicitDependencies": []
+      }
+    },
+    "Test_UI": {
+      "name": "Test_UI",
+      "type": "lib",
+      "data": {
+        "root": "NX_P/Test_UI",
+        "name": "Test_UI",
+        "$schema": "../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "Test_UI/src",
+        "projectType": "library",
+        "tags": [],
+        "targets": {},
+        "implicitDependencies": []
+      }
+    }
+  },
+  "externalNodes": {},
+  "dependencies": {
+    "NX_P_TEST-e2e": [
+      {
+        "source": "NX_P_TEST-e2e",
+        "target": "NX_P_TEST",
+        "type": "implicit"
+      }
+    ],
+    "inventory-e2e": [
+      {
+        "source": "inventory-e2e",
+        "target": "inventory",
+        "type": "implicit"
+      }
+    ],
+    "NX_P_TEST": [],
+    "inventory": [],
+    "ui": [],
+    "products": [],
+    "orders": [],
+    "Test_UI": []
+  },
+  "version": "6.0"
+}
