@@ -48,7 +48,14 @@ export function UserForm(props: FormProps) {
       </div>
       <div className={styles.selectSize}>
         {gameSize.map((size, index) => (
-          <button key={index} className={styles.sizeBtn}>
+          <button
+            key={index}
+            className={styles.sizeBtn}
+            onClick={() => {
+              props.setSize(size);
+              
+            }}
+          >
             {size} * {size}
           </button>
         ))}

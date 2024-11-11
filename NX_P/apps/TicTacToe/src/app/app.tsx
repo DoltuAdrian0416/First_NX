@@ -1,12 +1,13 @@
 import { Board, UserForm } from '@./Components';
 import styles from './app.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 export function App() {
   const [winner, setWinner] = useState('');
   const [reset, setReset] = useState(0);
   const [player1, setPlayer1] = useState('');
   const [player2, setPlayer2] = useState('');
   const [size, setSize] = useState(0);
+
   return (
     <div className={styles.wrapper}>
       {!player1 && !player2 && (
@@ -20,7 +21,12 @@ export function App() {
         <div className={styles.wrapper}>
           {winner && <h1>The winner is : {winner} </h1>}
 
-          <Board key={reset} setWinner={setWinner} locked={!!winner}></Board>
+          <Board
+            key={reset}
+            setWinner={setWinner}
+            locked={!!winner}
+            size={size}
+          ></Board>
 
           <button
             className={styles.btnConfirm}

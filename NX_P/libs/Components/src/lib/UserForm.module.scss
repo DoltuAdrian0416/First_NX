@@ -2,19 +2,19 @@
 *{
     font-family: "Lato" , serif;
 }
-input{
+
+input[type="text"]{
     padding: 20px;
     border-radius:15px;
     margin:15px;
     border:2px solid rgba(0, 0, 0, 0.199);
     padding-left: 50px;
-}
-input[type="text"]{
     background-image: url("./profile-user.png");
     background-size: 30px;
     background-repeat: no-repeat;
     background-position: left;
     background-position-x: 10px;
+    
 }
  .btnConfirm{
     padding:15px;
@@ -66,15 +66,15 @@ input[type="text"]{
 
 }
 .sizeBtn:hover{
-    border-color: #2a2a2a;
+    border-color: #1a237e;
     color: #fafafa;
-    background-color: #2a2a2a;
+    background-color: #1a237e;
     transition: 0.3s ease-in-out;
 }
 
 .isSelected{
-    border-color: #2a2a2a;
+    border-color: #1a237e;
     color: #fafafa;
-    background-color: #2a2a2a;
+    background-color: #1a237e;
     transition: 0.3s ease-in-out;
 }
