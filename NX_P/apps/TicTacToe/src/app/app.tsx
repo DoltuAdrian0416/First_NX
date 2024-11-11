@@ -1,11 +1,12 @@
 import { Board, UserForm } from '@./Components';
 import styles from './app.module.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { Player } from '@./Models';
 export function App() {
   const [winner, setWinner] = useState('');
   const [reset, setReset] = useState(0);
-  const [player1, setPlayer1] = useState('');
-  const [player2, setPlayer2] = useState('');
+  const [player1, setPlayer1] = useState<Player>();
+  const [player2, setPlayer2] = useState<Player>();
   const [size, setSize] = useState(0);
 
   return (
@@ -26,6 +27,7 @@ export function App() {
             setWinner={setWinner}
             locked={!!winner}
             size={size}
+            players={[player1, player2]}
           ></Board>
 
           <button

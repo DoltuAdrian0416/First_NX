@@ -1,6 +1,5 @@
+import { Values } from '@./Models';
 import styles from './Square.module.scss';
-import { Values } from './Board';
-import { useEffect } from 'react';
 interface SquareProps {
   value: Values;
   onClick: () => void;

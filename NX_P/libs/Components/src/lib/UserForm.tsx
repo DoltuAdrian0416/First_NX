@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import styles from './UserForm.module.scss';
 import './UserForm.module.scss';
-
+import { Player } from '@./Models';
+import { v4 as uuidv4 } from 'uuid';
 interface FormProps {
-  setPlayer1: (name: string) => void;
-  setPlayer2: (name: string) => void;
+  setPlayer1: (player: Player) => void;
+  setPlayer2: (player: Player) => void;
   setSize: (size: number) => void;
 }
 export function UserForm(props: FormProps) {
@@ -53,7 +54,6 @@ export function UserForm(props: FormProps) {
             className={styles.sizeBtn}
             onClick={() => {
               props.setSize(size);
-              
             }}
           >
             {size} * {size}
@@ -63,8 +63,8 @@ export function UserForm(props: FormProps) {
       <button
         onClick={() => {
           setClicked(true);
-          props.setPlayer1(player1);
-          props.setPlayer2(player2);
+          props.setPlayer1({ name: player1, id: uuidv4() });
+          props.setPlayer2({ name: player2, id: uuidv4() });
         }}
       >
         Confirm
