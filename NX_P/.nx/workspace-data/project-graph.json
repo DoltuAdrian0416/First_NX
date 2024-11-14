@@ -2107,6 +2107,217 @@
         "implicitDependencies": []
       }
     },
+    "Models": {
+      "name": "Models",
+      "type": "lib",
+      "data": {
+        "root": "libs/Models",
+        "projectType": "library",
+        "metadata": {
+          "targetGroups": {}
+        },
+        "targets": {
+          "build": {
+            "executor": "@nx/vite:build",
+            "outputs": [
+              "{options.outputPath}"
+            ],
+            "options": {
+              "outputPath": "dist/libs/Models",
+              "main": "libs/Models/src/index.ts",
+              "tsConfig": "libs/Models/tsconfig.lib.json",
+              "assets": [
+                "libs/Models/*.md"
+              ]
+            },
+            "configurations": {},
+            "parallelism": true,
+            "cache": true,
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production"
+            ]
+          },
+          "serve": {
+            "options": {
+              "cwd": "libs/Models",
+              "command": "vite serve"
+            },
+            "metadata": {
+              "technologies": [
+                "vite"
+              ],
+              "description": "Starts Vite dev server",
+              "help": {
+                "command": "npx vite --help",
+                "example": {
+                  "options": {
+                    "port": 3000
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "preview": {
+            "dependsOn": [
+              "build"
+            ],
+            "options": {
+              "cwd": "libs/Models",
+              "command": "vite preview"
+            },
+            "metadata": {
+              "technologies": [
+                "vite"
+              ],
+              "description": "Locally preview Vite production build",
+              "help": {
+                "command": "npx vite preview --help",
+                "example": {
+                  "options": {
+                    "port": 3000
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "serve-static": {
+            "executor": "@nx/web:file-server",
+            "options": {
+              "buildTarget": "build",
+              "spa": true
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "typecheck": {
+            "cache": true,
+            "inputs": [
+              "production",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "options": {
+              "cwd": "libs/Models",
+              "command": "tsc --noEmit -p tsconfig.lib.json"
+            },
+            "metadata": {
+              "description": "Run Typechecking",
+              "help": {
+                "command": "npx tsc --help -p tsconfig.lib.json",
+                "example": {
+                  "options": {
+                    "noEmit": true
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "options": {
+              "cwd": "libs/Models",
+              "command": "vitest"
+            },
+            "cache": true,
+            "inputs": [
+              "default",
+              "^production",
+              {
+                "externalDependencies": [
+                  "vitest"
+                ]
+              },
+              {
+                "env": "CI"
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}\\coverage\\libs\\Models"
+            ],
+            "metadata": {
+              "technologies": [
+                "vite"
+              ],
+              "description": "Run Vite tests",
+              "help": {
+                "command": "npx vitest --help",
+                "example": {
+                  "options": {
+                    "bail": 1,
+                    "coverage": true
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint": {
+            "cache": true,
+            "options": {
+              "cwd": "libs/Models",
+              "command": "eslint ."
+            },
+            "inputs": [
+              "default",
+              "^default",
+              "{workspaceRoot}/eslint.config.js",
+              "{projectRoot}/eslint.config.js",
+              "{workspaceRoot}/tools/eslint-rules/**/*",
+              {
+                "externalDependencies": [
+                  "eslint"
+                ]
+              }
+            ],
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "metadata": {
+              "technologies": [
+                "eslint"
+              ],
+              "description": "Runs ESLint on project",
+              "help": {
+                "command": "npx eslint --help",
+                "example": {
+                  "options": {
+                    "max-warnings": 0
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "sourceRoot": "libs/Models/src",
+        "name": "Models",
+        "tags": [
+          "npm:private"
+        ],
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "implicitDependencies": []
+      }
+    },
     "orders": {
       "name": "orders",
       "type": "lib",
@@ -15655,6 +15866,16 @@
       },
       {
         "source": "Components",
+        "target": "Models",
+        "type": "static"
+      },
+      {
+        "source": "Components",
+        "target": "npm:uuid",
+        "type": "static"
+      },
+      {
+        "source": "Components",
         "target": "npm:vite",
         "type": "static"
       },
@@ -15729,17 +15950,22 @@
       },
       {
         "source": "TicTacToe",
-        "target": "npm:@testing-library/react",
-        "type": "static"
-      },
-      {
-        "source": "TicTacToe",
         "target": "Components",
         "type": "static"
       },
       {
         "source": "TicTacToe",
+        "target": "npm:@testing-library/react",
+        "type": "static"
+      },
+      {
+        "source": "TicTacToe",
         "target": "npm:react",
+        "type": "static"
+      },
+      {
+        "source": "TicTacToe",
+        "target": "Models",
         "type": "static"
       },
       {
@@ -15860,6 +16086,28 @@
       },
       {
         "source": "products",
+        "target": "npm:@nx/vite",
+        "type": "static"
+      }
+    ],
+    "Models": [
+      {
+        "source": "Models",
+        "target": "npm:jsonc-eslint-parser",
+        "type": "static"
+      },
+      {
+        "source": "Models",
+        "target": "npm:vite",
+        "type": "static"
+      },
+      {
+        "source": "Models",
+        "target": "npm:vite-plugin-dts",
+        "type": "static"
+      },
+      {
+        "source": "Models",
         "target": "npm:@nx/vite",
         "type": "static"
       }
