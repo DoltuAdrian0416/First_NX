@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import styles from './Board.module.scss';
+import './Board.scss';
 import Square from './Square';
 import { Game, Player, Values } from '@./Models';
 import { v4 as uuidv4 } from 'uuid';
-interface BoardProps {
-  setWinner: (winner: string) => void;
+export interface BoardProps {
+  setWinner: (winner: Player) => void;
   locked: boolean;
   size: number;
   players: Player[];
@@ -44,68 +44,121 @@ export function Board(props: BoardProps) {
       return;
     }
 
-    const winner = CalculateWinner(game.board.rows);
-    if (winner) {
-      props.setWinner(Values[winner]);
+    const winnerSymbol = calculateWinner(game.board.rows, props.size);
+    if (winnerSymbol && currentPlayer) {
+      props.setWinner(currentPlayer);
+      setGame({
+        ...game,
+        winner: currentPlayer,
+        endDate: new Date(),
+      });
     }
   }, [game?.board]);
+  function generateWinningLines(size: number): number[][] {
+    const lines: number[][] = [];
 
-  function CalculateWinner(rows: Array<Values>) {
-    console.log(rows);
-    const winningLines3x3 = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6],
-    ];
-    const winningLines4x4 = [
-      [0, 1, 2, 3],
-      [4, 5, 6, 7],
-      [8, 9, 10, 11],
-      [12, 13, 14, 15],
+    // Horizontal lines
+    for (let i = 0; i < size; i++) {
+      const line = [];
+      for (let j = 0; j < size; j++) {
+        line.push(i * size + j);
+      }
+      lines.push(line);
+    }
 
-      [0, 4, 8, 12],
-      [1, 5, 9, 13],
-      [2, 6, 10, 14],
-      [3, 7, 11, 15],
+    // Vertical lines
+    for (let i = 0; i < size; i++) {
+      const line = [];
+      for (let j = 0; j < size; j++) {
+        line.push(j * size + i);
+      }
+      lines.push(line);
+    }
 
-      [0, 5, 10, 15],
-      [3, 6, 9, 12],
-    ];
-    const winningLines5x5 = [
-      [0, 1, 2, 3, 4],
-      [5, 6, 7, 8, 9],
-      [10, 11, 12, 13, 14],
-      [15, 16, 17, 18, 19],
-      [20, 21, 22, 23, 24],
+    // Diagonal lines
+    const diagonal1 = [];
+    const diagonal2 = [];
+    for (let i = 0; i < size; i++) {
+      diagonal1.push(i * size + i);
+      diagonal2.push(i * size + (size - i - 1));
+    }
+    lines.push(diagonal1);
+    lines.push(diagonal2);
 
-      [0, 5, 10, 15, 20],
-      [1, 6, 11, 16, 21],
-      [2, 7, 12, 17, 22],
-      [3, 8, 13, 18, 23],
-      [4, 9, 14, 19, 24],
+    return lines;
+  }
 
-      [0, 6, 12, 18, 24],
-      [4, 8, 12, 16, 20],
-    ];
+  function calculateWinner(rows: Array<Values>, size: number): Values | null {
+    const winningLines = generateWinningLines(size);
 
-    console.log('Calculate winner rows ' + rows);
-    for (let i = 0; i < winningLines3x3.length; i++) {
-      const [a, b, c] = winningLines3x3[i];
+    for (const line of winningLines) {
+      const firstValue = rows[line[0]];
       if (
-        rows[a] !== Values.Empty &&
-        rows[a] === rows[b] &&
-        rows[a] === rows[c]
+        firstValue !== Values.Empty &&
+        line.every((index) => rows[index] === firstValue)
       ) {
-        return rows[a];
+        return firstValue;
       }
     }
+
     return null;
   }
+  // function CalculateWinner(rows: Array<Values>) {
+  //   console.log(rows);
+  //   const winningLines3x3 = [
+  //     [0, 1, 2],
+  //     [3, 4, 5],
+  //     [6, 7, 8],
+  //     [0, 3, 6],
+  //     [1, 4, 7],
+  //     [2, 5, 8],
+  //     [0, 4, 8],
+  //     [2, 4, 6],
+  //   ];
+  //   const winningLines4x4 = [
+  //     [0, 1, 2, 3],
+  //     [4, 5, 6, 7],
+  //     [8, 9, 10, 11],
+  //     [12, 13, 14, 15],
+
+  //     [0, 4, 8, 12],
+  //     [1, 5, 9, 13],
+  //     [2, 6, 10, 14],
+  //     [3, 7, 11, 15],
+
+  //     [0, 5, 10, 15],
+  //     [3, 6, 9, 12],
+  //   ];
+  //   const winningLines5x5 = [
+  //     [0, 1, 2, 3, 4],
+  //     [5, 6, 7, 8, 9],
+  //     [10, 11, 12, 13, 14],
+  //     [15, 16, 17, 18, 19],
+  //     [20, 21, 22, 23, 24],
+
+  //     [0, 5, 10, 15, 20],
+  //     [1, 6, 11, 16, 21],
+  //     [2, 7, 12, 17, 22],
+  //     [3, 8, 13, 18, 23],
+  //     [4, 9, 14, 19, 24],
+
+  //     [0, 6, 12, 18, 24],
+  //     [4, 8, 12, 16, 20],
+  //   ];
+
+  //   console.log('Calculate winner rows ' + rows);
+  //   for (let i = 0; i < winningLines3x3.length; i++) {
+  //     const [a, b, c] = winningLines3x3[i];
+  //     if (
+  //       rows[a] !== Values.Empty &&
+  //       rows[a] === rows[b] &&
+  //       rows[a] === rows[c]
+  //     ) {
+  //       return rows[a];
+  //     }
+  //   }
+  //   return null;
+  // }
 
   // for (let i = 0; i < game?.board.rows.length; i++) {
   //   rows.push(
@@ -128,10 +181,11 @@ export function Board(props: BoardProps) {
   // }
 
   return (
-    <div className={styles.board3x3}>
+    <div className={`board${props.size.toString()}`}>
       {game?.board.rows.map((value, i) => {
         return (
           <Square
+            key={i}
             onClick={() => {
               if (props.locked) {
                 return;

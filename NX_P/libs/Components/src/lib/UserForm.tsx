@@ -3,15 +3,17 @@ import styles from './UserForm.module.scss';
 import './UserForm.module.scss';
 import { Player } from '@./Models';
 import { v4 as uuidv4 } from 'uuid';
-interface FormProps {
+export interface FormProps {
   setPlayer1: (player: Player) => void;
   setPlayer2: (player: Player) => void;
   setSize: (size: number) => void;
+  size: number;
 }
 export function UserForm(props: FormProps) {
   const [player1, setPlayer1Name] = useState('');
   const [player2, setPlayer2Name] = useState('');
   const [clicked, setClicked] = useState(false);
+  // const [currentSize, setCurrentSize] = useState(3);
 
   useEffect(() => {
     if (clicked) {
@@ -19,13 +21,11 @@ export function UserForm(props: FormProps) {
     }
   }, [player1, player2]);
 
-  const gameSize = [3, 4, 5];
+  const gameSizes = [3, 4, 5];
 
   return (
     <div className={styles.container}>
-      <h1>
-        Welcome , please insert your name. {player1} {player2}
-      </h1>
+      <h1>Welcome , please insert your name.</h1>
 
       <div className="playerInputs">
         <input
@@ -42,25 +42,34 @@ export function UserForm(props: FormProps) {
             setPlayer2Name(e.target.value);
           }}
         ></input>
-
-        {clicked && (!player1 || !player2) && (
-          <h2 className={styles.error}>Please enter valid names</h2>
-        )}
       </div>
+      <h2>Please select the desireble board size</h2>
+      <h4>
+        Note : The combination needed to win increases as the board size does
+      </h4>
       <div className={styles.selectSize}>
-        {gameSize.map((size, index) => (
+        {gameSizes.map((value, index) => (
           <button
+            data-testid={'size' + value}
             key={index}
-            className={styles.sizeBtn}
+            id={'size' + value}
+            className={`${styles.sizeBtn} ${
+              props.size === value ? styles.isSelected : ' '
+            }`}
             onClick={() => {
-              props.setSize(size);
+              // setCurrentSize(size);
+              props.setSize(value);
+              setClicked(true);
             }}
           >
-            {size} * {size}
+            {value}x{value}
           </button>
         ))}
       </div>
       <button
+        data-testid="confirmbtn"
+        className={styles.btnConfirm}
+        disabled={!player1 || !player2}
         onClick={() => {
           setClicked(true);
           props.setPlayer1({ name: player1, id: uuidv4() });

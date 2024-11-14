@@ -15950,12 +15950,12 @@
       },
       {
         "source": "TicTacToe",
-        "target": "npm:@testing-library/react",
+        "target": "Components",
         "type": "static"
       },
       {
         "source": "TicTacToe",
-        "target": "Components",
+        "target": "npm:@testing-library/react",
         "type": "static"
       },
       {
