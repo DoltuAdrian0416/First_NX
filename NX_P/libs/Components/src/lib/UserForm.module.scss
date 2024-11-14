@@ -18,20 +18,19 @@ input[type="text"]{
 }
  .btnConfirm{
     padding:15px;
-    font-size:15px;
     border-radius: 10px;
-    width: 10em;
-    font-size:24px;
+    width: 100px;
+    font-size:15px;
     border: 1px solid #2a2a2a(243, 0, 0);
     transition: 0.3s ease-in-out;
+    margin-bottom:  20px;
 }
-.btnConfirm:hover{
+.btnConfirm:active:hover{
     background-color: #039be5;
     color:#fafafa;
-    font-size:27px;
+    font-size:16px;
     transition: 0.3s ease-in-out;
 }
-
 .container{
     display: flex;
     flex-direction: column;
@@ -39,8 +38,8 @@ input[type="text"]{
     justify-content: space-evenly;
     background-color: #e1f5fe;
     padding:30;
-    width: 40vw;
-    height: 40vh;
+    width: 700px;;
+    height: fit-content;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.425) 3px 2px 10px 1px ;
 }

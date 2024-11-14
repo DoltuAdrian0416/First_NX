@@ -1,0 +1,19 @@
+{
+  "name": "Models",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/Models/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/Models",
+        "main": "libs/Models/src/index.ts",
+        "tsConfig": "libs/Models/tsconfig.lib.json",
+        "assets": ["libs/Models/*.md"]
+      }
+    }
+  }
+}
