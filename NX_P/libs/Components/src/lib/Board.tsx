@@ -39,6 +39,43 @@ export function Board(props: BoardProps) {
     });
   }, []);
 
+  async function getAllGames() {
+    const data = await fetch('http://localhost:5158/api/games');
+    if (data.ok) {
+      const result = await data.json();
+      console.log(result);
+    }
+    console.log(data);
+  }
+
+  async function postGame(game: Game) {
+    const obj = {
+      id: game.id,
+      endDate: game.endDate,
+      player1: {
+        id: props.players[0].id,
+        name: props.players[0].name,
+      },
+      player2: {
+        id: props.players[1].id,
+        name: props.players[1].name,
+      },
+      winner: { id: game.winner?.id, name: game.winner?.name },
+      board: { id: uuidv4(), size: game.board.size, rows: game.board.rows },
+    };
+    console.log(obj);
+    const data = await fetch('http://localhost:5158/api/games', {
+      method: 'POST',
+      body: JSON.stringify(obj),
+      headers: new Headers({ 'content-type': 'application/json' }),
+    });
+    if (data.ok) {
+      const result = await data.json();
+      console.log(result);
+    }
+    console.log(data);
+  }
+
   useEffect(() => {
     if (!game) {
       return;
@@ -46,12 +83,15 @@ export function Board(props: BoardProps) {
 
     const winnerSymbol = calculateWinner(game.board.rows, props.size);
     if (winnerSymbol && currentPlayer) {
-      props.setWinner(currentPlayer);
-      setGame({
+      const newGame = {
         ...game,
         winner: currentPlayer,
         endDate: new Date(),
-      });
+      };
+      props.setWinner(currentPlayer);
+      setGame(newGame);
+      getAllGames();
+      postGame(newGame);
     }
   }, [game?.board]);
   function generateWinningLines(size: number): number[][] {

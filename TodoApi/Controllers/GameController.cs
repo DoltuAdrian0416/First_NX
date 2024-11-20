@@ -26,10 +26,17 @@ namespace TodoApi.Controllers
             return Ok(games);
         }
 
-        [HttpGet("{playerId}")]
-        public async Task<ActionResult<IEnumerable<Game>>> GetPlayerIdGame(string playerId)
+        [HttpGet("winner/{{id}}")]
+        public async Task<ActionResult<IEnumerable<Game>>> GetWinnerIdGame(string id)
         {
-            var PlayerGames = await _service.GetPlayerGames(playerId);
+            var WinnerGames = await _service.GetWinnerGames(id);
+            if (WinnerGames.Count() == 0) { return NotFound(); }
+            return Ok(WinnerGames);
+        }
+        [HttpGet("player/{{id}}")]
+        public async Task<ActionResult<IEnumerable<Game>>> GetPlayerIdGame(string id)
+        {
+            var PlayerGames = await _service.GetPlayerGames(id);
             if (PlayerGames.Count() == 0) { return NotFound(); }
             return Ok(PlayerGames);
         }
@@ -38,6 +45,20 @@ namespace TodoApi.Controllers
         [HttpPost]
         public async Task<ActionResult<IEnumerable<Game>>> PostGames([FromBody] Game game)
         {
+
+            if (game.Player1.Id == game.Player2.Id)
+            {
+                return BadRequest("Ids must be different");
+            }
+
+            if (_service.IsBoard(game.Board.Id))
+            {
+                return BadRequest("Board with the same Id already exists");
+            }
+            if (!_service.ValidateWinner(game))
+            {
+                return BadRequest("Winners must be a player");
+            }
             await _service.AddGamesAsync(game);
             return Ok(game);
         }
