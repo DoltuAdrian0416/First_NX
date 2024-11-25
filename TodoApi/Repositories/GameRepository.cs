@@ -12,6 +12,7 @@ namespace TodoApi.Controllers
         public Task<Game> AddGamesAsync(Game game);
         public Task<IEnumerable<Game>> GetWinnerGames(string name);
         public Task<IEnumerable<Game>> GetPlayerGames(string name);
+        public Task<Game> GetGameById(string id);
 
         public bool IsBoard(string id);
 
@@ -43,6 +44,10 @@ namespace TodoApi.Controllers
             return game;
         }
 
+        public async Task<Game> GetGameById(string id)
+        {
+            return await ComposeGame(_context.Games).FirstAsync(game => game.Id == id);
+        }
         public async Task<IEnumerable<Game>> GetWinnerGames(string id)
         {
             return await ComposeGame(_context.Games).Where(game => game.Winner.Id == id).ToListAsync();

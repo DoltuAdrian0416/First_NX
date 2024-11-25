@@ -6,6 +6,8 @@ export interface Game {
     id : string;
     endDate? : Date;
     playerSymbol : Map<string , Values>;
+    player1: Player;
+    player2:Player;
     winner? : Player;
     board : Board;
 }

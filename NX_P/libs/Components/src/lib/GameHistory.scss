@@ -1,0 +1,100 @@
+.gameContainer{
+    min-width:fit-content;
+    min-height: 100px;
+    background-color: rgb(52, 186, 226);
+    margin: 10px;
+    text-align: center;
+    border-radius: 3px;
+    display: flex;
+    justify-content:space-between;
+}
+.historyContainer{
+    width: 100%;
+    display: grid;
+    grid-template-columns:  repeat(3,45%);
+    justify-content: center;
+
+    .size{
+        height: 100%;
+        width: 40%;
+        background-color: rgba(42, 101, 156, 0.692);
+        color: #fafafa;
+        padding: 0px 10px;
+        margin: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &.size3{
+            background-color: #1161d893;
+        }
+        &.size4{
+            background-color: #e0e40f8e;
+        }
+        &.size5{
+            background-color: #d4131394;
+        }
+    }
+
+
+    .gameDescription{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        p:nth-child(1){
+            height: 100%;
+            width: 150px;
+            color: #fafafa;
+            padding: 0px 10px;
+            margin: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        button{
+            padding:5px;
+            border-radius: 3px;
+            width: fit-content;
+            height: fit-content;
+            font-size:15px;
+            border: 0px;
+            transition: 0.3s ease-in-out;
+            background-color: #3980afa4;
+            margin-bottom:20px;
+            color: white;
+            cursor: pointer;
+            transition: .3s ease-in-out;
+            &:hover{
+                background-color:#0b5383a4 ;
+                transition: .3s ease-in-out;
+            }
+        }
+    }
+
+    .returnBtn{
+        width: fit-content ;
+        position:absolute;
+        top:30px;
+        right: 50px;
+        display: block;
+        outline: 0;
+        border: none;
+        cursor: pointer;
+        line-height: 1.2rem;
+        font-weight: 900;
+        background: #5a97cf;
+        padding: 8px 14px 9px;
+        font-size: 15px;
+        border-radius: 4px;
+        color: #fff;
+        height: 36px;
+        transition: .3 ease-in-out;      
+        &:hover{
+            background: #457097;
+            transition:  .3s ease-in-out;
+        } 
+        }
+    
+}   

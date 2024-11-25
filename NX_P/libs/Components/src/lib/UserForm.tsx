@@ -3,6 +3,8 @@ import styles from './UserForm.module.scss';
 import './UserForm.module.scss';
 import { Player } from '@./Models';
 import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
+
 export interface FormProps {
   setPlayer1: (player: Player) => void;
   setPlayer2: (player: Player) => void;
@@ -13,6 +15,7 @@ export function UserForm(props: FormProps) {
   const [player1, setPlayer1Name] = useState('');
   const [player2, setPlayer2Name] = useState('');
   const [clicked, setClicked] = useState(false);
+  const navigate = useNavigate();
   // const [currentSize, setCurrentSize] = useState(3);
 
   useEffect(() => {
@@ -66,18 +69,29 @@ export function UserForm(props: FormProps) {
           </button>
         ))}
       </div>
-      <button
-        data-testid="confirmbtn"
-        className={styles.btnConfirm}
-        disabled={!player1 || !player2}
-        onClick={() => {
-          setClicked(true);
-          props.setPlayer1({ name: player1, id: uuidv4() });
-          props.setPlayer2({ name: player2, id: uuidv4() });
-        }}
-      >
-        Confirm
-      </button>
+      <div className={styles.buttonController}>
+        <button
+          data-testid="confirmbtn"
+          className={styles.btnConfirm}
+          disabled={!player1 || !player2}
+          onClick={() => {
+            setClicked(true);
+            props.setPlayer1({ name: player1, id: uuidv4() });
+            props.setPlayer2({ name: player2, id: uuidv4() });
+            navigate('/game');
+          }}
+        >
+          Confirm
+        </button>
+        <button
+          className={styles.btnIstoric}
+          onClick={() => {
+            navigate('/history');
+          }}
+        >
+          Istoric jocuri
+        </button>
+      </div>
     </div>
   );
 }

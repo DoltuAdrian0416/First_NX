@@ -23,3 +23,13 @@
     padding: 15px;
     
 }
+.boardContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: aqua;
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+}

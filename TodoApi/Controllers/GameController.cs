@@ -40,6 +40,13 @@ namespace TodoApi.Controllers
             if (PlayerGames.Count() == 0) { return NotFound(); }
             return Ok(PlayerGames);
         }
+        [HttpGet("game/{{id}}")]
+        public async Task<ActionResult<Game>> GetGameById(string id)
+        {
+            var Game = await _service.GetGamesById(id);
+            if (Game == null) { return NotFound(); }
+            return Ok(Game);
+        }
 
 
         [HttpPost]

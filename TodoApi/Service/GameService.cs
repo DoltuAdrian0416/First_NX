@@ -9,6 +9,7 @@ namespace TodoApi.Controllers
         public Task<Game> AddGamesAsync(Game game);
         public Task<IEnumerable<Game>> GetWinnerGames(string id);
         public Task<IEnumerable<Game>> GetPlayerGames(string id);
+        public Task<Game> GetGamesById(string id);
         public bool IsBoard(string id);
         public bool ValidateWinner(Game game);
     }
@@ -38,6 +39,10 @@ namespace TodoApi.Controllers
         public async Task<IEnumerable<Game>> GetPlayerGames(string id)
         {
             return await _gameRepository.GetPlayerGames(id);
+        }
+        public async Task<Game> GetGamesById(string id)
+        {
+            return await _gameRepository.GetGameById(id);
         }
 
         public bool IsBoard(string id)

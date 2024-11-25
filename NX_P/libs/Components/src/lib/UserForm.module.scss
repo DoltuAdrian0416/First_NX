@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 *{
     font-family: "Lato" , serif;
+    font-weight: bold;
 }
 
 input[type="text"]{
@@ -17,15 +18,22 @@ input[type="text"]{
     
 }
  .btnConfirm{
-    padding:15px;
+    padding:13px;
     border-radius: 10px;
-    width: 100px;
+    width: fit-content;
+    height: fit-content;
     font-size:15px;
-    border: 1px solid #2a2a2a(243, 0, 0);
+    border: 0px;
     transition: 0.3s ease-in-out;
-    margin-bottom:  20px;
+    background-color: #5c6bc0;
+    margin-bottom:20px;
+    color: white;
 }
-.btnConfirm:active:hover{
+.btnConfirm:disabled{
+    background-color: #5c6bc03d;
+
+}
+.btnConfirm:not(:disabled){
     background-color: #039be5;
     color:#fafafa;
     font-size:16px;
@@ -76,4 +84,27 @@ input[type="text"]{
     color: #fafafa;
     background-color: #1a237e;
     transition: 0.3s ease-in-out;
+}
+.buttonController{
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+}
+
+.btnIstoric{
+    padding:13px;
+    border-radius: 10px;
+    width: fit-content;
+    height: fit-content;
+    font-size:15px;
+    border: 0px;
+    transition: 0.3s ease-in-out;
+    background-color: #5c6bc0;
+    margin-bottom:20px;
+    color: white;
+    }
+.btnIstoric:hover{
+    background-color: #2139be;
 }

@@ -15871,6 +15871,11 @@
       },
       {
         "source": "Components",
+        "target": "npm:react-router-dom",
+        "type": "static"
+      },
+      {
+        "source": "Components",
         "target": "npm:uuid",
         "type": "static"
       },
@@ -15966,6 +15971,11 @@
       {
         "source": "TicTacToe",
         "target": "Models",
+        "type": "static"
+      },
+      {
+        "source": "TicTacToe",
+        "target": "npm:react-router-dom",
         "type": "static"
       },
       {

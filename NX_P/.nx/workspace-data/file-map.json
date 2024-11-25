@@ -55,67 +55,594 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": ".prettierrc",
-        "hash": "6820402234827505055"
-      },
-      {
-        "file": "jest.config.ts",
-        "hash": "7544409015863045561"
-      },
-      {
         "file": ".vscode/extensions.json",
         "hash": "4422400126597322578"
-      },
-      {
-        "file": "README.md",
-        "hash": "4545472044235372954"
-      },
-      {
-        "file": "nx.json",
-        "hash": "12936914188722572935"
-      },
-      {
-        "file": ".github/workflows/ci.yml",
-        "hash": "5766085213226935940"
-      },
-      {
-        "file": "jest.preset.js",
-        "hash": "7473220183190921152"
-      },
-      {
-        "file": "tsconfig.base.json",
-        "hash": "11887708224161608007"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "1363786374564416739"
-      },
-      {
-        "file": "eslint.config.js",
-        "hash": "3535604748181344684"
-      },
-      {
-        "file": "package.json",
-        "hash": "2852731707212669189"
       },
       {
         "file": ".prettierignore",
         "hash": "17085498363870782104"
       },
       {
-        "file": "vitest.workspace.ts",
-        "hash": "16140283107432676792"
+        "file": ".gitignore",
+        "hash": "1363786374564416739"
+      },
+      {
+        "file": "README.md",
+        "hash": "4545472044235372954"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "7544409015863045561"
       },
       {
         "file": "package-lock.json",
         "hash": "4607704962110299403"
       },
       {
+        "file": "eslint.config.js",
+        "hash": "3535604748181344684"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "9495151523501469499"
+      },
+      {
         "file": ".editorconfig",
         "hash": "11532813898455409296"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "7473220183190921152"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "6820402234827505055"
+      },
+      {
+        "file": "vitest.workspace.ts",
+        "hash": "16140283107432676792"
+      },
+      {
+        "file": "nx.json",
+        "hash": "12936914188722572935"
+      },
+      {
+        "file": "package.json",
+        "hash": "2852731707212669189"
+      },
+      {
+        "file": ".github/workflows/ci.yml",
+        "hash": "5766085213226935940"
       }
     ],
     "projectFileMap": {
+      "Components": [
+        {
+          "file": "libs/Components/.babelrc",
+          "hash": "15003411175763814189"
+        },
+        {
+          "file": "libs/Components/README.md",
+          "hash": "11402455446600870466"
+        },
+        {
+          "file": "libs/Components/eslint.config.js",
+          "hash": "4309309861924117436",
+          "deps": [
+            "npm:@nx/eslint-plugin"
+          ]
+        },
+        {
+          "file": "libs/Components/project.json",
+          "hash": "7749062171607492484"
+        },
+        {
+          "file": "libs/Components/src/index.ts",
+          "hash": "6140415407327338507"
+        },
+        {
+          "file": "libs/Components/src/lib/Board.scss",
+          "hash": "15840853685668521414"
+        },
+        {
+          "file": "libs/Components/src/lib/Board.spec.tsx",
+          "hash": "7869450974805866320",
+          "deps": [
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "libs/Components/src/lib/Board.tsx",
+          "hash": "12296138009853226475",
+          "deps": [
+            "npm:react",
+            "Models",
+            "npm:react-router-dom"
+          ]
+        },
+        {
+          "file": "libs/Components/src/lib/BoardController.scss",
+          "hash": "10145549570907638358"
+        },
+        {
+          "file": "libs/Components/src/lib/BoardController.spec.tsx",
+          "hash": "10531276563930240057",
+          "deps": [
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "libs/Components/src/lib/BoardController.tsx",
+          "hash": "7395509480159097688",
+          "deps": [
+            "Models",
+            "npm:uuid",
+            "npm:react-router-dom"
+          ]
+        },
+        {
+          "file": "libs/Components/src/lib/GameHistory.scss",
+          "hash": "6926113244247293471"
+        },
+        {
+          "file": "libs/Components/src/lib/GameHistory.spec.tsx",
+          "hash": "8488273336834237603",
+          "deps": [
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "libs/Components/src/lib/GameHistory.tsx",
+          "hash": "4676452468674239056",
+          "deps": [
+            "npm:react",
+            "Models",
+            "npm:react-router-dom"
+          ]
+        },
+        {
+          "file": "libs/Components/src/lib/GenerateBoard.scss",
+          "hash": "125145030238681982"
+        },
+        {
+          "file": "libs/Components/src/lib/GenerateBoard.spec.tsx",
+          "hash": "1829521569075218601",
+          "deps": [
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "libs/Components/src/lib/GenerateBoard.tsx",
+          "hash": "631404456826116483",
+          "deps": [
+            "Models",
+            "npm:react",
+            "npm:uuid"
+          ]
+        },
+        {
+          "file": "libs/Components/src/lib/Square.module.scss",
+          "hash": "2633534406581217806"
+        },
+        {
+          "file": "libs/Components/src/lib/Square.spec.tsx",
+          "hash": "4247984331806322883",
+          "deps": [
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "libs/Components/src/lib/Square.tsx",
+          "hash": "6411452450383571817",
+          "deps": [
+            "Models"
+          ]
+        },
+        {
+          "file": "libs/Components/src/lib/UserForm.module.scss",
+          "hash": "4985236138944585247"
+        },
+        {
+          "file": "libs/Components/src/lib/UserForm.spec.tsx",
+          "hash": "2663971542560548218",
+          "deps": [
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "libs/Components/src/lib/UserForm.tsx",
+          "hash": "1878404356818330680",
+          "deps": [
+            "npm:react",
+            "Models",
+            "npm:uuid",
+            "npm:react-router-dom"
+          ]
+        },
+        {
+          "file": "libs/Components/src/lib/profile-user.png",
+          "hash": "14998549787881460757"
+        },
+        {
+          "file": "libs/Components/tsconfig.json",
+          "hash": "2717301636124270161"
+        },
+        {
+          "file": "libs/Components/tsconfig.lib.json",
+          "hash": "5982162789104615864"
+        },
+        {
+          "file": "libs/Components/tsconfig.spec.json",
+          "hash": "5947821632368113453"
+        },
+        {
+          "file": "libs/Components/vite.config.ts",
+          "hash": "14518974809024741046",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-react",
+            "npm:@nx/vite"
+          ]
+        }
+      ],
+      "NX_P_TEST-e2e": [
+        {
+          "file": "apps/NX_P_TEST-e2e/eslint.config.js",
+          "hash": "13145502249528557504",
+          "deps": [
+            "npm:eslint-plugin-playwright"
+          ]
+        },
+        {
+          "file": "apps/NX_P_TEST-e2e/playwright.config.ts",
+          "hash": "13178185242976315519",
+          "deps": [
+            "npm:@playwright/test",
+            "npm:@nx/playwright",
+            "npm:@nx/devkit"
+          ]
+        },
+        {
+          "file": "apps/NX_P_TEST-e2e/project.json",
+          "hash": "7557551833400738781"
+        },
+        {
+          "file": "apps/NX_P_TEST-e2e/src/example.spec.ts",
+          "hash": "1909365745453809229",
+          "deps": [
+            "npm:@playwright/test"
+          ]
+        },
+        {
+          "file": "apps/NX_P_TEST-e2e/tsconfig.json",
+          "hash": "12614691677435311415"
+        }
+      ],
+      "inventory-e2e": [
+        {
+          "file": "apps/inventory-e2e/eslint.config.js",
+          "hash": "13145502249528557504",
+          "deps": [
+            "npm:eslint-plugin-playwright"
+          ]
+        },
+        {
+          "file": "apps/inventory-e2e/playwright.config.ts",
+          "hash": "11050368554998006306",
+          "deps": [
+            "npm:@playwright/test",
+            "npm:@nx/playwright",
+            "npm:@nx/devkit"
+          ]
+        },
+        {
+          "file": "apps/inventory-e2e/project.json",
+          "hash": "3953233870545835676"
+        },
+        {
+          "file": "apps/inventory-e2e/src/example.spec.ts",
+          "hash": "1909365745453809229",
+          "deps": [
+            "npm:@playwright/test"
+          ]
+        },
+        {
+          "file": "apps/inventory-e2e/tsconfig.json",
+          "hash": "12614691677435311415"
+        }
+      ],
+      "TicTacToe": [
+        {
+          "file": "apps/TicTacToe/eslint.config.js",
+          "hash": "4309309861924117436",
+          "deps": [
+            "npm:@nx/eslint-plugin"
+          ]
+        },
+        {
+          "file": "apps/TicTacToe/index.html",
+          "hash": "7523981489657836335"
+        },
+        {
+          "file": "apps/TicTacToe/project.json",
+          "hash": "2849350895099163430"
+        },
+        {
+          "file": "apps/TicTacToe/public/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "apps/TicTacToe/src/app/app.module.scss",
+          "hash": "199432385742308357"
+        },
+        {
+          "file": "apps/TicTacToe/src/app/app.spec.tsx",
+          "hash": "14899823403074805408",
+          "deps": [
+            "Components",
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "apps/TicTacToe/src/app/app.tsx",
+          "hash": "12731891744182645965",
+          "deps": [
+            "Components",
+            "npm:react",
+            "Models",
+            "npm:react-router-dom"
+          ]
+        },
+        {
+          "file": "apps/TicTacToe/src/app/nx-welcome.tsx",
+          "hash": "17616459125443730291"
+        },
+        {
+          "file": "apps/TicTacToe/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/TicTacToe/src/main.tsx",
+          "hash": "17031623790071076628",
+          "deps": [
+            "npm:react",
+            "npm:react-dom"
+          ]
+        },
+        {
+          "file": "apps/TicTacToe/src/styles.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/TicTacToe/tsconfig.app.json",
+          "hash": "6620183941831685188"
+        },
+        {
+          "file": "apps/TicTacToe/tsconfig.json",
+          "hash": "8792423286157740794"
+        },
+        {
+          "file": "apps/TicTacToe/tsconfig.spec.json",
+          "hash": "12139562650648121089"
+        },
+        {
+          "file": "apps/TicTacToe/vite.config.ts",
+          "hash": "10568115941531503254",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-react",
+            "npm:@nx/vite"
+          ]
+        }
+      ],
+      "inventory": [
+        {
+          "file": "apps/inventory/eslint.config.js",
+          "hash": "4309309861924117436",
+          "deps": [
+            "npm:@nx/eslint-plugin"
+          ]
+        },
+        {
+          "file": "apps/inventory/index.html",
+          "hash": "15006483439051166929"
+        },
+        {
+          "file": "apps/inventory/project.json",
+          "hash": "4771926813381099468"
+        },
+        {
+          "file": "apps/inventory/public/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "apps/inventory/src/app/app.module.scss",
+          "hash": "14507130133388590702"
+        },
+        {
+          "file": "apps/inventory/src/app/app.spec.tsx",
+          "hash": "2318064151401096987",
+          "deps": [
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "apps/inventory/src/app/app.tsx",
+          "hash": "6006228729790415019",
+          "deps": [
+            "products"
+          ]
+        },
+        {
+          "file": "apps/inventory/src/app/nx-welcome.tsx",
+          "hash": "17616459125443730291"
+        },
+        {
+          "file": "apps/inventory/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/inventory/src/main.tsx",
+          "hash": "17031623790071076628",
+          "deps": [
+            "npm:react",
+            "npm:react-dom"
+          ]
+        },
+        {
+          "file": "apps/inventory/src/styles.scss",
+          "hash": "2917954890128038984"
+        },
+        {
+          "file": "apps/inventory/tsconfig.app.json",
+          "hash": "6620183941831685188"
+        },
+        {
+          "file": "apps/inventory/tsconfig.json",
+          "hash": "8792423286157740794"
+        },
+        {
+          "file": "apps/inventory/tsconfig.spec.json",
+          "hash": "12139562650648121089"
+        },
+        {
+          "file": "apps/inventory/vite.config.ts",
+          "hash": "7687798139252428624",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-react",
+            "npm:@nx/vite"
+          ]
+        }
+      ],
+      "ui": [
+        {
+          "file": "libs/shared/ui/.babelrc",
+          "hash": "15003411175763814189"
+        },
+        {
+          "file": "libs/shared/ui/README.md",
+          "hash": "12278270776781370320"
+        },
+        {
+          "file": "libs/shared/ui/eslint.config.js",
+          "hash": "20654826339036900",
+          "deps": [
+            "npm:@nx/eslint-plugin"
+          ]
+        },
+        {
+          "file": "libs/shared/ui/package.json",
+          "hash": "14900154279133858492"
+        },
+        {
+          "file": "libs/shared/ui/project.json",
+          "hash": "10028833448099701595"
+        },
+        {
+          "file": "libs/shared/ui/src/index.ts",
+          "hash": "8542243310784091453"
+        },
+        {
+          "file": "libs/shared/ui/src/lib/ui.module.scss",
+          "hash": "9824504850739023139"
+        },
+        {
+          "file": "libs/shared/ui/src/lib/ui.spec.tsx",
+          "hash": "17904578029725158754",
+          "deps": [
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "libs/shared/ui/src/lib/ui.tsx",
+          "hash": "13039817125183572543"
+        },
+        {
+          "file": "libs/shared/ui/tsconfig.json",
+          "hash": "7777951354717366821"
+        },
+        {
+          "file": "libs/shared/ui/tsconfig.lib.json",
+          "hash": "3489893287793430731"
+        },
+        {
+          "file": "libs/shared/ui/tsconfig.spec.json",
+          "hash": "866090251918963737"
+        },
+        {
+          "file": "libs/shared/ui/vite.config.ts",
+          "hash": "9480418598835530131",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-react",
+            "npm:vite-plugin-dts",
+            "npm:@nx/vite"
+          ]
+        }
+      ],
+      "Models": [
+        {
+          "file": "libs/Models/README.md",
+          "hash": "9175805641100820183"
+        },
+        {
+          "file": "libs/Models/eslint.config.js",
+          "hash": "501722464097411023",
+          "deps": [
+            "npm:jsonc-eslint-parser"
+          ]
+        },
+        {
+          "file": "libs/Models/package.json",
+          "hash": "3733820518705452598"
+        },
+        {
+          "file": "libs/Models/project.json",
+          "hash": "921310025622681419"
+        },
+        {
+          "file": "libs/Models/src/index.ts",
+          "hash": "5046699699391045439"
+        },
+        {
+          "file": "libs/Models/src/lib/Board.ts",
+          "hash": "1525367332947299171"
+        },
+        {
+          "file": "libs/Models/src/lib/Game.ts",
+          "hash": "2973077828680457742"
+        },
+        {
+          "file": "libs/Models/src/lib/Player.ts",
+          "hash": "5077405435622188559"
+        },
+        {
+          "file": "libs/Models/src/lib/Values.ts",
+          "hash": "18112293686309784416"
+        },
+        {
+          "file": "libs/Models/tsconfig.json",
+          "hash": "7128447134199889905"
+        },
+        {
+          "file": "libs/Models/tsconfig.lib.json",
+          "hash": "7568541289358088662"
+        },
+        {
+          "file": "libs/Models/tsconfig.spec.json",
+          "hash": "5947821632368113453"
+        },
+        {
+          "file": "libs/Models/vite.config.ts",
+          "hash": "10034037691852086792",
+          "deps": [
+            "npm:vite",
+            "npm:vite-plugin-dts",
+            "npm:@nx/vite"
+          ]
+        }
+      ],
       "React_Playground": [
         {
           "file": "apps/React_Playground/eslint.config.js",
@@ -193,211 +720,68 @@
           ]
         }
       ],
-      "ui": [
+      "orders": [
         {
-          "file": "libs/shared/ui/.babelrc",
+          "file": "libs/orders/.babelrc",
           "hash": "15003411175763814189"
         },
         {
-          "file": "libs/shared/ui/README.md",
-          "hash": "12278270776781370320"
+          "file": "libs/orders/README.md",
+          "hash": "4488372683315650236"
         },
         {
-          "file": "libs/shared/ui/eslint.config.js",
-          "hash": "20654826339036900",
-          "deps": [
-            "npm:@nx/eslint-plugin"
-          ]
-        },
-        {
-          "file": "libs/shared/ui/package.json",
-          "hash": "14900154279133858492"
-        },
-        {
-          "file": "libs/shared/ui/project.json",
-          "hash": "10028833448099701595"
-        },
-        {
-          "file": "libs/shared/ui/src/index.ts",
-          "hash": "8542243310784091453"
-        },
-        {
-          "file": "libs/shared/ui/src/lib/ui.module.scss",
-          "hash": "9824504850739023139"
-        },
-        {
-          "file": "libs/shared/ui/src/lib/ui.spec.tsx",
-          "hash": "17904578029725158754",
-          "deps": [
-            "npm:@testing-library/react"
-          ]
-        },
-        {
-          "file": "libs/shared/ui/src/lib/ui.tsx",
-          "hash": "13039817125183572543"
-        },
-        {
-          "file": "libs/shared/ui/tsconfig.json",
-          "hash": "7777951354717366821"
-        },
-        {
-          "file": "libs/shared/ui/tsconfig.lib.json",
-          "hash": "3489893287793430731"
-        },
-        {
-          "file": "libs/shared/ui/tsconfig.spec.json",
-          "hash": "866090251918963737"
-        },
-        {
-          "file": "libs/shared/ui/vite.config.ts",
-          "hash": "9480418598835530131",
-          "deps": [
-            "npm:vite",
-            "npm:@vitejs/plugin-react",
-            "npm:vite-plugin-dts",
-            "npm:@nx/vite"
-          ]
-        }
-      ],
-      "Components": [
-        {
-          "file": "libs/Components/.babelrc",
-          "hash": "15003411175763814189"
-        },
-        {
-          "file": "libs/Components/README.md",
-          "hash": "11402455446600870466"
-        },
-        {
-          "file": "libs/Components/eslint.config.js",
+          "file": "libs/orders/eslint.config.js",
           "hash": "4309309861924117436",
           "deps": [
             "npm:@nx/eslint-plugin"
           ]
         },
         {
-          "file": "libs/Components/project.json",
-          "hash": "7749062171607492484"
+          "file": "libs/orders/project.json",
+          "hash": "16453230022050200846"
         },
         {
-          "file": "libs/Components/src/index.ts",
-          "hash": "8431495135622474677"
+          "file": "libs/orders/src/index.ts",
+          "hash": "3422188710466617399"
         },
         {
-          "file": "libs/Components/src/lib/Board.scss",
-          "hash": "6635892893005204209"
+          "file": "libs/orders/src/lib/orders.module.scss",
+          "hash": "9824504850739023139"
         },
         {
-          "file": "libs/Components/src/lib/Board.spec.tsx",
-          "hash": "7869450974805866320",
+          "file": "libs/orders/src/lib/orders.spec.tsx",
+          "hash": "7844130936156585585",
           "deps": [
             "npm:@testing-library/react"
           ]
         },
         {
-          "file": "libs/Components/src/lib/Board.tsx",
-          "hash": "2078371792685725449",
+          "file": "libs/orders/src/lib/orders.tsx",
+          "hash": "7794311867666191115",
           "deps": [
-            "npm:react",
-            "Models",
-            "npm:uuid"
+            "npm:react"
           ]
         },
         {
-          "file": "libs/Components/src/lib/Square.module.scss",
-          "hash": "2633534406581217806"
-        },
-        {
-          "file": "libs/Components/src/lib/Square.spec.tsx",
-          "hash": "4247984331806322883",
-          "deps": [
-            "npm:@testing-library/react"
-          ]
-        },
-        {
-          "file": "libs/Components/src/lib/Square.tsx",
-          "hash": "6411452450383571817",
-          "deps": [
-            "Models"
-          ]
-        },
-        {
-          "file": "libs/Components/src/lib/UserForm.module.scss",
-          "hash": "1127897936390961122"
-        },
-        {
-          "file": "libs/Components/src/lib/UserForm.spec.tsx",
-          "hash": "2663971542560548218",
-          "deps": [
-            "npm:@testing-library/react"
-          ]
-        },
-        {
-          "file": "libs/Components/src/lib/UserForm.tsx",
-          "hash": "7934796786550863946",
-          "deps": [
-            "npm:react",
-            "Models",
-            "npm:uuid"
-          ]
-        },
-        {
-          "file": "libs/Components/src/lib/profile-user.png",
-          "hash": "14998549787881460757"
-        },
-        {
-          "file": "libs/Components/tsconfig.json",
+          "file": "libs/orders/tsconfig.json",
           "hash": "2717301636124270161"
         },
         {
-          "file": "libs/Components/tsconfig.lib.json",
+          "file": "libs/orders/tsconfig.lib.json",
           "hash": "5982162789104615864"
         },
         {
-          "file": "libs/Components/tsconfig.spec.json",
+          "file": "libs/orders/tsconfig.spec.json",
           "hash": "5947821632368113453"
         },
         {
-          "file": "libs/Components/vite.config.ts",
-          "hash": "14518974809024741046",
+          "file": "libs/orders/vite.config.ts",
+          "hash": "3419373447768636148",
           "deps": [
             "npm:vite",
             "npm:@vitejs/plugin-react",
             "npm:@nx/vite"
           ]
-        }
-      ],
-      "React_Playground-e2e": [
-        {
-          "file": "apps/React_Playground-e2e/eslint.config.js",
-          "hash": "13145502249528557504",
-          "deps": [
-            "npm:eslint-plugin-playwright"
-          ]
-        },
-        {
-          "file": "apps/React_Playground-e2e/playwright.config.ts",
-          "hash": "3040946617712374840",
-          "deps": [
-            "npm:@playwright/test",
-            "npm:@nx/playwright",
-            "npm:@nx/devkit"
-          ]
-        },
-        {
-          "file": "apps/React_Playground-e2e/project.json",
-          "hash": "14302709155092581953"
-        },
-        {
-          "file": "apps/React_Playground-e2e/src/example.spec.ts",
-          "hash": "1909365745453809229",
-          "deps": [
-            "npm:@playwright/test"
-          ]
-        },
-        {
-          "file": "apps/React_Playground-e2e/tsconfig.json",
-          "hash": "12614691677435311415"
         }
       ],
       "NX_P_TEST": [
@@ -487,149 +871,131 @@
           ]
         }
       ],
-      "Models": [
+      "TicTacToe-e2e": [
         {
-          "file": "libs/Models/README.md",
-          "hash": "9175805641100820183"
-        },
-        {
-          "file": "libs/Models/eslint.config.js",
-          "hash": "501722464097411023",
+          "file": "apps/TicTacToe-e2e/eslint.config.js",
+          "hash": "13145502249528557504",
           "deps": [
-            "npm:jsonc-eslint-parser"
+            "npm:eslint-plugin-playwright"
           ]
         },
         {
-          "file": "libs/Models/package.json",
-          "hash": "3733820518705452598"
-        },
-        {
-          "file": "libs/Models/project.json",
-          "hash": "921310025622681419"
-        },
-        {
-          "file": "libs/Models/src/index.ts",
-          "hash": "5046699699391045439"
-        },
-        {
-          "file": "libs/Models/src/lib/Board.ts",
-          "hash": "1525367332947299171"
-        },
-        {
-          "file": "libs/Models/src/lib/Game.ts",
-          "hash": "11463431593759574464"
-        },
-        {
-          "file": "libs/Models/src/lib/Player.ts",
-          "hash": "5077405435622188559"
-        },
-        {
-          "file": "libs/Models/src/lib/Values.ts",
-          "hash": "18112293686309784416"
-        },
-        {
-          "file": "libs/Models/tsconfig.json",
-          "hash": "7128447134199889905"
-        },
-        {
-          "file": "libs/Models/tsconfig.lib.json",
-          "hash": "7568541289358088662"
-        },
-        {
-          "file": "libs/Models/tsconfig.spec.json",
-          "hash": "5947821632368113453"
-        },
-        {
-          "file": "libs/Models/vite.config.ts",
-          "hash": "10034037691852086792",
+          "file": "apps/TicTacToe-e2e/playwright.config.ts",
+          "hash": "11331271958822447590",
           "deps": [
-            "npm:vite",
-            "npm:vite-plugin-dts",
-            "npm:@nx/vite"
+            "npm:@playwright/test",
+            "npm:@nx/playwright",
+            "npm:@nx/devkit"
           ]
+        },
+        {
+          "file": "apps/TicTacToe-e2e/project.json",
+          "hash": "17000926535406119685"
+        },
+        {
+          "file": "apps/TicTacToe-e2e/src/example.spec.ts",
+          "hash": "1909365745453809229",
+          "deps": [
+            "npm:@playwright/test"
+          ]
+        },
+        {
+          "file": "apps/TicTacToe-e2e/tsconfig.json",
+          "hash": "12614691677435311415"
         }
       ],
-      "TicTacToe": [
+      "products": [
         {
-          "file": "apps/TicTacToe/eslint.config.js",
+          "file": "libs/products/.babelrc",
+          "hash": "15003411175763814189"
+        },
+        {
+          "file": "libs/products/README.md",
+          "hash": "14221831436977802355"
+        },
+        {
+          "file": "libs/products/eslint.config.js",
           "hash": "4309309861924117436",
           "deps": [
             "npm:@nx/eslint-plugin"
           ]
         },
         {
-          "file": "apps/TicTacToe/index.html",
-          "hash": "7523981489657836335"
+          "file": "libs/products/project.json",
+          "hash": "3347012891682097311"
         },
         {
-          "file": "apps/TicTacToe/project.json",
-          "hash": "2849350895099163430"
+          "file": "libs/products/src/index.ts",
+          "hash": "7998023058392979972"
         },
         {
-          "file": "apps/TicTacToe/public/favicon.ico",
-          "hash": "9303420814833116677"
+          "file": "libs/products/src/lib/products.module.scss",
+          "hash": "9824504850739023139"
         },
         {
-          "file": "apps/TicTacToe/src/app/app.module.scss",
-          "hash": "12535148980490857123"
-        },
-        {
-          "file": "apps/TicTacToe/src/app/app.spec.tsx",
-          "hash": "14899823403074805408",
+          "file": "libs/products/src/lib/products.spec.tsx",
+          "hash": "13369830752428789910",
           "deps": [
-            "Components",
             "npm:@testing-library/react"
           ]
         },
         {
-          "file": "apps/TicTacToe/src/app/app.tsx",
-          "hash": "12744671243641791593",
-          "deps": [
-            "Components",
-            "npm:react",
-            "Models"
-          ]
+          "file": "libs/products/src/lib/products.tsx",
+          "hash": "9783503457879824181"
         },
         {
-          "file": "apps/TicTacToe/src/app/nx-welcome.tsx",
-          "hash": "17616459125443730291"
+          "file": "libs/products/tsconfig.json",
+          "hash": "2717301636124270161"
         },
         {
-          "file": "apps/TicTacToe/src/assets/.gitkeep",
-          "hash": "3244421341483603138"
+          "file": "libs/products/tsconfig.lib.json",
+          "hash": "5982162789104615864"
         },
         {
-          "file": "apps/TicTacToe/src/main.tsx",
-          "hash": "17031623790071076628",
-          "deps": [
-            "npm:react",
-            "npm:react-dom"
-          ]
+          "file": "libs/products/tsconfig.spec.json",
+          "hash": "5947821632368113453"
         },
         {
-          "file": "apps/TicTacToe/src/styles.scss",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/TicTacToe/tsconfig.app.json",
-          "hash": "6620183941831685188"
-        },
-        {
-          "file": "apps/TicTacToe/tsconfig.json",
-          "hash": "8792423286157740794"
-        },
-        {
-          "file": "apps/TicTacToe/tsconfig.spec.json",
-          "hash": "12139562650648121089"
-        },
-        {
-          "file": "apps/TicTacToe/vite.config.ts",
-          "hash": "10568115941531503254",
+          "file": "libs/products/vite.config.ts",
+          "hash": "7530182452160970008",
           "deps": [
             "npm:vite",
             "npm:@vitejs/plugin-react",
             "npm:@nx/vite"
           ]
+        }
+      ],
+      "React_Playground-e2e": [
+        {
+          "file": "apps/React_Playground-e2e/eslint.config.js",
+          "hash": "13145502249528557504",
+          "deps": [
+            "npm:eslint-plugin-playwright"
+          ]
+        },
+        {
+          "file": "apps/React_Playground-e2e/playwright.config.ts",
+          "hash": "3040946617712374840",
+          "deps": [
+            "npm:@playwright/test",
+            "npm:@nx/playwright",
+            "npm:@nx/devkit"
+          ]
+        },
+        {
+          "file": "apps/React_Playground-e2e/project.json",
+          "hash": "14302709155092581953"
+        },
+        {
+          "file": "apps/React_Playground-e2e/src/example.spec.ts",
+          "hash": "1909365745453809229",
+          "deps": [
+            "npm:@playwright/test"
+          ]
+        },
+        {
+          "file": "apps/React_Playground-e2e/tsconfig.json",
+          "hash": "12614691677435311415"
         }
       ],
       "Test_UI": [
@@ -706,310 +1072,6 @@
             "npm:@vitejs/plugin-react",
             "npm:@nx/vite"
           ]
-        }
-      ],
-      "NX_P_TEST-e2e": [
-        {
-          "file": "apps/NX_P_TEST-e2e/eslint.config.js",
-          "hash": "13145502249528557504",
-          "deps": [
-            "npm:eslint-plugin-playwright"
-          ]
-        },
-        {
-          "file": "apps/NX_P_TEST-e2e/playwright.config.ts",
-          "hash": "13178185242976315519",
-          "deps": [
-            "npm:@playwright/test",
-            "npm:@nx/playwright",
-            "npm:@nx/devkit"
-          ]
-        },
-        {
-          "file": "apps/NX_P_TEST-e2e/project.json",
-          "hash": "7557551833400738781"
-        },
-        {
-          "file": "apps/NX_P_TEST-e2e/src/example.spec.ts",
-          "hash": "1909365745453809229",
-          "deps": [
-            "npm:@playwright/test"
-          ]
-        },
-        {
-          "file": "apps/NX_P_TEST-e2e/tsconfig.json",
-          "hash": "12614691677435311415"
-        }
-      ],
-      "inventory-e2e": [
-        {
-          "file": "apps/inventory-e2e/eslint.config.js",
-          "hash": "13145502249528557504",
-          "deps": [
-            "npm:eslint-plugin-playwright"
-          ]
-        },
-        {
-          "file": "apps/inventory-e2e/playwright.config.ts",
-          "hash": "11050368554998006306",
-          "deps": [
-            "npm:@playwright/test",
-            "npm:@nx/playwright",
-            "npm:@nx/devkit"
-          ]
-        },
-        {
-          "file": "apps/inventory-e2e/project.json",
-          "hash": "3953233870545835676"
-        },
-        {
-          "file": "apps/inventory-e2e/src/example.spec.ts",
-          "hash": "1909365745453809229",
-          "deps": [
-            "npm:@playwright/test"
-          ]
-        },
-        {
-          "file": "apps/inventory-e2e/tsconfig.json",
-          "hash": "12614691677435311415"
-        }
-      ],
-      "inventory": [
-        {
-          "file": "apps/inventory/eslint.config.js",
-          "hash": "4309309861924117436",
-          "deps": [
-            "npm:@nx/eslint-plugin"
-          ]
-        },
-        {
-          "file": "apps/inventory/index.html",
-          "hash": "15006483439051166929"
-        },
-        {
-          "file": "apps/inventory/project.json",
-          "hash": "4771926813381099468"
-        },
-        {
-          "file": "apps/inventory/public/favicon.ico",
-          "hash": "9303420814833116677"
-        },
-        {
-          "file": "apps/inventory/src/app/app.module.scss",
-          "hash": "14507130133388590702"
-        },
-        {
-          "file": "apps/inventory/src/app/app.spec.tsx",
-          "hash": "2318064151401096987",
-          "deps": [
-            "npm:@testing-library/react"
-          ]
-        },
-        {
-          "file": "apps/inventory/src/app/app.tsx",
-          "hash": "6006228729790415019",
-          "deps": [
-            "products"
-          ]
-        },
-        {
-          "file": "apps/inventory/src/app/nx-welcome.tsx",
-          "hash": "17616459125443730291"
-        },
-        {
-          "file": "apps/inventory/src/assets/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/inventory/src/main.tsx",
-          "hash": "17031623790071076628",
-          "deps": [
-            "npm:react",
-            "npm:react-dom"
-          ]
-        },
-        {
-          "file": "apps/inventory/src/styles.scss",
-          "hash": "2917954890128038984"
-        },
-        {
-          "file": "apps/inventory/tsconfig.app.json",
-          "hash": "6620183941831685188"
-        },
-        {
-          "file": "apps/inventory/tsconfig.json",
-          "hash": "8792423286157740794"
-        },
-        {
-          "file": "apps/inventory/tsconfig.spec.json",
-          "hash": "12139562650648121089"
-        },
-        {
-          "file": "apps/inventory/vite.config.ts",
-          "hash": "7687798139252428624",
-          "deps": [
-            "npm:vite",
-            "npm:@vitejs/plugin-react",
-            "npm:@nx/vite"
-          ]
-        }
-      ],
-      "products": [
-        {
-          "file": "libs/products/.babelrc",
-          "hash": "15003411175763814189"
-        },
-        {
-          "file": "libs/products/README.md",
-          "hash": "14221831436977802355"
-        },
-        {
-          "file": "libs/products/eslint.config.js",
-          "hash": "4309309861924117436",
-          "deps": [
-            "npm:@nx/eslint-plugin"
-          ]
-        },
-        {
-          "file": "libs/products/project.json",
-          "hash": "3347012891682097311"
-        },
-        {
-          "file": "libs/products/src/index.ts",
-          "hash": "7998023058392979972"
-        },
-        {
-          "file": "libs/products/src/lib/products.module.scss",
-          "hash": "9824504850739023139"
-        },
-        {
-          "file": "libs/products/src/lib/products.spec.tsx",
-          "hash": "13369830752428789910",
-          "deps": [
-            "npm:@testing-library/react"
-          ]
-        },
-        {
-          "file": "libs/products/src/lib/products.tsx",
-          "hash": "9783503457879824181"
-        },
-        {
-          "file": "libs/products/tsconfig.json",
-          "hash": "2717301636124270161"
-        },
-        {
-          "file": "libs/products/tsconfig.lib.json",
-          "hash": "5982162789104615864"
-        },
-        {
-          "file": "libs/products/tsconfig.spec.json",
-          "hash": "5947821632368113453"
-        },
-        {
-          "file": "libs/products/vite.config.ts",
-          "hash": "7530182452160970008",
-          "deps": [
-            "npm:vite",
-            "npm:@vitejs/plugin-react",
-            "npm:@nx/vite"
-          ]
-        }
-      ],
-      "orders": [
-        {
-          "file": "libs/orders/.babelrc",
-          "hash": "15003411175763814189"
-        },
-        {
-          "file": "libs/orders/README.md",
-          "hash": "4488372683315650236"
-        },
-        {
-          "file": "libs/orders/eslint.config.js",
-          "hash": "4309309861924117436",
-          "deps": [
-            "npm:@nx/eslint-plugin"
-          ]
-        },
-        {
-          "file": "libs/orders/project.json",
-          "hash": "16453230022050200846"
-        },
-        {
-          "file": "libs/orders/src/index.ts",
-          "hash": "3422188710466617399"
-        },
-        {
-          "file": "libs/orders/src/lib/orders.module.scss",
-          "hash": "9824504850739023139"
-        },
-        {
-          "file": "libs/orders/src/lib/orders.spec.tsx",
-          "hash": "7844130936156585585",
-          "deps": [
-            "npm:@testing-library/react"
-          ]
-        },
-        {
-          "file": "libs/orders/src/lib/orders.tsx",
-          "hash": "7794311867666191115",
-          "deps": [
-            "npm:react"
-          ]
-        },
-        {
-          "file": "libs/orders/tsconfig.json",
-          "hash": "2717301636124270161"
-        },
-        {
-          "file": "libs/orders/tsconfig.lib.json",
-          "hash": "5982162789104615864"
-        },
-        {
-          "file": "libs/orders/tsconfig.spec.json",
-          "hash": "5947821632368113453"
-        },
-        {
-          "file": "libs/orders/vite.config.ts",
-          "hash": "3419373447768636148",
-          "deps": [
-            "npm:vite",
-            "npm:@vitejs/plugin-react",
-            "npm:@nx/vite"
-          ]
-        }
-      ],
-      "TicTacToe-e2e": [
-        {
-          "file": "apps/TicTacToe-e2e/eslint.config.js",
-          "hash": "13145502249528557504",
-          "deps": [
-            "npm:eslint-plugin-playwright"
-          ]
-        },
-        {
-          "file": "apps/TicTacToe-e2e/playwright.config.ts",
-          "hash": "11331271958822447590",
-          "deps": [
-            "npm:@playwright/test",
-            "npm:@nx/playwright",
-            "npm:@nx/devkit"
-          ]
-        },
-        {
-          "file": "apps/TicTacToe-e2e/project.json",
-          "hash": "17000926535406119685"
-        },
-        {
-          "file": "apps/TicTacToe-e2e/src/example.spec.ts",
-          "hash": "1909365745453809229",
-          "deps": [
-            "npm:@playwright/test"
-          ]
-        },
-        {
-          "file": "apps/TicTacToe-e2e/tsconfig.json",
-          "hash": "12614691677435311415"
         }
       ]
     }
