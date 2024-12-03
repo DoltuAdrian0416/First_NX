@@ -1,0 +1,40 @@
+using System.ComponentModel;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
+using TodoApi.Models;
+
+namespace TodoApi.Controllers
+{
+    public interface IUserRepository
+    {
+        Task<IEnumerable<User>> GetUsersAsync();
+        Task<User> AddUserAsync(User user);
+
+    }
+    public class UserRepository : IUserRepository
+    {
+        private readonly UserContext _context;
+
+        public UserRepository(UserContext context)
+        {
+            _context = context;
+        }
+
+        // Get all users
+        public async Task<IEnumerable<User>> GetUsersAsync()
+        {
+            return await _context.Users.ToListAsync();
+        }
+
+        // Add a new user
+        public async Task<User> AddUserAsync(User user)
+        {
+            _context.ChangeTracker.Clear();
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
+
+            return user;
+        }
+    }
+}

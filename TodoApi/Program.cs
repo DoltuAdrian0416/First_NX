@@ -5,12 +5,16 @@ using TodoApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddDbContext<GamesContext>(opt =>
+    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<UserContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IGameContext, GamesContext>();
 builder.Services.AddScoped<IGameRepository, GamesRepository>();
 builder.Services.AddScoped<IGameService, GameService>();
+builder.Services.AddScoped<IUserContext, UserContext>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddControllers();
 builder.Services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
     {

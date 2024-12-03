@@ -1,9 +1,0 @@
-{
-  "name": "NX_P_TEST-e2e",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "application",
-  "sourceRoot": "apps/NX_P_TEST-e2e/src",
-  "implicitDependencies": ["NX_P_TEST"],
-  "// targets": "to see all targets run: nx show project NX_P_TEST-e2e --web",
-  "targets": {}
-}
