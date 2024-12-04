@@ -1,18 +1,29 @@
+using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+
 namespace TodoApi.Models;
 public class User
 {
-    public long Id { get; set; }
-    public string Email { get; set; }
-    public string PasswordHash { get; set; }
+    [Key]
+    [Required]
+    public int Id { get; set; }
+    [EmailAddress]
+    [Required]
 
-    public string PasswordSalt { get; set; }
+    public string Email { get; set; }
+    [Required]
+    public string PasswordHash { get; set; }
+    [Required]
+    public byte[] PasswordSalt { get; set; }
 
 }
 
 public class UserDTO
 {
-    public long Id { get; set; }
+    [EmailAddress]
+    [Required]
     public string Email { get; set; }
+    [Required]
     public string Password { get; set; }
 
 

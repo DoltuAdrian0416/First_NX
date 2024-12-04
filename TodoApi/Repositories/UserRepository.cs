@@ -10,7 +10,9 @@ namespace TodoApi.Controllers
     {
         Task<IEnumerable<User>> GetUsersAsync();
         Task<User> AddUserAsync(User user);
+        Task<User> GetUserByEmail(string email);
 
+        Task<bool> isUser(string email);
     }
     public class UserRepository : IUserRepository
     {
@@ -35,6 +37,22 @@ namespace TodoApi.Controllers
             await _context.SaveChangesAsync();
 
             return user;
+        }
+
+        public async Task<User> GetUserByEmail(string email)
+        {
+
+            return await _context.Users.FirstAsync(user => user.Email == email);
+        }
+        public async Task<bool> isUser(string email)
+        {
+            var User = await _context.Users.Where(user => user.Email == email).ToListAsync();
+
+            if (User.Count() == 0)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

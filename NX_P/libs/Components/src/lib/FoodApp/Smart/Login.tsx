@@ -1,17 +1,40 @@
 import { AccountCircle, PasswordRounded } from '@mui/icons-material';
 import {
+  Alert,
   Box,
   Button,
+  Collapse,
   FormControl,
-  FormLabel,
   InputAdornment,
   TextField,
   Typography,
 } from '@mui/material';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorText, setErrorText] = useState('');
   const navigate = useNavigate();
+
+  async function loginUser(email: string, password: string) {
+    const userObj = {
+      email: email,
+      password: password,
+    };
+    const data = await fetch('http://localhost:5158/login', {
+      method: 'POST',
+      body: JSON.stringify(userObj),
+      headers: new Headers({ 'content-type': 'application/json' }),
+    });
+
+    if (data.ok && data.status == 200) {
+      return true;
+    }
+    setErrorText(await data.text());
+    return false;
+  }
   return (
     <Box
       sx={{
@@ -27,6 +50,15 @@ export function Login() {
         borderRadius: '10px',
       }}
     >
+      <Collapse in={errorText}>
+        <Alert
+          variant={'outlined'}
+          severity="error"
+          sx={{ marginBottom: '20px' }}
+        >
+          {errorText}
+        </Alert>
+      </Collapse>
       <Typography
         component="h1"
         variant="h4"
@@ -46,8 +78,10 @@ export function Login() {
           label="Email"
           placeholder="Your email address"
           required
-          autoFocus
           variant="outlined"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
           slotProps={{
             input: {
               startAdornment: (
@@ -67,6 +101,9 @@ export function Login() {
           placeholder="Your password"
           required
           autoFocus
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
           slotProps={{
             input: {
               startAdornment: (
@@ -87,10 +124,21 @@ export function Login() {
           justifyContent: 'space-around',
         }}
       >
-        <Button variant="contained" sx={{ margin: '2px' }}>
+        <Button
+          variant="contained"
+          sx={{ margin: '2px' }}
+          onClick={async () => {
+            if (!email || !password) {
+              return;
+            }
+
+            if (await loginUser(email, password)) {
+              navigate('/');
+            }
+          }}
+        >
           Login
         </Button>
-
         <Button
           onClick={() => {
             navigate('/register');

@@ -26,12 +26,23 @@ namespace TodoApi.Controllers
             return Ok(users);
         }
 
+        [HttpPost("/login")]
 
+        public async Task<ActionResult<IEnumerable<User>>> LoginUser([FromBody] UserDTO user)
+        {
+            if (await _service.LoginUser(user))
+            { return Ok(); }
+            return BadRequest("Invalid email or password!");
+        }
 
-        [HttpPost]
+        [HttpPost("/register")]
         public async Task<ActionResult<IEnumerable<User>>> PostUser([FromBody] UserDTO user)
         {
-            await _service.AddUserAsync(user);
+            var RegisteredUser = await _service.AddUserAsync(user);
+            if (RegisteredUser == null)
+            {
+                return BadRequest("This email is already registered");
+            }
             return Ok(user);
         }
     }

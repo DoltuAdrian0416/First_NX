@@ -1,7 +1,9 @@
 import { AccountCircle, PasswordRounded } from '@mui/icons-material';
 import {
+  Alert,
   Box,
   Button,
+  Collapse,
   FormControl,
   InputAdornment,
   TextField,
@@ -9,18 +11,24 @@ import {
 } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function Register() {
+  const dynamicText = [
+    'This Email is already in use!',
+    'Passwords must match!',
+  ];
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [errorText, setErrorText] = useState('');
+
   async function registerUser(email: string, password: string) {
     const userObj = {
-      id: uuidv4(),
       email: email,
       password: password,
     };
-    const data = await fetch('http://localhost:5158/api/users', {
+    const data = await fetch('http://localhost:5158/register', {
       method: 'POST',
       body: JSON.stringify(userObj),
       headers: new Headers({ 'content-type': 'application/json' }),
@@ -30,6 +38,12 @@ export function Register() {
       const result = await data.json();
     }
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setErrorText('');
+    }, 3500);
+  }, [errorText]);
   const navigate = useNavigate();
   return (
     <Box
@@ -46,6 +60,15 @@ export function Register() {
         borderRadius: '10px',
       }}
     >
+      <Collapse in={errorText}>
+        <Alert
+          severity={'error'}
+          variant="filled"
+          sx={{ marginBottom: '25px' }}
+        >
+          {errorText}
+        </Alert>
+      </Collapse>
       <Typography
         component="h1"
         variant="h4"
@@ -106,12 +129,15 @@ export function Register() {
         ></TextField>
         <TextField
           id="confirmPassword"
-          type="confirmPassword"
+          type="password"
           name="confirmPassword"
           label="Confirm Password"
           placeholder="Your password"
           required
           autoFocus
+          onChange={(e) => {
+            setConfirmPassword(e.target.value);
+          }}
           slotProps={{
             input: {
               startAdornment: (
@@ -136,6 +162,14 @@ export function Register() {
           variant="contained"
           sx={{ margin: '2px' }}
           onClick={() => {
+            if (!email) {
+              setErrorText(dynamicText[0]);
+              return;
+            }
+            if (password != confirmPassword) {
+              setErrorText(dynamicText[1]);
+              return;
+            }
             registerUser(email, password);
           }}
         >

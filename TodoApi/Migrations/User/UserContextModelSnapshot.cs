@@ -18,7 +18,7 @@ namespace TodoApi.Migrations.User
 
             modelBuilder.Entity("TodoApi.Models.User", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -30,9 +30,9 @@ namespace TodoApi.Migrations.User
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PasswordSalt")
+                    b.Property<byte[]>("PasswordSalt")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("BLOB");
 
                     b.HasKey("Id");
 
