@@ -4,9 +4,11 @@ import Homepage from './Homepage';
 import { Login } from '@mui/icons-material';
 import Register from './Register';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import UserProfilePage from './UserProfilePage';
 
 export function Routes() {
   const auth = useAuth();
+  const publicRoutes = [{}];
   const routesForNotAuthenticatedOnly = [
     {
       path: '',
@@ -28,9 +30,15 @@ export function Routes() {
     },
     {},
   ];
-  const routesForAuthenticatedOnly = [{}];
+  const routesForAuthenticatedOnly = [
+    {
+      path: '/user',
+      element: <UserProfilePage />,
+    },
+  ];
 
   const router = createBrowserRouter([
+    ...publicRoutes,
     ...(!auth?.token ? routesForNotAuthenticatedOnly : []),
     ...routesForAuthenticatedOnly,
   ]);

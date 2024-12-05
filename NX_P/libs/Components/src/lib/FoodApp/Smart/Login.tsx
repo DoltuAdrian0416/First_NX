@@ -11,11 +11,13 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../AuthProvider';
 
 export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorText, setErrorText] = useState('');
+  const auth = useAuth();
   const navigate = useNavigate();
 
   async function loginUser(email: string, password: string) {
@@ -26,13 +28,19 @@ export function Login() {
     const data = await fetch('http://localhost:5158/login', {
       method: 'POST',
       body: JSON.stringify(userObj),
-      headers: new Headers({ 'content-type': 'application/json' }),
+      headers: new Headers({
+        'content-type': 'application/json',
+      }),
     });
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const tokenValue = await data.text();
+
     if (data.ok && data.status == 200) {
+      auth?.setToken(tokenValue);
       return true;
     }
-    setErrorText(await data.text());
+    setErrorText(await data.statusText);
     return false;
   }
   return (
@@ -133,7 +141,7 @@ export function Login() {
             }
 
             if (await loginUser(email, password)) {
-              navigate('/');
+              navigate('/user');
             }
           }}
         >

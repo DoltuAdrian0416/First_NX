@@ -10,7 +10,7 @@ export function Auth() {
   console.log(location);
   const auth = useAuth();
   useEffect(() => {
-    auth?.setToken();
+    localStorage.removeItem('token');
   }, [location]);
   if (!auth?.token) {
     return (

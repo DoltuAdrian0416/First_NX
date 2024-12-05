@@ -1,10 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using TodoApi.Controllers;
 using TodoApi.Models;
-
+using TodoApi.UserInfrastructure;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using TodoApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddSwaggerGenWithAuth();
 builder.Services.AddDbContext<GamesContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDbContext<UserContext>(opt =>
@@ -15,7 +20,20 @@ builder.Services.AddScoped<IGameService, GameService>();
 builder.Services.AddScoped<IUserContext, UserContext>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddSingleton<TokenProvider>();
 builder.Services.AddControllers();
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o =>
+{
+    o.RequireHttpsMetadata = false;
+    o.TokenValidationParameters = new TokenValidationParameters
+    {
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]!)),
+        ValidIssuer = builder.Configuration["Jwt:Issuers"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ClockSkew = TimeSpan.Zero
+    };
+});
 builder.Services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
     {
         builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
@@ -39,5 +57,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseCors("ApiCorsPolicy");
 app.MapControllers();
-
+app.UseAuthentication();
+app.UseAuthorization();
 app.Run();

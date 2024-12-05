@@ -4331,54 +4331,54 @@
       "type": "npm",
       "name": "npm:@mui/core-downloads-tracker",
       "data": {
-        "version": "6.1.9",
+        "version": "6.1.10",
         "packageName": "@mui/core-downloads-tracker",
-        "hash": "sha512-TWqj7b1w5cmSz4H/uf+y2AHxAH4ldPR7D2bz0XVyn60GCAo/zRbRPx7cF8gTs/i7CiYeHzV6dtat0VpMwOtolw=="
+        "hash": "sha512-LY5wdiLCBDY7u+Od8UmFINZFGN/5ZU90fhAslf/ZtfP+5RhuY45f679pqYIxe0y54l6Gkv9PFOc8Cs10LDTBYg=="
       }
     },
     "npm:@mui/icons-material": {
       "type": "npm",
       "name": "npm:@mui/icons-material",
       "data": {
-        "version": "6.1.9",
+        "version": "6.1.10",
         "packageName": "@mui/icons-material",
-        "hash": "sha512-AzlhIT51rdjkZ/EcUV2dbhNkNSUHIqCnNoUxodpiTw8buyAUBd+qnxg5OBSuPpun/ZEdSSB8Q7Uyh6zqjiMsEQ=="
+        "hash": "sha512-G6P1BCSt6EQDcKca47KwvKjlqgOXFbp2I3oWiOlFgKYTANBH89yk7ttMQ5ysqNxSYAB+4TdM37MlPYp4+FkVrQ=="
       }
     },
     "npm:@mui/material": {
       "type": "npm",
       "name": "npm:@mui/material",
       "data": {
-        "version": "6.1.9",
+        "version": "6.1.10",
         "packageName": "@mui/material",
-        "hash": "sha512-NwqIN0bdsgzSbZd5JFcC+2ez0XW/XNs8uiV2PDHrqQ4qf/FEasFJG1z6g8JbCN0YlTrHZekVb17X0Fv0qcYJfQ=="
+        "hash": "sha512-txnwYObY4N9ugv5T2n5h1KcbISegZ6l65w1/7tpSU5OB6MQCU94YkP8n/3slDw2KcEfRk4+4D8EUGfhSPMODEQ=="
       }
     },
     "npm:@mui/private-theming": {
       "type": "npm",
       "name": "npm:@mui/private-theming",
       "data": {
-        "version": "6.1.9",
+        "version": "6.1.10",
         "packageName": "@mui/private-theming",
-        "hash": "sha512-7aum/O1RquBYhfwL/7egDyl9GqJgPM6hoJDFFBbhF6Sgv9yI9v4w3ArKUkuVvR0CtVj4NXRVMKEioh1bjUzvuA=="
+        "hash": "sha512-DqgsH0XFEweeG3rQfVkqTkeXcj/E76PGYWag8flbPdV8IYdMo+DfVdFlZK8JEjsaIVD2Eu1kJg972XnH5pfnBQ=="
       }
     },
     "npm:@mui/styled-engine": {
       "type": "npm",
       "name": "npm:@mui/styled-engine",
       "data": {
-        "version": "6.1.9",
+        "version": "6.1.10",
         "packageName": "@mui/styled-engine",
-        "hash": "sha512-xynSLlJRxHLzSfQaiDjkaTx8LiFb9ByVa7aOdwFnTxGWFMY1F+mkXwAUY4jDDE+MAxkWxlzzQE0wOohnsxhdQg=="
+        "hash": "sha512-+NV9adKZYhslJ270iPjf2yzdVJwav7CIaXcMlPSi1Xy1S/zRe5xFgZ6BEoMdmGRpr34lIahE8H1acXP2myrvRw=="
       }
     },
     "npm:@mui/system": {
       "type": "npm",
       "name": "npm:@mui/system",
       "data": {
-        "version": "6.1.9",
+        "version": "6.1.10",
         "packageName": "@mui/system",
-        "hash": "sha512-8x+RucnNp21gfFYsklCaZf0COXbv3+v0lrVuXONxvPEkESi2rwLlOi8UPJfcz6LxZOAX3v3oQ7qw18vnpgueRg=="
+        "hash": "sha512-5YNIqxETR23SIkyP7MY2fFnXmplX/M4wNi2R+10AVRd3Ub+NLctWY/Vs5vq1oAMF0eSDLhRTGUjaUe+IGSfWqg=="
       }
     },
     "npm:@mui/types": {
@@ -4394,9 +4394,9 @@
       "type": "npm",
       "name": "npm:@mui/utils",
       "data": {
-        "version": "6.1.9",
+        "version": "6.1.10",
         "packageName": "@mui/utils",
-        "hash": "sha512-N7uzBp7p2or+xanXn3aH2OTINC6F/Ru/U8h6amhRZEev8bJhKN86rIDIoxZZ902tj+09LXtH83iLxFMjMHyqNA=="
+        "hash": "sha512-1ETuwswGjUiAf2dP9TkBy8p49qrw2wXa+RuAjNTRE5+91vtXJ1HKrs7H9s8CZd1zDlQVzUcUAPm9lpQwF5ogTw=="
       }
     },
     "npm:@napi-rs/nice": {
@@ -12121,6 +12121,15 @@
         "hash": "sha512-JmqCvUhmt43madlpFzG4BQzG2Z3m6tvQDNKdClZnO3VbIudJYmxsT0FNJMeiB2+JTSlTQTSbU8QdesVmwJcmLg=="
       }
     },
+    "npm:material-icons": {
+      "type": "npm",
+      "name": "npm:material-icons",
+      "data": {
+        "version": "1.13.12",
+        "packageName": "material-icons",
+        "hash": "sha512-/2YoaB79IjUK2B2JB+vIXXYGtBfHb/XG66LvoKVM5ykHW7yfrV5SP6d7KLX6iijY6/G9GqwgtPQ/sbhFnOURVA=="
+      }
+    },
     "npm:media-typer": {
       "type": "npm",
       "name": "npm:media-typer",
@@ -15540,12 +15549,12 @@
       },
       {
         "source": "Components",
-        "target": "npm:uuid",
+        "target": "Models",
         "type": "static"
       },
       {
         "source": "Components",
-        "target": "Models",
+        "target": "npm:uuid",
         "type": "static"
       },
       {

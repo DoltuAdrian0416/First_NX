@@ -4,11 +4,11 @@ using TodoApi.Models;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 
-namespace TodoApi.UserInfrastrucutre;
+namespace TodoApi.UserInfrastructure;
 
-internal sealed class TokenProvider(IConfiguration configuration)
+public class TokenProvider(IConfiguration configuration)
 {
-    public void Create(User user)
+    public string Create(User user)
     {
         string secretKey = configuration["Jwt:Secret"]!;
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
@@ -25,5 +25,9 @@ internal sealed class TokenProvider(IConfiguration configuration)
             Issuer = configuration["Jws:Issuer"],
             Audience = configuration["Jwt:Audience"]
         };
+        var handler = new JsonWebTokenHandler();
+        string token = handler.CreateToken(tokenDescriptor);
+
+        return token;
     }
 }

@@ -9,7 +9,6 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -31,7 +30,7 @@ export function Register() {
     const data = await fetch('http://localhost:5158/register', {
       method: 'POST',
       body: JSON.stringify(userObj),
-      headers: new Headers({ 'content-type': 'application/json' }),
+      headers: { 'content-type': 'application/json' },
     });
 
     if (data.ok) {

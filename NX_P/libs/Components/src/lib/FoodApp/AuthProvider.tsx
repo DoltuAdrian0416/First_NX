@@ -4,11 +4,18 @@ const AuthContext = createContext<
   | {
       token: string | null;
       setToken: (token: string) => void;
+      removeToken: () => void;
     }
   | undefined
 >(undefined);
+
 export function AuthProvider({ children }: any) {
-  const [token, setToken_] = useState(localStorage.getItem('token'));
+  const [token, setToken_] = useState<string | null>(
+    localStorage.getItem('token')
+  );
+  const removeToken = () => {
+    setToken_(null);
+  };
 
   const setToken = (newToken: string) => {
     setToken_(newToken);
@@ -26,6 +33,9 @@ export function AuthProvider({ children }: any) {
       token: token,
       setToken: (token: string) => {
         setToken_(token);
+      },
+      removeToken: () => {
+        removeToken();
       },
     }),
     [token]

@@ -2,6 +2,8 @@ using TodoApi.Models;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.AspNetCore.Http.HttpResults;
+using TodoApi.UserInfrastructure;
+using NuGet.Common;
 namespace TodoApi.Controllers
 {
     public interface IUserService
@@ -10,16 +12,18 @@ namespace TodoApi.Controllers
         Task<User> AddUserAsync(UserDTO userDTO);
         Task<IEnumerable<User>> GetUsersAsync();
 
-        Task<bool> LoginUser(UserDTO userDTO);
+        Task<string> LoginUser(UserDTO userDTO);
 
     }
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly TokenProvider _tokenProvider;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, TokenProvider tokenProvider)
         {
             _userRepository = userRepository;
+            _tokenProvider = tokenProvider;
         }
 
         public async Task<IEnumerable<User>> GetUsersAsync()
@@ -31,10 +35,12 @@ namespace TodoApi.Controllers
         public async Task<User> AddUserAsync(UserDTO userDTO)
         {
             bool ExistingUser = await _userRepository.isUser(userDTO.Email);
+
             if (ExistingUser == true)
             {
                 return null;
             }
+
             User User = new User();
             User.Email = userDTO.Email;
             User.PasswordSalt = GenerateSalt();
@@ -79,26 +85,29 @@ namespace TodoApi.Controllers
             }
         }
 
-        public async Task<bool> LoginUser(UserDTO userDTO)
+        public async Task<string> LoginUser(UserDTO userDTO)
         {
-            var User = await _userRepository.GetUserByEmail(userDTO.Email);
+            User User = await _userRepository.GetUserByEmail(userDTO.Email);
+            if (User == null) { throw new Exception("Invalid email! No user corresponding to this email was found!"); }
             string userStoredPass = User.PasswordHash;
             byte[] userStoredPassSalt = User.PasswordSalt;
-            string inputPassowrd = userDTO.Password;
-            byte[] passwordBytes = Encoding.UTF8.GetBytes(inputPassowrd);
+            string inputPassword = userDTO.Password;
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(inputPassword);
 
             byte[] hashedPasswordWithSalt = new byte[passwordBytes.Length + userStoredPassSalt.Length];
             Buffer.BlockCopy(userStoredPassSalt, 0, hashedPasswordWithSalt, 0, userStoredPassSalt.Length);
             Buffer.BlockCopy(passwordBytes, 0, hashedPasswordWithSalt, userStoredPassSalt.Length, passwordBytes.Length);
 
-            string inputPasswordHashed = HashPassword(inputPassowrd, userStoredPassSalt);
+            string inputPasswordHashed = HashPassword(inputPassword, userStoredPassSalt);
 
-            if (userStoredPass == inputPasswordHashed)
+            if (userStoredPass != inputPasswordHashed)
             {
-                return true;
+                throw new Exception("Incorrect password!");
             }
 
-            return false;
+            string token = _tokenProvider.Create(User);
+
+            return token;
 
         }
 

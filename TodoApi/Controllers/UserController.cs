@@ -30,9 +30,10 @@ namespace TodoApi.Controllers
 
         public async Task<ActionResult<IEnumerable<User>>> LoginUser([FromBody] UserDTO user)
         {
-            if (await _service.LoginUser(user))
-            { return Ok(); }
-            return BadRequest("Invalid email or password!");
+            string token = await _service.LoginUser(user);
+            if (token != null)
+            { return Ok(token); }
+            return BadRequest(token);
         }
 
         [HttpPost("/register")]
