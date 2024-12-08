@@ -36,12 +36,20 @@ export function Login() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const tokenValue = await data.text();
 
+    // eslint-disable-next-line eqeqeq
     if (data.ok && data.status == 200) {
       auth?.setToken(tokenValue);
       return true;
     }
     setErrorText(await data.statusText);
     return false;
+  }
+
+  async function getUserByEmail(email: string) {
+    const data = await fetch(`http://localhost:5158/api/users/user/${email}`);
+    if (data.ok) {
+      return data.text();
+    } else return '';
   }
   return (
     <Box
@@ -141,6 +149,9 @@ export function Login() {
             }
 
             if (await loginUser(email, password)) {
+              getUserByEmail(email).then((response) => {
+                localStorage.setItem('user', response);
+              });
               navigate('/user');
             }
           }}

@@ -12,8 +12,9 @@ import {
   Typography,
 } from '@mui/material';
 
-import HiveIcon from '@mui/icons-material';
+import { DeliveryDiningOutlined } from '@mui/icons-material';
 import { useState } from 'react';
+import LogoutButton from './LogoutButton';
 
 export function Navbar() {
   const pages = ['Products', 'Pricing', 'Blog'];
@@ -39,6 +40,10 @@ export function Navbar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          <DeliveryDiningOutlined
+            fontSize="large"
+            sx={{ marginRight: '10px' }}
+          />
           <Typography
             variant="h6"
             noWrap
@@ -54,7 +59,7 @@ export function Navbar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            DOLIVERY
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -106,7 +111,7 @@ export function Navbar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            DOLIVERY
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -149,6 +154,9 @@ export function Navbar() {
                 </MenuItem>
               ))}
             </Menu>
+          </Box>
+          <Box sx={{ flexGrow: 0 }}>
+            <LogoutButton />
           </Box>
         </Toolbar>
       </Container>

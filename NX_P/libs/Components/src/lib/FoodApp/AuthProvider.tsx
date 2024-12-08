@@ -14,12 +14,12 @@ export function AuthProvider({ children }: any) {
     localStorage.getItem('token')
   );
   const removeToken = () => {
-    setToken_(null);
+    localStorage.removeItem('token');
   };
 
-  const setToken = (newToken: string) => {
-    setToken_(newToken);
-  };
+  // const setToken = (newToken: string | null) => {
+  //   setToken_(newToken);
+  // };
 
   useEffect(() => {
     if (token) {

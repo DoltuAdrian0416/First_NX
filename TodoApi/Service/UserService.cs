@@ -14,6 +14,8 @@ namespace TodoApi.Controllers
 
         Task<string> LoginUser(UserDTO userDTO);
 
+        Task<User> GetUserByEmail(string email);
+
     }
     public class UserService : IUserService
     {
@@ -31,6 +33,9 @@ namespace TodoApi.Controllers
             return await _userRepository.GetUsersAsync();
         }
 
+        public async Task<User> GetUserByEmail(string email){
+            return await _userRepository.GetUserByEmail(email);
+        }
 
         public async Task<User> AddUserAsync(UserDTO userDTO)
         {
@@ -87,7 +92,7 @@ namespace TodoApi.Controllers
 
         public async Task<string> LoginUser(UserDTO userDTO)
         {
-            User User = await _userRepository.GetUserByEmail(userDTO.Email);
+            User User = await GetUserByEmail(userDTO.Email);
             if (User == null) { throw new Exception("Invalid email! No user corresponding to this email was found!"); }
             string userStoredPass = User.PasswordHash;
             byte[] userStoredPassSalt = User.PasswordSalt;

@@ -25,6 +25,14 @@ namespace TodoApi.Controllers
             { return NotFound(); }
             return Ok(users);
         }
+        [HttpGet("user/{email}")]
+        public async Task<ActionResult<IEnumerable<User>>> GetUserByEmail(string email)
+        {
+            var user = await _service.GetUserByEmail(email);
+            if (user == null)
+            { return NotFound(); }
+            return Ok(user.Email);
+        }
 
         [HttpPost("/login")]
 

@@ -1,25 +1,23 @@
-import { Button } from '@mui/material';
-import { useAuth } from '../AuthProvider';
-import { useNavigate } from 'react-router-dom';
+import { Box } from '@mui/material';
 import Navbar from './Navbar';
+import UserDisplay from './UserDisplay';
 
 export function UserProfilePage() {
-  const auth = useAuth();
-  const navigate = useNavigate();
   return (
-    <>
-      {/* <Navbar /> */}
-      <Button
-        variant="contained"
-        sx={{ margin: '2px' }}
-        onClick={() => {
-          auth?.removeToken();
-          navigate('/');
+    <Box>
+      <Navbar />
+      <Box
+        width={'100%'}
+        height={'100%'}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center ',
         }}
       >
-        Log out
-      </Button>
-    </>
+        <UserDisplay email={localStorage.getItem('user')} />
+      </Box>
+    </Box>
   );
 }
 
