@@ -2763,6 +2763,24 @@
         "hash": "sha512-1ETuwswGjUiAf2dP9TkBy8p49qrw2wXa+RuAjNTRE5+91vtXJ1HKrs7H9s8CZd1zDlQVzUcUAPm9lpQwF5ogTw=="
       }
     },
+    "npm:@mui/x-date-pickers": {
+      "type": "npm",
+      "name": "npm:@mui/x-date-pickers",
+      "data": {
+        "version": "7.23.1",
+        "packageName": "@mui/x-date-pickers",
+        "hash": "sha512-Jr4beZ7r2lvWBaFnkIAg9BgiNFcfeJy4AUe3MbG10BBSZyB++odGqhOUAIGqkP7MpUzEGlTv4NUaaD7gYTAQPg=="
+      }
+    },
+    "npm:@mui/x-internals": {
+      "type": "npm",
+      "name": "npm:@mui/x-internals",
+      "data": {
+        "version": "7.23.0",
+        "packageName": "@mui/x-internals",
+        "hash": "sha512-bPclKpqUiJYIHqmTxSzMVZi6MH51cQsn5U+8jskaTlo3J4QiMeCYJn/gn7YbeR9GOZFp8hetyHjoQoVHKRXCig=="
+      }
+    },
     "npm:@napi-rs/nice": {
       "type": "npm",
       "name": "npm:@napi-rs/nice",
@@ -6973,6 +6991,15 @@
         "version": "4.0.14",
         "packageName": "date-format",
         "hash": "sha512-39BOQLs9ZjKh0/patS9nrT8wc3ioX3/eA/zgbKNopnF2wCqJEoxywwwElATYvRsXdnOxA/OQeQoFZ3rFjVajhg=="
+      }
+    },
+    "npm:dayjs": {
+      "type": "npm",
+      "name": "npm:dayjs",
+      "data": {
+        "version": "1.11.13",
+        "packageName": "dayjs",
+        "hash": "sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg=="
       }
     },
     "npm:de-indent": {
@@ -17779,6 +17806,96 @@
     {
       "source": "npm:@mui/utils",
       "target": "npm:react-is",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-date-pickers",
+      "target": "npm:@emotion/react",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-date-pickers",
+      "target": "npm:@emotion/styled",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-date-pickers",
+      "target": "npm:@mui/material",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-date-pickers",
+      "target": "npm:@mui/system",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-date-pickers",
+      "target": "npm:dayjs",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-date-pickers",
+      "target": "npm:luxon",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-date-pickers",
+      "target": "npm:react",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-date-pickers",
+      "target": "npm:react-dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-date-pickers",
+      "target": "npm:@babel/runtime",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-date-pickers",
+      "target": "npm:@mui/utils",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-date-pickers",
+      "target": "npm:@mui/x-internals",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-date-pickers",
+      "target": "npm:@types/react-transition-group",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-date-pickers",
+      "target": "npm:clsx",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-date-pickers",
+      "target": "npm:prop-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-date-pickers",
+      "target": "npm:react-transition-group",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-internals",
+      "target": "npm:react",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-internals",
+      "target": "npm:@babel/runtime",
+      "type": "static"
+    },
+    {
+      "source": "npm:@mui/x-internals",
+      "target": "npm:@mui/utils",
       "type": "static"
     },
     {

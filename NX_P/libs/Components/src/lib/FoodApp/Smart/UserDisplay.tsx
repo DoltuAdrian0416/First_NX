@@ -1,12 +1,8 @@
-import { PasswordRounded } from '@mui/icons-material';
-import {
-  FormControl,
-  InputAdornment,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { User } from '@./Models';
+import { FormControl, TextField, Typography } from '@mui/material';
+
 interface IUserDisplay {
-  email: string | null;
+  user: User;
 }
 export function UserDisplay(props: IUserDisplay) {
   return (
@@ -15,7 +11,7 @@ export function UserDisplay(props: IUserDisplay) {
         Welcome
       </Typography>
       <Typography variant="h4" fontWeight={400}>
-        {props.email}
+        {props.user?.email}
       </Typography>
       <Typography variant="h5">
         Thanks for registering , please complete the following fields

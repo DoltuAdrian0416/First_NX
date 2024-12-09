@@ -3,10 +3,23 @@ import Navbar from './Navbar';
 import UserDisplay from './UserDisplay';
 import curvedbg from '../assets/curvedbg.jpg';
 
+// Function to get user data from localStorage
+function getUserFromLocalStorage() {
+  const userData = localStorage.getItem('user');
+  if (userData) {
+    return JSON.parse(userData); // Parse the JSON string into an object
+  } else {
+    console.error('No user data found in localStorage');
+    return null;
+  }
+}
+
 export function UserProfilePage() {
+  const user = getUserFromLocalStorage();
+
   return (
     <>
-      <Navbar />
+      <Navbar user={user} />
 
       {/* row */}
       <Box
@@ -48,7 +61,7 @@ export function UserProfilePage() {
             },
           }}
         >
-          <UserDisplay email={localStorage.getItem('user')} />
+          <UserDisplay user={user} />
         </Box>
       </Box>
     </>

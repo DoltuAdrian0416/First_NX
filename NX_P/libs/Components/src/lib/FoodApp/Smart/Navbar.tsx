@@ -15,8 +15,9 @@ import {
 import { DeliveryDiningOutlined } from '@mui/icons-material';
 import { useState } from 'react';
 import LogoutButton from './LogoutButton';
+import { User } from '@./Models';
 
-export function Navbar() {
+export function Navbar(props: { user: User }) {
   const pages = ['Products', 'Pricing', 'Blog'];
   const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -127,9 +128,13 @@ export function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar
+                  alt="Profile Picture"
+                  src={`data:image/png;base64,${props.user.profilePicture}`}
+                />
               </IconButton>
             </Tooltip>
+
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"

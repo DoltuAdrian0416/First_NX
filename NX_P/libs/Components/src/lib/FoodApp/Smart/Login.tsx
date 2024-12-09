@@ -11,6 +11,7 @@ import {
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../AuthProvider';
+import { User } from '@./Models';
 
 export function Login() {
   const [email, setEmail] = useState('');
@@ -45,9 +46,16 @@ export function Login() {
 
   async function getUserByEmail(email: string) {
     const data = await fetch(`http://localhost:5158/api/users/user/${email}`);
-    if (data.ok) {
-      return data.text();
-    } else return '';
+    if (!data.ok) {
+      return null;
+    }
+    const userData = await data.json();
+    const user: User = {
+      id: userData.id,
+      email: userData.email,
+      profilePicture: userData.profilePicture,
+    };
+    return user;
   }
   return (
     <Box
@@ -147,9 +155,12 @@ export function Login() {
             }
 
             if (await loginUser(email, password)) {
-              getUserByEmail(email).then((response) => {
-                localStorage.setItem('user', response);
-              });
+              const user = await getUserByEmail(email);
+              if (user) {
+                localStorage.setItem('user', JSON.stringify(user));
+              } else {
+                console.error('Failed to retrieve user data.');
+              }
               navigate('/user');
             }
           }}

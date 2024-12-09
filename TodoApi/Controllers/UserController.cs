@@ -24,6 +24,7 @@ namespace TodoApi.Controllers
             if (users.Count() == 0)
             { return NotFound(); }
             return Ok(users);
+
         }
         [HttpGet("user/{email}")]
         public async Task<ActionResult<IEnumerable<User>>> GetUserByEmail(string email)
@@ -31,9 +32,10 @@ namespace TodoApi.Controllers
             var user = await _service.GetUserByEmail(email);
             if (user == null)
             { return NotFound(); }
-            return Ok(user.Email);
+            return Ok(user);
         }
 
+       
         [HttpPost("/login")]
 
         public async Task<ActionResult<IEnumerable<User>>> LoginUser([FromBody] UserDTO user)
@@ -53,6 +55,32 @@ namespace TodoApi.Controllers
                 return BadRequest("This email is already registered");
             }
             return Ok(user);
+        }
+        [HttpPost("/updatePFP")]
+        [Consumes("multipart/form-data")]
+        public async Task<ActionResult> UpdateProfilePicture( string email,IFormFile profilePicture)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                return BadRequest("Email is required.");
+            }
+
+            if (profilePicture == null || profilePicture.Length == 0)
+            {
+                return BadRequest("Profile picture is required.");
+            }
+
+            using var memoryStream = new MemoryStream();
+            await profilePicture.CopyToAsync(memoryStream);
+            var profilePictureBytes = memoryStream.ToArray();
+
+            var result = await _service.UpdateProfilePicture(email, profilePictureBytes);
+            if (!result)
+            {
+                return NotFound("User not found or update failed.");
+            }
+
+            return Ok("Profile picture updated successfully.");
         }
     }
 }

@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace TodoApi.Models;
@@ -15,6 +16,10 @@ public class User
     public string PasswordHash { get; set; }
     [Required]
     public byte[] PasswordSalt { get; set; }
+
+    public byte[]? ProfilePicture { get; set; }
+    
+   
 
 }
 

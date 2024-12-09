@@ -16,6 +16,8 @@ namespace TodoApi.Controllers
 
         Task<User> GetUserByEmail(string email);
 
+        Task<bool> UpdateProfilePicture(string email, byte[] profilePicture);
+
     }
     public class UserService : IUserService
     {
@@ -115,6 +117,17 @@ namespace TodoApi.Controllers
             return token;
 
         }
+        
+         public async Task<bool> UpdateProfilePicture(string email, byte[] profilePicture)
+        {
+            var user = await _userRepository.GetUserByEmail(email);
+            if (user == null)
+            {
+                return false;
+            }
 
+            user.ProfilePicture = profilePicture;
+            return await _userRepository.UpdateUserAsync(user);
+        }
     }
 }

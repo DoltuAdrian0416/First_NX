@@ -17,6 +17,11 @@ namespace TodoApi.Controllers
 
         }
 
+         protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+             modelBuilder.Entity<User>().Property(u => u.ProfilePicture).HasColumnType("BLOB");
+        }
+
 
     }
 }

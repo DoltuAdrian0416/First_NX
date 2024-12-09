@@ -13,6 +13,8 @@ namespace TodoApi.Controllers
         Task<User> GetUserByEmail(string email);
 
         Task<bool> isUser(string email);
+
+        Task<bool> UpdateUserAsync(User user);
     }
     public class UserRepository : IUserRepository
     {
@@ -53,6 +55,12 @@ namespace TodoApi.Controllers
                 return false;
             }
             return true;
+        }
+
+         public async Task<bool> UpdateUserAsync(User user)
+        {
+            _context.Users.Update(user);
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }
