@@ -80,74 +80,72 @@ export function Register() {
       >
         Register
       </Typography>
-      <FormControl>
-        <TextField
-          id="email"
-          type="email"
-          name="email"
-          label="Email"
-          placeholder="Your email address"
-          required
-          autoFocus
-          variant="outlined"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          slotProps={{
-            input: {
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircle />
-                </InputAdornment>
-              ),
-            },
-          }}
-          sx={{ marginBottom: '25px' }}
-        ></TextField>
-        <TextField
-          id="password"
-          type="password"
-          name="password"
-          label="Password"
-          placeholder="Your password"
-          required
-          autoFocus
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          slotProps={{
-            input: {
-              startAdornment: (
-                <InputAdornment position="start">
-                  <PasswordRounded />
-                </InputAdornment>
-              ),
-            },
-          }}
-          sx={{ marginBottom: '25px' }}
-        ></TextField>
-        <TextField
-          id="confirmPassword"
-          type="password"
-          name="confirmPassword"
-          label="Confirm Password"
-          placeholder="Your password"
-          required
-          autoFocus
-          onChange={(e) => {
-            setConfirmPassword(e.target.value);
-          }}
-          slotProps={{
-            input: {
-              startAdornment: (
-                <InputAdornment position="start">
-                  <PasswordRounded />
-                </InputAdornment>
-              ),
-            },
-          }}
-        ></TextField>
-      </FormControl>
+      {/* <TextField
+        id="email"
+        type="email"
+        name="email"
+        label="Email"
+        placeholder="Your email address"
+        required
+        autoFocus
+        variant="outlined"
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+        slotProps={{
+          input: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircle />
+              </InputAdornment>
+            ),
+          },
+        }}
+        sx={{ marginBottom: '25px' }}
+      ></TextField>
+      <TextField
+        id="password"
+        type="password"
+        name="password"
+        label="Password"
+        placeholder="Your password"
+        required
+        autoFocus
+        onChange={(e) => {
+          setPassword(e.target.value);
+        }}
+        slotProps={{
+          input: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <PasswordRounded />
+              </InputAdornment>
+            ),
+          },
+        }}
+        sx={{ marginBottom: '25px' }}
+      ></TextField>
+      <TextField
+        id="confirmPassword"
+        type="password"
+        name="confirmPassword"
+        label="Confirm Password"
+        placeholder="Your password"
+        required
+        autoFocus
+        onChange={(e) => {
+          setConfirmPassword(e.target.value);
+        }}
+        slotProps={{
+          input: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <PasswordRounded />
+              </InputAdornment>
+            ),
+          },
+        }}
+      ></TextField> */}
       <Box
         sx={{
           width: 'auto',

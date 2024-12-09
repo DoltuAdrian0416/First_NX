@@ -4,7 +4,6 @@ import {
   Box,
   Button,
   Collapse,
-  FormControl,
   InputAdornment,
   TextField,
   Typography,
@@ -33,7 +32,6 @@ export function Login() {
       }),
     });
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const tokenValue = await data.text();
 
     // eslint-disable-next-line eqeqeq
@@ -86,51 +84,51 @@ export function Login() {
       >
         Sign in
       </Typography>
-      <FormControl>
-        <TextField
-          id="email"
-          type="email"
-          name="email"
-          label="Email"
-          placeholder="Your email address"
-          required
-          variant="outlined"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          slotProps={{
-            input: {
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircle />
-                </InputAdornment>
-              ),
-            },
-          }}
-          sx={{ marginBottom: '25px' }}
-        ></TextField>
-        <TextField
-          id="password"
-          type="password"
-          name="password"
-          label="Password"
-          placeholder="Your password"
-          required
-          autoFocus
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          slotProps={{
-            input: {
-              startAdornment: (
-                <InputAdornment position="start">
-                  <PasswordRounded />
-                </InputAdornment>
-              ),
-            },
-          }}
-        ></TextField>
-      </FormControl>
+
+      <TextField
+        id="email"
+        type="email"
+        name="email"
+        label="Email"
+        placeholder="Your email address"
+        required
+        variant="outlined"
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+        slotProps={{
+          input: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircle />
+              </InputAdornment>
+            ),
+          },
+        }}
+        sx={{ marginBottom: '25px' }}
+      ></TextField>
+      <TextField
+        id="password"
+        type="password"
+        name="password"
+        label="Password"
+        placeholder="Your password"
+        required
+        autoFocus
+        onChange={(e) => {
+          setPassword(e.target.value);
+        }}
+        slotProps={{
+          input: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <PasswordRounded />
+              </InputAdornment>
+            ),
+          },
+        }}
+      ></TextField>
+
       <Box
         sx={{
           width: 'auto',

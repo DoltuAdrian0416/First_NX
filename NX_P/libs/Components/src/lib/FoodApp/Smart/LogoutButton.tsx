@@ -17,9 +17,7 @@ export function LogoutButton() {
       }}
       onClick={() => {
         auth?.removeToken();
-        setTimeout(() => {
-          navigate('/');
-        }, 1000);
+        navigate('/');
       }}
     >
       <ExitToApp />

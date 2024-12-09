@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import Login from './Login';
-import { Outlet, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Register from './Register';
 import { useAuth } from '../AuthProvider';
 import { useEffect } from 'react';
@@ -14,19 +15,10 @@ export function Auth() {
   }, [location]);
   if (!auth?.token) {
     return (
-      <Box
-        sx={{
-          width: '100vw',
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Box
+      <Grid container spacing={0} sx={{ height: '100vh' }}>
+        <Grid
+          size={{ xs: 12, md: 7, lg: 5 }}
           sx={{
-            width: '40%',
-            height: '100vh',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -35,19 +27,17 @@ export function Auth() {
           }}
         >
           {location.pathname === '/login' ? <Login /> : <Register />}
-        </Box>
-        <Box
-          className="bg-[url('/hero_login.jpg')] bg-cover"
+        </Grid>
+        <Grid
+          size={{ xs: 0, md: 5, lg: 7 }}
           sx={{
-            width: '60%',
-            height: '100vh',
             backgroundImage: 'url(hero_login.jpg)',
             backgroundSize: 'cover',
             bgcolor: '#2a2a2aad',
             backgroundBlendMode: 'multiply',
           }}
-        ></Box>
-      </Box>
+        ></Grid>
+      </Grid>
     );
   }
 }
