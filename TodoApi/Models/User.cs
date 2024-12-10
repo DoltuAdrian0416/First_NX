@@ -18,8 +18,8 @@ public class User
     public byte[] PasswordSalt { get; set; }
 
     public byte[]? ProfilePicture { get; set; }
-    
-   
+
+    public string Username { get; set; }
 
 }
 

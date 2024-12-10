@@ -35,7 +35,7 @@ namespace TodoApi.Controllers
             return Ok(user);
         }
 
-       
+
         [HttpPost("/login")]
 
         public async Task<ActionResult<IEnumerable<User>>> LoginUser([FromBody] UserDTO user)
@@ -58,7 +58,7 @@ namespace TodoApi.Controllers
         }
         [HttpPost("/updatePFP")]
         [Consumes("multipart/form-data")]
-        public async Task<ActionResult> UpdateProfilePicture( string email,IFormFile profilePicture)
+        public async Task<ActionResult> UpdateProfilePicture(string email, IFormFile profilePicture)
         {
             if (string.IsNullOrWhiteSpace(email))
             {
@@ -81,6 +81,32 @@ namespace TodoApi.Controllers
             }
 
             return Ok("Profile picture updated successfully.");
+        }
+
+        [HttpPost("/updateUsername")]
+
+        public async Task<ActionResult> UpdateUsername([FromForm] string email, [FromForm] string username)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                return BadRequest("Email is required.");
+            }
+
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                return BadRequest("Profile picture is required.");
+            }
+
+            using var memoryStream = new MemoryStream();
+
+
+            var result = await _service.UpdateUsername(email, username);
+            if (!result)
+            {
+                return NotFound("User not found or update failed.");
+            }
+
+            return Ok("Username updated successfully.");
         }
     }
 }

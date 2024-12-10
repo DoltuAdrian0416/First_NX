@@ -10,6 +10,7 @@ const AuthContext = createContext<
 >(undefined);
 
 export function AuthProvider({ children }: any) {
+  const [loggedUser, setLoggedUser] = useState<ImageBitmap>();
   const [token, setToken_] = useState<string | null>(
     localStorage.getItem('token')
   );

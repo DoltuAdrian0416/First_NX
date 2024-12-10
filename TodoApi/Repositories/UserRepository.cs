@@ -25,6 +25,11 @@ namespace TodoApi.Controllers
             _context = context;
         }
 
+        public async Task<bool> UpdateUserAsync(User user)
+        {
+            _context.Users.Update(user);
+            return await _context.SaveChangesAsync() > 0;
+        }
         // Get all users
         public async Task<IEnumerable<User>> GetUsersAsync()
         {
@@ -57,10 +62,5 @@ namespace TodoApi.Controllers
             return true;
         }
 
-         public async Task<bool> UpdateUserAsync(User user)
-        {
-            _context.Users.Update(user);
-            return await _context.SaveChangesAsync() > 0;
-        }
     }
 }

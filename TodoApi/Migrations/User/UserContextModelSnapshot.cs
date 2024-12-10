@@ -37,6 +37,10 @@ namespace TodoApi.Migrations.User
                     b.Property<byte[]>("ProfilePicture")
                         .HasColumnType("BLOB");
 
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
