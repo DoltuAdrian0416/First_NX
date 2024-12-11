@@ -8,12 +8,18 @@ import {
   Typography,
 } from '@mui/material';
 import { useState } from 'react';
+import { UpdateUserProfilePicture } from '../ApiRequest/UpdateUserProfilePicture';
+import { UpdateUsername } from '../ApiRequest/UpdateUsername';
+import { VerifyUserModifications } from '../ApiRequest/VerifyUserModifications';
+import { useAuth } from '../AuthProvider';
 
 interface IUserDisplay {
   user: User;
 }
 export function UserDisplay(props: IUserDisplay) {
   const [img, setImg] = useState<File | null>(null);
+  const [username, setUsername] = useState('');
+  const session = useAuth();
   const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
     clipPath: 'inset(50%)',
@@ -26,21 +32,17 @@ export function UserDisplay(props: IUserDisplay) {
     width: 1,
   });
 
-  async function handleSubmit(email: string, img: File) {
-    const formData = new FormData();
-    formData.append('email', email);
-    formData.append('profilePicture', img);
-
-    const data = await fetch(`http://localhost:5158/updatePFP?email=${email}`, {
-      method: 'POST',
-      body: formData,
-    });
-
-    if (data.ok) {
-      const result = await data.json();
-      console.log(result);
+  async function UpdateUsernamePFP(email: string, img: File, username: string) {
+    const UpdateProfilePictureStatus = await UpdateUserProfilePicture(
+      email,
+      img
+    );
+    const UpdateUserNameStatus = await UpdateUsername(email, username);
+    if (UpdateProfilePictureStatus == 200 || UpdateUserNameStatus == 200) {
+      const UpdatedUser: User = await VerifyUserModifications(email);
+      session?.setCredentials(session.token!, UpdatedUser);
+      console.log(localStorage.getItem('user'));
     }
-    return;
   }
   return (
     <>
@@ -48,7 +50,7 @@ export function UserDisplay(props: IUserDisplay) {
         Welcome
       </Typography>
       <Typography variant="h4" fontWeight={400}>
-        {props.user?.email}
+        {props.user?.username}
       </Typography>
       <Typography variant="h5">
         Thanks for registering , please complete the following fields
@@ -61,6 +63,9 @@ export function UserDisplay(props: IUserDisplay) {
           label="Username"
           placeholder="Your username"
           required
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
           color="warning"
         ></TextField>
       </FormControl>
@@ -85,7 +90,7 @@ export function UserDisplay(props: IUserDisplay) {
       <Button
         variant="contained"
         color="warning"
-        onClick={() => handleSubmit(props.user.email, img!)}
+        onClick={() => UpdateUsernamePFP(props.user.email, img!, username)}
         startIcon={<ControlPoint />}
         sx={{ marginTop: '10px' }}
       >

@@ -14,7 +14,7 @@ import {
 
 import { DeliveryDiningOutlined } from '@mui/icons-material';
 import { useState } from 'react';
-import LogoutButton from './LogoutButton';
+import LogoutButton from '../Dumb/LogoutButton';
 import { User } from '@./Models';
 
 export function Navbar(props: { user: User }) {
@@ -114,6 +114,7 @@ export function Navbar(props: { user: User }) {
           >
             DOLIVERY
           </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -125,13 +126,14 @@ export function Navbar(props: { user: User }) {
               </Button>
             ))}
           </Box>
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {/* <Avatar
-                  alt="Profile Picture"
+                <Avatar
+                  alt={`${props.user.username}`}
                   src={`data:image/png;base64,${props.user.profilePicture}`}
-                /> */}
+                />
               </IconButton>
             </Tooltip>
 

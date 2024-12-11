@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using TodoApi.Migrations.User;
 
 namespace TodoApi.Models;
 public class User
@@ -17,12 +18,11 @@ public class User
     [Required]
     public byte[] PasswordSalt { get; set; }
 
-    public byte[]? ProfilePicture { get; set; }
-
     public string Username { get; set; }
 
-}
+    public byte[]? ProfilePicture { get; set; }
 
+}
 public class UserDTO
 {
     [EmailAddress]

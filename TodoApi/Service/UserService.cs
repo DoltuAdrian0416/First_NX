@@ -53,9 +53,6 @@ namespace TodoApi.Controllers
             User User = new User();
             User.Email = userDTO.Email;
             User.PasswordSalt = GenerateSalt();
-            // var ConvertedFrom64Password = Encoding.ASCII.GetBytes(PasswordWithSalt);
-            // var md5 = new MD5CryptoServiceProvider();
-            // var md5data = md5.ComputeHash(ConvertedFrom64Password);
             User.PasswordHash = HashPassword(userDTO.Password, User.PasswordSalt);
             await _userRepository.AddUserAsync(User);
             return User;
@@ -93,7 +90,6 @@ namespace TodoApi.Controllers
                 return Convert.ToBase64String(hashedPasswordWithSalt);
             }
         }
-
         public async Task<string> LoginUser(UserDTO userDTO)
         {
             User User = await GetUserByEmail(userDTO.Email);

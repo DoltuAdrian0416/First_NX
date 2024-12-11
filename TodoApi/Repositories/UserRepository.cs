@@ -48,7 +48,6 @@ namespace TodoApi.Controllers
 
         public async Task<User> GetUserByEmail(string email)
         {
-
             return await _context.Users.FirstAsync(user => user.Email == email);
         }
         public async Task<bool> isUser(string email)

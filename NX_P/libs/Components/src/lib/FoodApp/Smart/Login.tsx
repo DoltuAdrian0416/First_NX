@@ -12,14 +12,14 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../AuthProvider';
 import { User } from '@./Models';
-import { useLocalStorageUser } from '../hooks/useLocalStorageUser';
+import ErrorAlert from '../Dumb/ErrorAlert';
 
 export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorText, setErrorText] = useState('');
-  const auth = useAuth();
-  const { setUser } = useLocalStorageUser();
+  const session = useAuth();
+
   const navigate = useNavigate();
 
   async function loginUser(email: string, password: string) {
@@ -75,8 +75,7 @@ export function Login() {
       return;
     }
 
-    setUser(user);
-    //auth?.setToken(token);
+    session?.setCredentials(token, user);
   };
 
   return (
@@ -94,15 +93,7 @@ export function Login() {
         borderRadius: '10px',
       }}
     >
-      <Collapse in={errorText}>
-        <Alert
-          variant={'outlined'}
-          severity="error"
-          sx={{ marginBottom: '20px' }}
-        >
-          {errorText}
-        </Alert>
-      </Collapse>
+      <ErrorAlert errorText={errorText} />
       <Typography
         component="h1"
         variant="h4"

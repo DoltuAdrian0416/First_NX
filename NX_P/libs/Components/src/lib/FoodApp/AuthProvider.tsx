@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 const AuthContext = createContext<
   | {
+      user: User | null;
       token: string | null;
       setCredentials: (token: string, user: User) => void;
       removeCredentials: () => void;
@@ -14,7 +15,6 @@ const userLocalStorage = 'user';
 const tokenLocalStorage = 'token';
 
 export function AuthProvider({ children }: any) {
-  const [loggedUser, setLoggedUser] = useState<ImageBitmap>();
   const [token, setToken] = useState<string | null>(
     localStorage.getItem('token')
   );
@@ -52,6 +52,7 @@ export function AuthProvider({ children }: any) {
 
   const contextValue = useMemo(
     () => ({
+      user: user,
       token: token,
       setCredentials,
       removeCredentials,

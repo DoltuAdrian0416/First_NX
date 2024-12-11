@@ -15561,11 +15561,6 @@
       },
       {
         "source": "Components",
-        "target": "npm:@testing-library/react",
-        "type": "static"
-      },
-      {
-        "source": "Components",
         "target": "npm:@mui/material",
         "type": "static"
       },
@@ -15577,6 +15572,11 @@
       {
         "source": "Components",
         "target": "npm:@mui/icons-material",
+        "type": "static"
+      },
+      {
+        "source": "Components",
+        "target": "npm:@testing-library/react",
         "type": "static"
       },
       {

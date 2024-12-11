@@ -56,7 +56,7 @@ namespace TodoApi.Controllers
             }
             return Ok(user);
         }
-        [HttpPost("/updatePFP")]
+        [HttpPut("/updatePFP")]
         [Consumes("multipart/form-data")]
         public async Task<ActionResult> UpdateProfilePicture(string email, IFormFile profilePicture)
         {
@@ -83,9 +83,8 @@ namespace TodoApi.Controllers
             return Ok("Profile picture updated successfully.");
         }
 
-        [HttpPost("/updateUsername")]
-
-        public async Task<ActionResult> UpdateUsername([FromForm] string email, [FromForm] string username)
+        [HttpPut("/updateUsername")]
+        public async Task<ActionResult> UpdateUsername(string email, [FromForm] string username)
         {
             if (string.IsNullOrWhiteSpace(email))
             {
@@ -94,11 +93,8 @@ namespace TodoApi.Controllers
 
             if (string.IsNullOrWhiteSpace(username))
             {
-                return BadRequest("Profile picture is required.");
+                return BadRequest("Username is required.");
             }
-
-            using var memoryStream = new MemoryStream();
-
 
             var result = await _service.UpdateUsername(email, username);
             if (!result)
@@ -108,5 +104,6 @@ namespace TodoApi.Controllers
 
             return Ok("Username updated successfully.");
         }
+
     }
 }

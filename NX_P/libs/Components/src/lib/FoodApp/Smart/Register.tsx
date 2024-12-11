@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import ErrorAlert from '../Dumb/ErrorAlert';
 
 export function Register() {
   const dynamicText = [
@@ -59,15 +60,7 @@ export function Register() {
         borderRadius: '10px',
       }}
     >
-      <Collapse in={errorText}>
-        <Alert
-          severity={'error'}
-          variant="filled"
-          sx={{ marginBottom: '25px' }}
-        >
-          {errorText}
-        </Alert>
-      </Collapse>
+      <ErrorAlert errorText={errorText} />
       <Typography
         component="h1"
         variant="h4"
@@ -80,7 +73,7 @@ export function Register() {
       >
         Register
       </Typography>
-      {/* <TextField
+      <TextField
         id="email"
         type="email"
         name="email"
@@ -145,7 +138,7 @@ export function Register() {
             ),
           },
         }}
-      ></TextField> */}
+      ></TextField>
       <Box
         sx={{
           width: 'auto',
