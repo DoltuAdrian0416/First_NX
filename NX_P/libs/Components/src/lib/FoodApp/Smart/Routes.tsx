@@ -5,26 +5,33 @@ import { Login } from '@mui/icons-material';
 import Register from './Register';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import UserProfilePage from './UserProfilePage';
+import { ProtectedRoute } from './ProtectedRoute';
+import { UnprotectedRoute } from './UnprotectedRoute';
 
 export function Routes() {
   const auth = useAuth();
   const publicRoutes = [{}];
   const routesForNotAuthenticatedOnly = [
     {
-      path: '',
-      element: <Homepage />,
-    },
-    {
-      path: '/',
-      element: <Auth />,
+      element: <UnprotectedRoute />,
       children: [
         {
-          path: '/login',
-          element: <Login />,
+          path: '',
+          element: <Homepage />,
         },
         {
-          path: '/register',
-          element: <Register />,
+          path: '/',
+          element: <Auth />,
+          children: [
+            {
+              path: '/login',
+              element: <Login />,
+            },
+            {
+              path: '/register',
+              element: <Register />,
+            },
+          ],
         },
       ],
     },
@@ -32,14 +39,19 @@ export function Routes() {
   ];
   const routesForAuthenticatedOnly = [
     {
-      path: '/user',
-      element: <UserProfilePage />,
+      element: <ProtectedRoute />,
+      children: [
+        {
+          path: '/user',
+          element: <UserProfilePage />,
+        },
+      ],
     },
   ];
 
   const router = createBrowserRouter([
     ...publicRoutes,
-    ...(!auth?.token ? routesForNotAuthenticatedOnly : []),
+    ...routesForNotAuthenticatedOnly,
     ...routesForAuthenticatedOnly,
   ]);
 

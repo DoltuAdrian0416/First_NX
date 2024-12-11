@@ -2,20 +2,14 @@ import { Box } from '@mui/material';
 import Navbar from './Navbar';
 import UserDisplay from './UserDisplay';
 import curvedbg from '../assets/curvedbg.jpg';
-
-// Function to get user data from localStorage
-function getUserFromLocalStorage() {
-  const userData = localStorage.getItem('user');
-  if (userData) {
-    return JSON.parse(userData); // Parse the JSON string into an object
-  } else {
-    console.error('No user data found in localStorage');
-    return null;
-  }
-}
+import { useLocalStorageUser } from '../hooks/useLocalStorageUser';
 
 export function UserProfilePage() {
-  const user = getUserFromLocalStorage();
+  const { user } = useLocalStorageUser();
+
+  if (!user) {
+    return <h1>Not logged in</h1>;
+  }
 
   return (
     <>

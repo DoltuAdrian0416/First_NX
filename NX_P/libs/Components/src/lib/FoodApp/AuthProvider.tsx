@@ -1,46 +1,62 @@
+import { User } from '@./Models';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 const AuthContext = createContext<
   | {
       token: string | null;
-      setToken: (token: string) => void;
-      removeToken: () => void;
+      setCredentials: (token: string, user: User) => void;
+      removeCredentials: () => void;
     }
   | undefined
 >(undefined);
 
+const userLocalStorage = 'user';
+const tokenLocalStorage = 'token';
+
 export function AuthProvider({ children }: any) {
   const [loggedUser, setLoggedUser] = useState<ImageBitmap>();
-  const [token, setToken_] = useState<string | null>(
+  const [token, setToken] = useState<string | null>(
     localStorage.getItem('token')
   );
-  const removeToken = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-  };
-
-  // const setToken = (newToken: string | null) => {
-  //   setToken_(newToken);
-  // };
+  const [user, setUser] = useState<User | null>(() => {
+    const localStorageUser = localStorage.getItem('user');
+    return localStorageUser ? JSON.parse(localStorageUser) : null;
+  });
 
   useEffect(() => {
     if (token) {
-      const header = new Headers({ Authorization: `${'Bearer ' + token} ` });
-      localStorage.setItem('token', token);
+      // const header = new Headers({ Authorization: `${'Bearer ' + token} ` });
+      localStorage.setItem(tokenLocalStorage, token);
+      return;
     }
-  });
+    localStorage.removeItem(tokenLocalStorage);
+  }, [token]);
+
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem(userLocalStorage, JSON.stringify(user));
+      return;
+    }
+    localStorage.removeItem(userLocalStorage);
+  }, [user]);
+
+  const setCredentials = (token: string, user: User) => {
+    setToken(token);
+    setUser(user);
+  };
+
+  const removeCredentials = () => {
+    setToken(null);
+    setUser(null);
+  };
 
   const contextValue = useMemo(
     () => ({
       token: token,
-      setToken: (token: string) => {
-        setToken_(token);
-      },
-      removeToken: () => {
-        removeToken();
-      },
+      setCredentials,
+      removeCredentials,
     }),
-    [token]
+    [token, user]
   );
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

@@ -128,10 +128,10 @@ export function Navbar(props: { user: User }) {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
+                {/* <Avatar
                   alt="Profile Picture"
                   src={`data:image/png;base64,${props.user.profilePicture}`}
-                />
+                /> */}
               </IconButton>
             </Tooltip>
 

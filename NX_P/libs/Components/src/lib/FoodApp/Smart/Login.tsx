@@ -12,12 +12,14 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../AuthProvider';
 import { User } from '@./Models';
+import { useLocalStorageUser } from '../hooks/useLocalStorageUser';
 
 export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorText, setErrorText] = useState('');
   const auth = useAuth();
+  const { setUser } = useLocalStorageUser();
   const navigate = useNavigate();
 
   async function loginUser(email: string, password: string) {
@@ -25,6 +27,7 @@ export function Login() {
       email: email,
       password: password,
     };
+
     const data = await fetch('http://localhost:5158/login', {
       method: 'POST',
       body: JSON.stringify(userObj),
@@ -33,13 +36,11 @@ export function Login() {
       }),
     });
 
-    const tokenValue = await data.text();
-
-    // eslint-disable-next-line eqeqeq
     if (data.ok && data.status == 200) {
-      auth?.setToken(tokenValue);
-      return true;
+      const token = await data.text();
+      return token;
     }
+
     setErrorText(await data.statusText);
     return false;
   }
@@ -49,14 +50,35 @@ export function Login() {
     if (!data.ok) {
       return null;
     }
-    const userData = await data.json();
+    const userData: User = await data.json();
     const user: User = {
       id: userData.id,
       email: userData.email,
-      profilePicture: userData.profilePicture,
+      username: userData.username,
     };
     return user;
   }
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      return;
+    }
+
+    const token = await loginUser(email, password);
+    if (!token) {
+      return;
+    }
+
+    const user = await getUserByEmail(email);
+    if (!user) {
+      console.error('Failed to retrieve user data.');
+      return;
+    }
+
+    setUser(user);
+    //auth?.setToken(token);
+  };
+
   return (
     <Box
       sx={{
@@ -149,21 +171,7 @@ export function Login() {
         <Button
           variant="contained"
           sx={{ margin: '2px' }}
-          onClick={async () => {
-            if (!email || !password) {
-              return;
-            }
-
-            if (await loginUser(email, password)) {
-              const user = await getUserByEmail(email);
-              if (user) {
-                localStorage.setItem('user', JSON.stringify(user));
-              } else {
-                console.error('Failed to retrieve user data.');
-              }
-              navigate('/user');
-            }
-          }}
+          onClick={handleLogin}
         >
           Login
         </Button>

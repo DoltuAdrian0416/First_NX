@@ -15551,6 +15551,11 @@
       },
       {
         "source": "Components",
+        "target": "Models",
+        "type": "static"
+      },
+      {
+        "source": "Components",
         "target": "npm:react",
         "type": "static"
       },
@@ -15572,11 +15577,6 @@
       {
         "source": "Components",
         "target": "npm:@mui/icons-material",
-        "type": "static"
-      },
-      {
-        "source": "Components",
-        "target": "Models",
         "type": "static"
       },
       {

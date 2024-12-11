@@ -11,8 +11,9 @@ export function Auth() {
   console.log(location);
   const auth = useAuth();
   useEffect(() => {
-    localStorage.removeItem('token');
+    auth?.removeToken();
   }, [location]);
+
   if (!auth?.token) {
     return (
       <Grid container spacing={0} sx={{ height: '100vh' }}>
