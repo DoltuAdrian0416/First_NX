@@ -35,6 +35,15 @@ namespace TodoApi.Controllers
             return Ok(user);
         }
 
+        [HttpGet("user/profilePicture/{email}")]
+        public async Task<ActionResult<IEnumerable<User>>> GetUserProfilePicture(string email)
+        {
+            var user = await _service.GetUserByEmail(email);
+            if (user == null)
+            { return NotFound(); }
+            return Ok(user.ProfilePicture);
+        }
+
 
         [HttpPost("/login")]
 
@@ -80,7 +89,7 @@ namespace TodoApi.Controllers
                 return NotFound("User not found or update failed.");
             }
 
-            return Ok("Profile picture updated successfully.");
+            return Ok(profilePictureBytes);
         }
 
         [HttpPut("/updateUsername")]

@@ -32,16 +32,17 @@ export function UserDisplay(props: IUserDisplay) {
     width: 1,
   });
 
-  async function UpdateUsernamePFP(email: string, img: File, username: string) {
+  async function UpdateUsernamePFP(Email: string, img: File, username: string) {
     const UpdateProfilePictureStatus = await UpdateUserProfilePicture(
-      email,
+      Email,
       img
     );
-    const UpdateUserNameStatus = await UpdateUsername(email, username);
+    const UpdateUserNameStatus = await UpdateUsername(Email, username);
     if (UpdateProfilePictureStatus == 200 || UpdateUserNameStatus == 200) {
-      const UpdatedUser: User = await VerifyUserModifications(email);
+      const User: User = await VerifyUserModifications(Email);
+      const { id, email, username } = User;
+      const UpdatedUser: User = { id, email, username };
       session?.setCredentials(session.token!, UpdatedUser);
-      console.log(localStorage.getItem('user'));
     }
   }
   return (

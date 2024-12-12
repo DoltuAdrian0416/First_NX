@@ -2,14 +2,15 @@ import { Box } from '@mui/material';
 import Navbar from './Navbar';
 import UserDisplay from './UserDisplay';
 import curvedbg from '../assets/curvedbg.jpg';
+import simplebg from '../assets/simpleBg.jpg';
 import { useAuth } from '../AuthProvider';
-import { VerifyUserModifications } from '../ApiRequest/VerifyUserModifications';
+import { useEffect, useState } from 'react';
+import { GetUserProfilePicture } from '../ApiRequest/GetUserProfilePicture';
 
 export function UserProfilePage() {
+  const [profilePicture, setProfilePicture] = useState<string>();
   const user = useAuth()?.user;
-  if (!user) {
-    return <h1>Not logged in</h1>;
-  }
+
   const UserProfileContainer = {
     display: 'flex',
     justifyContent: 'center',
@@ -38,17 +39,46 @@ export function UserProfilePage() {
     },
   };
 
+  const mainContainer = {
+    display: 'flex',
+    padding: '30px',
+    position: 'relative',
+    bgcolor: 'rgb(5, 45, 150, 0.525)',
+
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      backgroundImage: `url(${simplebg})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      opacity: 0.25,
+      zIndex: -1,
+    },
+  };
+
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+
+    GetUserProfilePicture(user.email).then((res) => {
+      setProfilePicture(res);
+    });
+  }, [user]);
+  if (!user) {
+    return null;
+  }
+
   return (
     <>
-      <Navbar user={user} />
+      <Navbar user={{ ...user, profilePicture }} />
 
       {/* row */}
-      <Box
-        sx={{
-          display: 'flex',
-          p: '20px',
-        }}
-      >
+      <Box sx={mainContainer}>
         {/* row */}
         <Box
           width={'fit-content'}

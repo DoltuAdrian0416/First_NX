@@ -131,8 +131,12 @@ export function Navbar(props: { user: User }) {
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
-                  alt={`${props.user.username}`}
-                  src={`data:image/png;base64,${props.user.profilePicture}`}
+                  alt={props.user ? `${props.user.username}` : 'User'}
+                  src={
+                    props.user && props.user.profilePicture
+                      ? `data:image/jpeg;base64,${props.user.profilePicture}`
+                      : 'default-image-url'
+                  }
                 />
               </IconButton>
             </Tooltip>
