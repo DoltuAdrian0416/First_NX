@@ -19,7 +19,7 @@ export function UserProfilePage() {
     boxShadow: '3',
     borderRadius: '15px',
     position: 'relative',
-    bgcolor: 'rgb(95, 150, 227, 0.5)',
+    bgcolor: 'rgb(95, 150, 227, 0.7)',
     padding: '30px',
     flexDirection: 'column',
     overflow: 'hidden',
@@ -31,7 +31,7 @@ export function UserProfilePage() {
       left: 0,
       width: '100%',
       height: '100%',
-      backgroundImage: `url(${curvedbg})`,
+      backgroundImage: `url(${simplebg})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       opacity: 1,
@@ -41,9 +41,10 @@ export function UserProfilePage() {
 
   const mainContainer = {
     display: 'flex',
+    height: '100%',
     padding: '30px',
     position: 'relative',
-    bgcolor: 'rgb(5, 45, 150, 0.525)',
+    bgcolor: 'rgb(255, 255, 255, 0.125)',
 
     '&::before': {
       content: '""',
@@ -52,10 +53,11 @@ export function UserProfilePage() {
       left: 0,
       width: '100%',
       height: '100%',
-      backgroundImage: `url(${simplebg})`,
+      backgroundImage: `url(${curvedbg})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
-      opacity: 0.25,
+      opacity: 0.5,
+
       zIndex: -1,
     },
   };
@@ -72,6 +74,35 @@ export function UserProfilePage() {
   if (!user) {
     return null;
   }
+
+  async function testApi() {
+    const apiKey = '67cc0e8a-a6c7-42a5-b04a-0132b90c3a07';
+    const endpoint = `https://jooble.org/api/${apiKey}`;
+    const payload = {
+      keywords: 'Sales Manager, Administrator',
+      location: 'Kyiv',
+      radius: '80',
+      page: '1',
+      companysearch: 'false',
+    };
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data.jobs);
+      }
+    } catch (error) {
+      console.error('An error occurred while fetching data:', error);
+    }
+  }
+  testApi();
 
   return (
     <>
