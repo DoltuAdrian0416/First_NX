@@ -55,28 +55,32 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "nx.json",
-        "hash": "16795906986165790500"
-      },
-      {
-        "file": ".vscode/extensions.json",
-        "hash": "4422400126597322578"
-      },
-      {
-        "file": "vitest.workspace.ts",
-        "hash": "16140283107432676792"
-      },
-      {
         "file": "README.md",
         "hash": "4545472044235372954"
       },
       {
-        "file": "tsconfig.base.json",
-        "hash": "9495151523501469499"
+        "file": "nx.json",
+        "hash": "12936914188722572935"
       },
       {
-        "file": "eslint.config.js",
-        "hash": "3535604748181344684"
+        "file": "package.json",
+        "hash": "6612265069813737861"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "1363786374564416739"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "7544409015863045561"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "6182133428551391699"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "17085498363870782104"
       },
       {
         "file": ".github/workflows/ci.yml",
@@ -87,35 +91,191 @@
         "hash": "14940565057756723953"
       },
       {
-        "file": ".prettierrc",
-        "hash": "6820402234827505055"
+        "file": "vitest.workspace.ts",
+        "hash": "16140283107432676792"
       },
       {
-        "file": "jest.preset.js",
-        "hash": "7473220183190921152"
-      },
-      {
-        "file": ".prettierignore",
-        "hash": "17085498363870782104"
-      },
-      {
-        "file": "jest.config.ts",
-        "hash": "7544409015863045561"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "1363786374564416739"
+        "file": "eslint.config.js",
+        "hash": "3535604748181344684"
       },
       {
         "file": ".editorconfig",
         "hash": "11532813898455409296"
       },
       {
-        "file": "package.json",
-        "hash": "6612265069813737861"
+        "file": "jest.preset.js",
+        "hash": "7473220183190921152"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "11887708224161608007"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "6820402234827505055"
       }
     ],
     "projectFileMap": {
+      "products": [
+        {
+          "file": "libs/products/.babelrc",
+          "hash": "15003411175763814189"
+        },
+        {
+          "file": "libs/products/README.md",
+          "hash": "14221831436977802355"
+        },
+        {
+          "file": "libs/products/eslint.config.js",
+          "hash": "4309309861924117436",
+          "deps": [
+            "npm:@nx/eslint-plugin"
+          ]
+        },
+        {
+          "file": "libs/products/project.json",
+          "hash": "3347012891682097311"
+        },
+        {
+          "file": "libs/products/src/index.ts",
+          "hash": "7998023058392979972"
+        },
+        {
+          "file": "libs/products/src/lib/products.module.scss",
+          "hash": "9824504850739023139"
+        },
+        {
+          "file": "libs/products/src/lib/products.spec.tsx",
+          "hash": "13369830752428789910",
+          "deps": [
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "libs/products/src/lib/products.tsx",
+          "hash": "9783503457879824181"
+        },
+        {
+          "file": "libs/products/tsconfig.json",
+          "hash": "2717301636124270161"
+        },
+        {
+          "file": "libs/products/tsconfig.lib.json",
+          "hash": "5982162789104615864"
+        },
+        {
+          "file": "libs/products/tsconfig.spec.json",
+          "hash": "5947821632368113453"
+        },
+        {
+          "file": "libs/products/vite.config.ts",
+          "hash": "7530182452160970008",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-react",
+            "npm:@nx/vite"
+          ]
+        }
+      ],
+      "ui": [
+        {
+          "file": "libs/shared/ui/.babelrc",
+          "hash": "15003411175763814189"
+        },
+        {
+          "file": "libs/shared/ui/README.md",
+          "hash": "12278270776781370320"
+        },
+        {
+          "file": "libs/shared/ui/eslint.config.js",
+          "hash": "20654826339036900",
+          "deps": [
+            "npm:@nx/eslint-plugin"
+          ]
+        },
+        {
+          "file": "libs/shared/ui/package.json",
+          "hash": "14900154279133858492"
+        },
+        {
+          "file": "libs/shared/ui/project.json",
+          "hash": "10028833448099701595"
+        },
+        {
+          "file": "libs/shared/ui/src/index.ts",
+          "hash": "8542243310784091453"
+        },
+        {
+          "file": "libs/shared/ui/src/lib/ui.module.scss",
+          "hash": "9824504850739023139"
+        },
+        {
+          "file": "libs/shared/ui/src/lib/ui.spec.tsx",
+          "hash": "17904578029725158754",
+          "deps": [
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "libs/shared/ui/src/lib/ui.tsx",
+          "hash": "13039817125183572543"
+        },
+        {
+          "file": "libs/shared/ui/tsconfig.json",
+          "hash": "7777951354717366821"
+        },
+        {
+          "file": "libs/shared/ui/tsconfig.lib.json",
+          "hash": "3489893287793430731"
+        },
+        {
+          "file": "libs/shared/ui/tsconfig.spec.json",
+          "hash": "866090251918963737"
+        },
+        {
+          "file": "libs/shared/ui/vite.config.ts",
+          "hash": "9480418598835530131",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-react",
+            "npm:vite-plugin-dts",
+            "npm:@nx/vite"
+          ]
+        }
+      ],
+      "TicTacToe-e2e": [
+        {
+          "file": "apps/TicTacToe-e2e/eslint.config.js",
+          "hash": "13145502249528557504",
+          "deps": [
+            "npm:eslint-plugin-playwright"
+          ]
+        },
+        {
+          "file": "apps/TicTacToe-e2e/playwright.config.ts",
+          "hash": "11331271958822447590",
+          "deps": [
+            "npm:@playwright/test",
+            "npm:@nx/playwright",
+            "npm:@nx/devkit"
+          ]
+        },
+        {
+          "file": "apps/TicTacToe-e2e/project.json",
+          "hash": "17000926535406119685"
+        },
+        {
+          "file": "apps/TicTacToe-e2e/src/example.spec.ts",
+          "hash": "1909365745453809229",
+          "deps": [
+            "npm:@playwright/test"
+          ]
+        },
+        {
+          "file": "apps/TicTacToe-e2e/tsconfig.json",
+          "hash": "12614691677435311415"
+        }
+      ],
       "TicTacToe": [
         {
           "file": "apps/TicTacToe/eslint.config.js",
@@ -200,6 +360,204 @@
           ]
         }
       ],
+      "Models": [
+        {
+          "file": "libs/Models/README.md",
+          "hash": "9175805641100820183"
+        },
+        {
+          "file": "libs/Models/eslint.config.js",
+          "hash": "501722464097411023",
+          "deps": [
+            "npm:jsonc-eslint-parser"
+          ]
+        },
+        {
+          "file": "libs/Models/package.json",
+          "hash": "3733820518705452598"
+        },
+        {
+          "file": "libs/Models/project.json",
+          "hash": "921310025622681419"
+        },
+        {
+          "file": "libs/Models/src/index.ts",
+          "hash": "18255173846090418255"
+        },
+        {
+          "file": "libs/Models/src/lib/Board.ts",
+          "hash": "1525367332947299171"
+        },
+        {
+          "file": "libs/Models/src/lib/FoodApp/MenuList.ts",
+          "hash": "13258965658386346063"
+        },
+        {
+          "file": "libs/Models/src/lib/FoodApp/User.ts",
+          "hash": "17937189747988591286"
+        },
+        {
+          "file": "libs/Models/src/lib/Game.ts",
+          "hash": "2973077828680457742"
+        },
+        {
+          "file": "libs/Models/src/lib/Player.ts",
+          "hash": "5077405435622188559"
+        },
+        {
+          "file": "libs/Models/src/lib/Values.ts",
+          "hash": "18112293686309784416"
+        },
+        {
+          "file": "libs/Models/tsconfig.json",
+          "hash": "7128447134199889905"
+        },
+        {
+          "file": "libs/Models/tsconfig.lib.json",
+          "hash": "7568541289358088662"
+        },
+        {
+          "file": "libs/Models/tsconfig.spec.json",
+          "hash": "5947821632368113453"
+        },
+        {
+          "file": "libs/Models/vite.config.ts",
+          "hash": "10034037691852086792",
+          "deps": [
+            "npm:vite",
+            "npm:vite-plugin-dts",
+            "npm:@nx/vite"
+          ]
+        }
+      ],
+      "FoodApp-e2e": [
+        {
+          "file": "apps/FoodApp-e2e/eslint.config.js",
+          "hash": "13145502249528557504",
+          "deps": [
+            "npm:eslint-plugin-playwright"
+          ]
+        },
+        {
+          "file": "apps/FoodApp-e2e/playwright.config.ts",
+          "hash": "15389490853879242951",
+          "deps": [
+            "npm:@playwright/test",
+            "npm:@nx/playwright",
+            "npm:@nx/devkit"
+          ]
+        },
+        {
+          "file": "apps/FoodApp-e2e/project.json",
+          "hash": "7790360390225792042"
+        },
+        {
+          "file": "apps/FoodApp-e2e/src/example.spec.ts",
+          "hash": "1909365745453809229",
+          "deps": [
+            "npm:@playwright/test"
+          ]
+        },
+        {
+          "file": "apps/FoodApp-e2e/tsconfig.json",
+          "hash": "12614691677435311415"
+        }
+      ],
+      "FoodApp": [
+        {
+          "file": "apps/FoodApp/eslint.config.js",
+          "hash": "4309309861924117436",
+          "deps": [
+            "npm:@nx/eslint-plugin"
+          ]
+        },
+        {
+          "file": "apps/FoodApp/index.html",
+          "hash": "16101738369095290077"
+        },
+        {
+          "file": "apps/FoodApp/postcss.config.js",
+          "hash": "14186219912588415944"
+        },
+        {
+          "file": "apps/FoodApp/project.json",
+          "hash": "16539562623459586063"
+        },
+        {
+          "file": "apps/FoodApp/public/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "apps/FoodApp/public/hero_login.jpg",
+          "hash": "15056298376311447402"
+        },
+        {
+          "file": "apps/FoodApp/src/app/app.module.scss",
+          "hash": "14507130133388590702"
+        },
+        {
+          "file": "apps/FoodApp/src/app/app.spec.tsx",
+          "hash": "10056037520293165398",
+          "deps": [
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "apps/FoodApp/src/app/app.tsx",
+          "hash": "4184403540197652639",
+          "deps": [
+            "Components"
+          ]
+        },
+        {
+          "file": "apps/FoodApp/src/app/nx-welcome.tsx",
+          "hash": "17616459125443730291"
+        },
+        {
+          "file": "apps/FoodApp/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/FoodApp/src/main.tsx",
+          "hash": "603729272222700661",
+          "deps": [
+            "npm:react",
+            "npm:react-dom"
+          ]
+        },
+        {
+          "file": "apps/FoodApp/src/styles.scss",
+          "hash": "14895145009585036269"
+        },
+        {
+          "file": "apps/FoodApp/tailwind.config.js",
+          "hash": "5973384502061666405",
+          "deps": [
+            "npm:autoprefixer"
+          ]
+        },
+        {
+          "file": "apps/FoodApp/tsconfig.app.json",
+          "hash": "6620183941831685188"
+        },
+        {
+          "file": "apps/FoodApp/tsconfig.json",
+          "hash": "8792423286157740794"
+        },
+        {
+          "file": "apps/FoodApp/tsconfig.spec.json",
+          "hash": "12139562650648121089"
+        },
+        {
+          "file": "apps/FoodApp/vite.config.ts",
+          "hash": "5961903988800831839",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-react",
+            "npm:@nx/vite"
+          ]
+        }
+      ],
       "Components": [
         {
           "file": "libs/Components/.babelrc",
@@ -223,6 +581,14 @@
         {
           "file": "libs/Components/src/index.ts",
           "hash": "10383593584500334433"
+        },
+        {
+          "file": "libs/Components/src/lib/FoodApp/ApiRequest/GetFullMenu.ts",
+          "hash": "1133430683007819018"
+        },
+        {
+          "file": "libs/Components/src/lib/FoodApp/ApiRequest/GetRestaurantList.ts",
+          "hash": "17972828476744934498"
         },
         {
           "file": "libs/Components/src/lib/FoodApp/ApiRequest/GetUserProfilePicture.ts",
@@ -265,12 +631,20 @@
           ]
         },
         {
+          "file": "libs/Components/src/lib/FoodApp/Dumb/RestaurantList.tsx",
+          "hash": "14611231112219287076",
+          "deps": [
+            "Models",
+            "npm:@mui/material"
+          ]
+        },
+        {
           "file": "libs/Components/src/lib/FoodApp/Smart/Auth.module.scss",
           "hash": "3244421341483603138"
         },
         {
           "file": "libs/Components/src/lib/FoodApp/Smart/Auth.spec.tsx",
-          "hash": "4950723153888638835",
+          "hash": "2862905734375846047",
           "deps": [
             "npm:@testing-library/react"
           ]
@@ -286,18 +660,18 @@
         },
         {
           "file": "libs/Components/src/lib/FoodApp/Smart/Homepage.module.scss",
-          "hash": "125145030238681982"
+          "hash": "9824504850739023139"
         },
         {
           "file": "libs/Components/src/lib/FoodApp/Smart/Homepage.spec.tsx",
-          "hash": "6545088917299905851",
+          "hash": "37905272860379430",
           "deps": [
             "npm:@testing-library/react"
           ]
         },
         {
           "file": "libs/Components/src/lib/FoodApp/Smart/Homepage.tsx",
-          "hash": "4716265696152216467",
+          "hash": "11394621948869716183",
           "deps": [
             "npm:@mui/material",
             "npm:react-router-dom"
@@ -305,11 +679,11 @@
         },
         {
           "file": "libs/Components/src/lib/FoodApp/Smart/Login.module.scss",
-          "hash": "125145030238681982"
+          "hash": "9824504850739023139"
         },
         {
           "file": "libs/Components/src/lib/FoodApp/Smart/Login.spec.tsx",
-          "hash": "17196403948555072802",
+          "hash": "4807021328110043856",
           "deps": [
             "npm:@testing-library/react"
           ]
@@ -327,11 +701,11 @@
         },
         {
           "file": "libs/Components/src/lib/FoodApp/Smart/Navbar.module.scss",
-          "hash": "125145030238681982"
+          "hash": "9824504850739023139"
         },
         {
           "file": "libs/Components/src/lib/FoodApp/Smart/Navbar.spec.tsx",
-          "hash": "2358440281071200856",
+          "hash": "3428500161891245244",
           "deps": [
             "npm:@testing-library/react"
           ]
@@ -355,11 +729,11 @@
         },
         {
           "file": "libs/Components/src/lib/FoodApp/Smart/Register.module.scss",
-          "hash": "125145030238681982"
+          "hash": "9824504850739023139"
         },
         {
           "file": "libs/Components/src/lib/FoodApp/Smart/Register.spec.tsx",
-          "hash": "16350267759979285277",
+          "hash": "9015491818034890850",
           "deps": [
             "npm:@testing-library/react"
           ]
@@ -401,21 +775,22 @@
         },
         {
           "file": "libs/Components/src/lib/FoodApp/Smart/UserProfilePage.module.scss",
-          "hash": "125145030238681982"
+          "hash": "9824504850739023139"
         },
         {
           "file": "libs/Components/src/lib/FoodApp/Smart/UserProfilePage.spec.tsx",
-          "hash": "15214513603718368264",
+          "hash": "10691182171344441210",
           "deps": [
             "npm:@testing-library/react"
           ]
         },
         {
           "file": "libs/Components/src/lib/FoodApp/Smart/UserProfilePage.tsx",
-          "hash": "14448138288136348169",
+          "hash": "2111383556341271177",
           "deps": [
             "npm:@mui/material",
-            "npm:react"
+            "npm:react",
+            "Models"
           ]
         },
         {
@@ -452,18 +827,18 @@
         },
         {
           "file": "libs/Components/src/lib/TicTacToe/BoardController.scss",
-          "hash": "10145549570907638358"
+          "hash": "14727978531656721261"
         },
         {
           "file": "libs/Components/src/lib/TicTacToe/BoardController.spec.tsx",
-          "hash": "10531276563930240057",
+          "hash": "14190481013386029167",
           "deps": [
             "npm:@testing-library/react"
           ]
         },
         {
           "file": "libs/Components/src/lib/TicTacToe/BoardController.tsx",
-          "hash": "7395509480159097688",
+          "hash": "8866518638316072980",
           "deps": [
             "Models",
             "npm:uuid",
@@ -472,18 +847,18 @@
         },
         {
           "file": "libs/Components/src/lib/TicTacToe/GameHistory.scss",
-          "hash": "6926113244247293471"
+          "hash": "16606993994212215447"
         },
         {
           "file": "libs/Components/src/lib/TicTacToe/GameHistory.spec.tsx",
-          "hash": "8488273336834237603",
+          "hash": "9606484081680176383",
           "deps": [
             "npm:@testing-library/react"
           ]
         },
         {
           "file": "libs/Components/src/lib/TicTacToe/GameHistory.tsx",
-          "hash": "4676452468674239056",
+          "hash": "12136459950709467175",
           "deps": [
             "npm:react",
             "Models",
@@ -492,18 +867,18 @@
         },
         {
           "file": "libs/Components/src/lib/TicTacToe/GenerateBoard.scss",
-          "hash": "125145030238681982"
+          "hash": "9824504850739023139"
         },
         {
           "file": "libs/Components/src/lib/TicTacToe/GenerateBoard.spec.tsx",
-          "hash": "1829521569075218601",
+          "hash": "10785814489485942042",
           "deps": [
             "npm:@testing-library/react"
           ]
         },
         {
           "file": "libs/Components/src/lib/TicTacToe/GenerateBoard.tsx",
-          "hash": "631404456826116483",
+          "hash": "10775938177249914153",
           "deps": [
             "Models",
             "npm:react",
@@ -573,360 +948,6 @@
             "npm:@vitejs/plugin-react",
             "npm:@nx/vite"
           ]
-        }
-      ],
-      "ui": [
-        {
-          "file": "libs/shared/ui/.babelrc",
-          "hash": "15003411175763814189"
-        },
-        {
-          "file": "libs/shared/ui/README.md",
-          "hash": "12278270776781370320"
-        },
-        {
-          "file": "libs/shared/ui/eslint.config.js",
-          "hash": "20654826339036900",
-          "deps": [
-            "npm:@nx/eslint-plugin"
-          ]
-        },
-        {
-          "file": "libs/shared/ui/package.json",
-          "hash": "14900154279133858492"
-        },
-        {
-          "file": "libs/shared/ui/project.json",
-          "hash": "10028833448099701595"
-        },
-        {
-          "file": "libs/shared/ui/src/index.ts",
-          "hash": "8542243310784091453"
-        },
-        {
-          "file": "libs/shared/ui/src/lib/ui.module.scss",
-          "hash": "9824504850739023139"
-        },
-        {
-          "file": "libs/shared/ui/src/lib/ui.spec.tsx",
-          "hash": "17904578029725158754",
-          "deps": [
-            "npm:@testing-library/react"
-          ]
-        },
-        {
-          "file": "libs/shared/ui/src/lib/ui.tsx",
-          "hash": "13039817125183572543"
-        },
-        {
-          "file": "libs/shared/ui/tsconfig.json",
-          "hash": "7777951354717366821"
-        },
-        {
-          "file": "libs/shared/ui/tsconfig.lib.json",
-          "hash": "3489893287793430731"
-        },
-        {
-          "file": "libs/shared/ui/tsconfig.spec.json",
-          "hash": "866090251918963737"
-        },
-        {
-          "file": "libs/shared/ui/vite.config.ts",
-          "hash": "9480418598835530131",
-          "deps": [
-            "npm:vite",
-            "npm:@vitejs/plugin-react",
-            "npm:vite-plugin-dts",
-            "npm:@nx/vite"
-          ]
-        }
-      ],
-      "Models": [
-        {
-          "file": "libs/Models/README.md",
-          "hash": "9175805641100820183"
-        },
-        {
-          "file": "libs/Models/eslint.config.js",
-          "hash": "501722464097411023",
-          "deps": [
-            "npm:jsonc-eslint-parser"
-          ]
-        },
-        {
-          "file": "libs/Models/package.json",
-          "hash": "3733820518705452598"
-        },
-        {
-          "file": "libs/Models/project.json",
-          "hash": "921310025622681419"
-        },
-        {
-          "file": "libs/Models/src/index.ts",
-          "hash": "7413938336193190458"
-        },
-        {
-          "file": "libs/Models/src/lib/Board.ts",
-          "hash": "1525367332947299171"
-        },
-        {
-          "file": "libs/Models/src/lib/FoodApp/User.ts",
-          "hash": "17937189747988591286"
-        },
-        {
-          "file": "libs/Models/src/lib/Game.ts",
-          "hash": "2973077828680457742"
-        },
-        {
-          "file": "libs/Models/src/lib/Player.ts",
-          "hash": "5077405435622188559"
-        },
-        {
-          "file": "libs/Models/src/lib/Values.ts",
-          "hash": "18112293686309784416"
-        },
-        {
-          "file": "libs/Models/tsconfig.json",
-          "hash": "7128447134199889905"
-        },
-        {
-          "file": "libs/Models/tsconfig.lib.json",
-          "hash": "7568541289358088662"
-        },
-        {
-          "file": "libs/Models/tsconfig.spec.json",
-          "hash": "5947821632368113453"
-        },
-        {
-          "file": "libs/Models/vite.config.ts",
-          "hash": "10034037691852086792",
-          "deps": [
-            "npm:vite",
-            "npm:vite-plugin-dts",
-            "npm:@nx/vite"
-          ]
-        }
-      ],
-      "FoodApp": [
-        {
-          "file": "apps/FoodApp/eslint.config.js",
-          "hash": "18206053935892145363",
-          "deps": [
-            "npm:@nx/eslint-plugin"
-          ]
-        },
-        {
-          "file": "apps/FoodApp/index.html",
-          "hash": "6042570210975476749"
-        },
-        {
-          "file": "apps/FoodApp/postcss.config.js",
-          "hash": "1579725330904862112"
-        },
-        {
-          "file": "apps/FoodApp/project.json",
-          "hash": "14533924215958162872"
-        },
-        {
-          "file": "apps/FoodApp/public/favicon.ico",
-          "hash": "9303420814833116677"
-        },
-        {
-          "file": "apps/FoodApp/public/hero_login.jpg",
-          "hash": "15056298376311447402"
-        },
-        {
-          "file": "apps/FoodApp/src/app/app.module.scss",
-          "hash": "8887387885984320532"
-        },
-        {
-          "file": "apps/FoodApp/src/app/app.spec.tsx",
-          "hash": "6017188413329511773",
-          "deps": [
-            "npm:@testing-library/react"
-          ]
-        },
-        {
-          "file": "apps/FoodApp/src/app/app.tsx",
-          "hash": "12179105972924860566",
-          "deps": [
-            "Components"
-          ]
-        },
-        {
-          "file": "apps/FoodApp/src/app/nx-welcome.tsx",
-          "hash": "14708174282304233720"
-        },
-        {
-          "file": "apps/FoodApp/src/assets/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/FoodApp/src/main.tsx",
-          "hash": "14931366965645554927",
-          "deps": [
-            "npm:react",
-            "npm:react-dom"
-          ]
-        },
-        {
-          "file": "apps/FoodApp/src/styles.scss",
-          "hash": "14895145009585036269"
-        },
-        {
-          "file": "apps/FoodApp/tailwind.config.js",
-          "hash": "13768823415338172127",
-          "deps": [
-            "npm:autoprefixer"
-          ]
-        },
-        {
-          "file": "apps/FoodApp/tsconfig.app.json",
-          "hash": "3374933587361460334"
-        },
-        {
-          "file": "apps/FoodApp/tsconfig.json",
-          "hash": "11166545116916107487"
-        },
-        {
-          "file": "apps/FoodApp/tsconfig.spec.json",
-          "hash": "2374680567064402239"
-        },
-        {
-          "file": "apps/FoodApp/vite.config.ts",
-          "hash": "18093909494358424085",
-          "deps": [
-            "npm:vite",
-            "npm:@vitejs/plugin-react",
-            "npm:@nx/vite"
-          ]
-        }
-      ],
-      "products": [
-        {
-          "file": "libs/products/.babelrc",
-          "hash": "15003411175763814189"
-        },
-        {
-          "file": "libs/products/README.md",
-          "hash": "14221831436977802355"
-        },
-        {
-          "file": "libs/products/eslint.config.js",
-          "hash": "4309309861924117436",
-          "deps": [
-            "npm:@nx/eslint-plugin"
-          ]
-        },
-        {
-          "file": "libs/products/project.json",
-          "hash": "3347012891682097311"
-        },
-        {
-          "file": "libs/products/src/index.ts",
-          "hash": "7998023058392979972"
-        },
-        {
-          "file": "libs/products/src/lib/products.module.scss",
-          "hash": "9824504850739023139"
-        },
-        {
-          "file": "libs/products/src/lib/products.spec.tsx",
-          "hash": "13369830752428789910",
-          "deps": [
-            "npm:@testing-library/react"
-          ]
-        },
-        {
-          "file": "libs/products/src/lib/products.tsx",
-          "hash": "9783503457879824181"
-        },
-        {
-          "file": "libs/products/tsconfig.json",
-          "hash": "2717301636124270161"
-        },
-        {
-          "file": "libs/products/tsconfig.lib.json",
-          "hash": "5982162789104615864"
-        },
-        {
-          "file": "libs/products/tsconfig.spec.json",
-          "hash": "5947821632368113453"
-        },
-        {
-          "file": "libs/products/vite.config.ts",
-          "hash": "7530182452160970008",
-          "deps": [
-            "npm:vite",
-            "npm:@vitejs/plugin-react",
-            "npm:@nx/vite"
-          ]
-        }
-      ],
-      "FoodApp-e2e": [
-        {
-          "file": "apps/FoodApp-e2e/eslint.config.js",
-          "hash": "4703616457710285801",
-          "deps": [
-            "npm:eslint-plugin-playwright"
-          ]
-        },
-        {
-          "file": "apps/FoodApp-e2e/playwright.config.ts",
-          "hash": "8165698390149757173",
-          "deps": [
-            "npm:@playwright/test",
-            "npm:@nx/playwright",
-            "npm:@nx/devkit"
-          ]
-        },
-        {
-          "file": "apps/FoodApp-e2e/project.json",
-          "hash": "3701640112531748747"
-        },
-        {
-          "file": "apps/FoodApp-e2e/src/example.spec.ts",
-          "hash": "16019101014373124625",
-          "deps": [
-            "npm:@playwright/test"
-          ]
-        },
-        {
-          "file": "apps/FoodApp-e2e/tsconfig.json",
-          "hash": "13413400511057489941"
-        }
-      ],
-      "TicTacToe-e2e": [
-        {
-          "file": "apps/TicTacToe-e2e/eslint.config.js",
-          "hash": "13145502249528557504",
-          "deps": [
-            "npm:eslint-plugin-playwright"
-          ]
-        },
-        {
-          "file": "apps/TicTacToe-e2e/playwright.config.ts",
-          "hash": "11331271958822447590",
-          "deps": [
-            "npm:@playwright/test",
-            "npm:@nx/playwright",
-            "npm:@nx/devkit"
-          ]
-        },
-        {
-          "file": "apps/TicTacToe-e2e/project.json",
-          "hash": "17000926535406119685"
-        },
-        {
-          "file": "apps/TicTacToe-e2e/src/example.spec.ts",
-          "hash": "1909365745453809229",
-          "deps": [
-            "npm:@playwright/test"
-          ]
-        },
-        {
-          "file": "apps/TicTacToe-e2e/tsconfig.json",
-          "hash": "12614691677435311415"
         }
       ],
       "orders": [

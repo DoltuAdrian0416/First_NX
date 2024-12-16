@@ -12,6 +12,7 @@ namespace TodoApi.Models
         Task<Menu> GetMenuByRestaurantAsync(string relatedRestaurant);
         Task<IEnumerable<MenuItem>> GetMenuItemsByRestaurantAsync(string relatedRestaurant);
         Task<IEnumerable<object>> GetMenusWithItemCountAsync();
+        Task<bool> UpdateMenuNameAsync(string relatedRestaurant, MenuInputDto updateRequest);
     }
     public class MenuService : IMenuService
     {
@@ -26,6 +27,33 @@ namespace TodoApi.Models
 
         public Task<MenuItem> AddMenuItemAsync(MenuItem menuItem, string relatedRestaurant) =>
             _repository.AddMenuItemAsync(menuItem, relatedRestaurant);
+        
+          public async Task<bool> UpdateMenuNameAsync(string relatedRestaurant, MenuInputDto updateRequest)
+        {
+            var existingMenu = await _repository.GetMenuByRestaurantAsync(relatedRestaurant);
+            if (existingMenu == null)
+            {
+                return false;
+            }
+
+            if (!string.IsNullOrWhiteSpace(updateRequest.RelatedRestaurant))
+            {
+                existingMenu.RelatedRestaurant = updateRequest.RelatedRestaurant;
+            }
+
+            if (updateRequest.Image != null)
+            {
+                 using (var memoryStream = new MemoryStream())
+                {
+                    await updateRequest.Image.CopyToAsync(memoryStream);
+                    existingMenu.Image = memoryStream.ToArray();
+                }
+            }
+
+
+            await _repository.UpdateMenuAsync(existingMenu);
+            return true;
+        }
 
         public Task<bool> DeleteMenuAsync(int menuId) => _repository.DeleteMenuAsync(menuId);
 

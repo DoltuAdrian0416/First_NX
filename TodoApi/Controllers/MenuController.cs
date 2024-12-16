@@ -40,6 +40,18 @@ namespace TodoApi.Controllers
             return Ok(createdMenu);
         }
 
+       [HttpPut("updateMenu/{relatedRestaurant}")]
+        public async Task<IActionResult> UpdateMenu(string relatedRestaurant, [FromForm] MenuInputDto updatedMenu)
+        {
+            var result = await _menuService.UpdateMenuNameAsync(relatedRestaurant, updatedMenu);
+            if (!result)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
         [HttpPost("{relatedRestaurant}/items")]
         public async Task<IActionResult> AddMenuItem(string relatedRestaurant, [FromForm] MenuItemInputDto menuItemDto)
         {
@@ -69,6 +81,8 @@ namespace TodoApi.Controllers
 
             return Ok(createdMenuItem);
         }
+        
+
 
         [HttpDelete("{menuId}")]
 
@@ -120,5 +134,9 @@ namespace TodoApi.Controllers
             var menusWithItemCount = await _menuService.GetMenusWithItemCountAsync();
             return Ok(menusWithItemCount);
         }
+    }
+
+    internal class HtppPutAttribute : Attribute
+    {
     }
 }

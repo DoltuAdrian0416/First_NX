@@ -1,13 +1,4 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-} from '@mui/material';
+import { Grid2 as Grid, Button, Box } from '@mui/material';
 import Navbar from './Navbar';
 import UserDisplay from './UserDisplay';
 import curvedbg from '../assets/curvedbg.jpg';
@@ -15,24 +6,14 @@ import simplebg from '../assets/simpleBg.jpg';
 import { useAuth } from '../AuthProvider';
 import { useEffect, useState } from 'react';
 import { GetUserProfilePicture } from '../ApiRequest/GetUserProfilePicture';
+import { GetRestaurantList } from '../ApiRequest/GetRestaurantList';
+import { MenuList } from '@./Models';
+import { RestaurantList } from '../Dumb/RestaurantList';
 
 export function UserProfilePage() {
   const [profilePicture, setProfilePicture] = useState<string>();
+  const [restaurants, setRestaurants] = useState<MenuList[]>();
   const user = useAuth()?.user;
-  const [products, setProducts] = useState([
-    {
-      id: null,
-      title: '',
-      image: '',
-      imageType: '',
-      restaurantChain: '',
-      servings: {
-        number: null,
-        size: null,
-        unit: null,
-      },
-    },
-  ]);
   const UserProfileContainer = {
     display: 'flex',
     justifyContent: 'center',
@@ -63,6 +44,7 @@ export function UserProfilePage() {
 
   const mainContainer = {
     display: 'flex',
+    flexGrow: 1,
     height: '100%',
     padding: '30px',
     position: 'relative',
@@ -98,47 +80,6 @@ export function UserProfilePage() {
     return null;
   }
 
-  async function GetProducts() {
-    const apiKey = '27e3ba1dab574c4b9bc72a0a928782c7';
-    const endpoint = `https://api.spoonacular.com/food/menuItems/search?query=KFC&restaurant`;
-
-    try {
-      const response = await fetch(endpoint, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': apiKey,
-        },
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        const transformedProducts = data.menuItems.map((menuItem: any) => ({
-          id: menuItem.id,
-          title: menuItem.title,
-          image: menuItem.image,
-          imageType: menuItem.imageType,
-          restaurantChain: menuItem.restaurantChain,
-          servings: {
-            number: menuItem.servings.number,
-            size: menuItem.servings.size,
-            unit: menuItem.servings.unit,
-          },
-        }));
-        setProducts(transformedProducts);
-        console.log(products);
-      } else {
-        console.error(
-          'Failed to fetch data:',
-          response.status,
-          response.statusText
-        );
-      }
-    } catch (error) {
-      console.error('An error occurred while fetching data:', error);
-    }
-  }
-
   return (
     <>
       <Navbar user={{ ...user, profilePicture }} />
@@ -146,46 +87,29 @@ export function UserProfilePage() {
       {/* row */}
       <Box sx={mainContainer}>
         {/* row */}
-        <Box
-          width={'fit-content'}
-          height={'fit-content'}
-          sx={UserProfileContainer}
-        >
-          <UserDisplay user={user} />
-        </Box>
+        <Grid container spacing={0}>
+          <Grid sx={UserProfileContainer} height={'fit-content'}>
+            <UserDisplay user={user} />
+          </Grid>
 
-        <Box>
-          <Button
-            variant="outlined"
-            onClick={() => {
-              GetProducts();
-            }}
-          >
-            Fetch Data
-          </Button>
+          <Grid size={12}>
+            <Button
+              variant="outlined"
+              onClick={async () => {
+                setRestaurants(await GetRestaurantList());
+                console.log(restaurants);
+              }}
+            >
+              Fetch Data
+            </Button>
 
-          <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea>
-              <CardMedia component="img" height="50" />
-              <CardContent>
-                <Typography
-                  gutterBottom
-                  variant="h5"
-                  component="div"
-                ></Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button size="small" color="primary">
-                Share
-              </Button>
-            </CardActions>
-          </Card>
-        </Box>
+            {restaurants && restaurants.length > 1 && (
+              <Box sx={{ display: 'flex' }}>
+                <RestaurantList restaurants={restaurants} />
+              </Box>
+            )}
+          </Grid>
+        </Grid>
       </Box>
     </>
   );
