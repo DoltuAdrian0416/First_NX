@@ -7,19 +7,35 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using TodoApi.Extensions;
+using TodoApi;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSwaggerGenWithAuth();
+
+//GAME
 builder.Services.AddDbContext<GamesContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddDbContext<UserContext>(opt =>
-    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddScoped<IGameContext, GamesContext>();
 builder.Services.AddScoped<IGameRepository, GamesRepository>();
 builder.Services.AddScoped<IGameService, GameService>();
+
+//USER
+builder.Services.AddDbContext<UserContext>(opt =>
+    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddScoped<IUserContext, UserContext>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+
+//MENU
+builder.Services.AddDbContext<MenuContext>(opt =>
+    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IMenuContext, MenuContext>();
+builder.Services.AddScoped<IMenuRepository, MenuRepository>();
+builder.Services.AddScoped<IMenuService, MenuService>();
+
+
 builder.Services.AddSingleton<TokenProvider>();
 builder.Services.AddControllers();
 builder.Services.AddAuthorization();
@@ -35,13 +51,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 builder.Services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
-    {
-        builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
-    }));
+{
+    builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+}));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 
 var app = builder.Build();
 
@@ -54,9 +69,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseCors("ApiCorsPolicy");
 app.MapControllers();
-app.UseAuthentication();
-app.UseAuthorization();
 app.Run();

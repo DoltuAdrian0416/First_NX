@@ -1,4 +1,13 @@
-import { Box } from '@mui/material';
+import {
+  Box,
+  Button,
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+} from '@mui/material';
 import Navbar from './Navbar';
 import UserDisplay from './UserDisplay';
 import curvedbg from '../assets/curvedbg.jpg';
@@ -10,7 +19,20 @@ import { GetUserProfilePicture } from '../ApiRequest/GetUserProfilePicture';
 export function UserProfilePage() {
   const [profilePicture, setProfilePicture] = useState<string>();
   const user = useAuth()?.user;
-
+  const [products, setProducts] = useState([
+    {
+      id: null,
+      title: '',
+      image: '',
+      imageType: '',
+      restaurantChain: '',
+      servings: {
+        number: null,
+        size: null,
+        unit: null,
+      },
+    },
+  ]);
   const UserProfileContainer = {
     display: 'flex',
     justifyContent: 'center',
@@ -71,38 +93,51 @@ export function UserProfilePage() {
       setProfilePicture(res);
     });
   }, [user]);
+
   if (!user) {
     return null;
   }
 
-  async function testApi() {
-    const apiKey = '67cc0e8a-a6c7-42a5-b04a-0132b90c3a07';
-    const endpoint = `https://jooble.org/api/${apiKey}`;
-    const payload = {
-      keywords: 'Sales Manager, Administrator',
-      location: 'Kyiv',
-      radius: '80',
-      page: '1',
-      companysearch: 'false',
-    };
+  async function GetProducts() {
+    const apiKey = '27e3ba1dab574c4b9bc72a0a928782c7';
+    const endpoint = `https://api.spoonacular.com/food/menuItems/search?query=KFC&restaurant`;
+
     try {
       const response = await fetch(endpoint, {
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
+          'x-api-key': apiKey,
         },
-        body: JSON.stringify(payload),
       });
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data.jobs);
+        const transformedProducts = data.menuItems.map((menuItem: any) => ({
+          id: menuItem.id,
+          title: menuItem.title,
+          image: menuItem.image,
+          imageType: menuItem.imageType,
+          restaurantChain: menuItem.restaurantChain,
+          servings: {
+            number: menuItem.servings.number,
+            size: menuItem.servings.size,
+            unit: menuItem.servings.unit,
+          },
+        }));
+        setProducts(transformedProducts);
+        console.log(products);
+      } else {
+        console.error(
+          'Failed to fetch data:',
+          response.status,
+          response.statusText
+        );
       }
     } catch (error) {
       console.error('An error occurred while fetching data:', error);
     }
   }
-  testApi();
 
   return (
     <>
@@ -117,6 +152,39 @@ export function UserProfilePage() {
           sx={UserProfileContainer}
         >
           <UserDisplay user={user} />
+        </Box>
+
+        <Box>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              GetProducts();
+            }}
+          >
+            Fetch Data
+          </Button>
+
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea>
+              <CardMedia component="img" height="50" />
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                ></Typography>
+                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                  Lizards are a widespread group of squamate reptiles, with over
+                  6,000 species, ranging across all continents except Antarctica
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button size="small" color="primary">
+                Share
+              </Button>
+            </CardActions>
+          </Card>
         </Box>
       </Box>
     </>
