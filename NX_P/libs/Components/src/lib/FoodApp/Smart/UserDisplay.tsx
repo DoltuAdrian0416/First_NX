@@ -8,9 +8,9 @@ import {
   Typography,
 } from '@mui/material';
 import { useState } from 'react';
-import { UpdateUserProfilePicture } from '../ApiRequest/UpdateUserProfilePicture';
-import { UpdateUsername } from '../ApiRequest/UpdateUsername';
-import { VerifyUserModifications } from '../ApiRequest/VerifyUserModifications';
+import { updateUserProfilePicture } from '../ApiRequest/updateUserProfilePicture';
+import { updateUsername } from '../ApiRequest/updateUsername';
+import { verifyUserModifications } from '../ApiRequest/verifyUserModifications';
 import { useAuth } from '../AuthProvider';
 
 interface IUserDisplay {
@@ -32,14 +32,14 @@ export function UserDisplay(props: IUserDisplay) {
     width: 1,
   });
 
-  async function UpdateUsernamePFP(Email: string, img: File, username: string) {
-    const UpdateProfilePictureStatus = await UpdateUserProfilePicture(
+  async function updateUsernamePFP(Email: string, img: File, username: string) {
+    const UpdateProfilePictureStatus = await updateUserProfilePicture(
       Email,
       img
     );
-    const UpdateUserNameStatus = await UpdateUsername(Email, username);
-    if (UpdateProfilePictureStatus == 200 || UpdateUserNameStatus == 200) {
-      const User: User = await VerifyUserModifications(Email);
+    const updateUserNameStatus = await updateUsername(Email, username);
+    if (UpdateProfilePictureStatus == 200 || updateUserNameStatus == 200) {
+      const User: User = await verifyUserModifications(Email);
       const { id, email, username } = User;
       const UpdatedUser: User = { id, email, username };
       session?.setCredentials(session.token!, UpdatedUser);
@@ -91,7 +91,7 @@ export function UserDisplay(props: IUserDisplay) {
       <Button
         variant="contained"
         color="warning"
-        onClick={() => UpdateUsernamePFP(props.user.email, img!, username)}
+        onClick={() => updateUsernamePFP(props.user.email, img!, username)}
         startIcon={<ControlPoint />}
         sx={{ marginTop: '10px' }}
       >

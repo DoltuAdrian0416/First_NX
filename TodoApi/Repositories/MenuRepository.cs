@@ -43,7 +43,7 @@ namespace TodoApi.Models
             return menuItem;
         }
 
-         public async Task UpdateMenuAsync(Menu menu)
+        public async Task UpdateMenuAsync(Menu menu)
         {
             _context.Entry(menu).State = EntityState.Modified;
             await _context.SaveChangesAsync();
@@ -75,8 +75,9 @@ namespace TodoApi.Models
 
         public async Task<Menu> GetMenuByRestaurantAsync(string relatedRestaurant)
         {
-            return await _context.Menus.FirstAsync(m => m.RelatedRestaurant == relatedRestaurant);
-            ;
+            return await _context.Menus
+                .Include(m => m.MenuItems)
+                .FirstOrDefaultAsync(m => m.RelatedRestaurant == relatedRestaurant);
         }
 
         public async Task<IEnumerable<MenuItem>> GetMenuItemsByRestaurantAsync(string relatedRestaurant)
@@ -94,7 +95,8 @@ namespace TodoApi.Models
                 {
                     MenuName = m.RelatedRestaurant,
                     ItemCount = m.MenuItems.Count,
-                    ImageBlob = m.Image
+                    ImageBlob = m.Image,
+                    MenuDescription = m.Description
                 })
                 .ToListAsync();
         }

@@ -1,5 +1,7 @@
 export interface MenuList {
+  id:string;
   menuName: string;
-  username: number;
+  itemCount: number;
   imageBlob: string;
+  menuDescription :string
 }

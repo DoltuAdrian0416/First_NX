@@ -22,6 +22,10 @@ namespace TodoApi.Migrations.Menu
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<byte[]>("Image")
                         .IsRequired()
                         .HasColumnType("BLOB");

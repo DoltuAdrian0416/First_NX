@@ -1,4 +1,4 @@
-export async function GetUserProfilePicture(email: string) {
+export async function getUserProfilePicture(email: string) {
     
     const response = await fetch(`http://localhost:5158/api/users/user/profilePicture/${encodeURIComponent(email)}`);
 

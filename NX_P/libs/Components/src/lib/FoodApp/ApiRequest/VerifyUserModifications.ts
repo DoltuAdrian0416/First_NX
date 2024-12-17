@@ -1,4 +1,4 @@
-export async function VerifyUserModifications(email: string) {
+export async function verifyUserModifications(email: string) {
     try {
         const response = await fetch(`http://localhost:5158/api/users/user/${email}`);
         

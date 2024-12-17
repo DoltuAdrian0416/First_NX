@@ -1,4 +1,4 @@
-export async function UpdateUsername(email: string, username:string) {
+export async function updateUsername(email: string, username:string) {
     const formData = new FormData();
     formData.append('email', email);
     formData.append('username', username);

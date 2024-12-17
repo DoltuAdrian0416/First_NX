@@ -1,4 +1,4 @@
-export async function UpdateUserProfilePicture(email: string, img: File) {
+export async function updateUserProfilePicture(email: string, img: File) {
 const formData = new FormData();
 formData.append('email', email);
 formData.append('profilePicture', img);

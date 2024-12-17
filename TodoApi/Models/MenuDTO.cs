@@ -2,6 +2,7 @@ namespace TodoApi.Models
 {
     public class MenuInputDto
     {
+        public string Description { get; set; }
         public string RelatedRestaurant { get; set; }
         public IFormFile Image { get; set; }
     }

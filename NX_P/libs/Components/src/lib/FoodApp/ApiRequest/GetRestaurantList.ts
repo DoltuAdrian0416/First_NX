@@ -1,4 +1,4 @@
-export async function GetRestaurantList() {
+export async function getRestaurantList() {
   const response = await fetch(
     'http://localhost:5158/api/menu/with-item-count'
   );

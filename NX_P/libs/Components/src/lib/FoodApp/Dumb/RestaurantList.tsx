@@ -1,48 +1,94 @@
-import { MenuList } from '@./Models';
+import { Menu, MenuList } from '@./Models';
+import { SkipNextOutlined, SkipPreviousOutlined } from '@mui/icons-material';
 import {
-  Button,
   Card,
   CardActionArea,
-  CardActions,
   CardContent,
   CardMedia,
   Typography,
+  Grid2 as Grid,
 } from '@mui/material';
+import Carousel from 'react-material-ui-carousel';
 
 interface IRestaurantListProps {
-  restaurants: MenuList[];
+  menuList: MenuList[];
+  setMenuToDisplay: (menu: string) => void;
 }
 
-export function RestaurantList({ restaurants }: IRestaurantListProps) {
-  console.log(restaurants);
+export function RestaurantList({
+  menuList,
+  setMenuToDisplay,
+}: IRestaurantListProps) {
   return (
-    <>
-      {restaurants.map((restaurant) => (
-        <Card sx={{ maxWidth: 345 }}>
-          <CardActionArea>
+    <Carousel
+      sx={{ width: '500px', overflow: 'visible' }}
+      NextIcon={<SkipNextOutlined />}
+      PrevIcon={<SkipPreviousOutlined />}
+      fullHeightHover={false}
+      animation="fade"
+      navButtonsAlwaysVisible={false}
+      IndicatorIcon={false}
+      navButtonsProps={{
+        // Change the colors and radius of the actual buttons. THIS STYLES BOTH BUTTONS
+        style: {
+          backgroundColor: 'darkblue',
+          borderRadius: 15,
+        },
+      }}
+      navButtonsWrapperProps={{
+        // Move the buttons to the bottom. Unsetting top here to override default style.
+        style: {
+          top: '-20px',
+        },
+      }}
+      interval={5000}
+      duration={1500}
+    >
+      {menuList.map((menu, index) => (
+        <Card key={index} sx={{ maxHeight: '100', borderRadius: '20px' }}>
+          <CardActionArea
+            sx={{ display: 'flex', alignContent: 'flex-start' }}
+            onClick={() => {
+              setMenuToDisplay(menu.menuName);
+            }}
+          >
             <CardMedia
               component="img"
-              sx={{ width: '200px' }}
-              src={`data:image/jpeg;base64,${restaurant.imageBlob}`}
-              alt={restaurant.menuName}
+              sx={{ width: 151 }}
+              src={`data:image/jpeg;base64,${menu.imageBlob}`}
+              alt={menu.menuName}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                {restaurant.menuName}
+                {menu.menuName}
               </Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {/* description todo */}
+              <Typography
+                variant="body2"
+                sx={{
+                  color: 'text.secondary',
+                  maxWidth: 'fit-content',
+                  maxHeight: '77px',
+                  overflow: 'hidden',
+                  position: 'relative',
+                  '&:after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: '30px',
+                    background:
+                      'linear-gradient(to top, white, rgba(255, 255, 255, 0))',
+                  },
+                }}
+              >
+                {menu.menuDescription}
               </Typography>
             </CardContent>
           </CardActionArea>
-          <CardActions>
-            <Button size="small" color="primary">
-              Try
-            </Button>
-          </CardActions>
         </Card>
       ))}
-    </>
+    </Carousel>
   );
 }
 

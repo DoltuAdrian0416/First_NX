@@ -1,18 +1,21 @@
-import { Grid2 as Grid, Button, Box } from '@mui/material';
+import { Grid2 as Grid, Button, Box, Typography } from '@mui/material';
 import Navbar from './Navbar';
 import UserDisplay from './UserDisplay';
 import curvedbg from '../assets/curvedbg.jpg';
 import simplebg from '../assets/simpleBg.jpg';
 import { useAuth } from '../AuthProvider';
 import { useEffect, useState } from 'react';
-import { GetUserProfilePicture } from '../ApiRequest/GetUserProfilePicture';
-import { GetRestaurantList } from '../ApiRequest/GetRestaurantList';
-import { MenuList } from '@./Models';
+import { getUserProfilePicture } from '../ApiRequest/getUserProfilePicture';
+import { getRestaurantList } from '../ApiRequest/getRestaurantList';
+import { Menu, MenuItems, MenuList } from '@./Models';
 import { RestaurantList } from '../Dumb/RestaurantList';
+import { getFullMenu } from '../ApiRequest/getFullMenu';
 
 export function UserProfilePage() {
   const [profilePicture, setProfilePicture] = useState<string>();
-  const [restaurants, setRestaurants] = useState<MenuList[]>();
+  const [menuList, setMenuList] = useState<MenuList[]>(); // stock all menus / restaurants
+  const [selectedMenu, setSelectedMenu] = useState<Menu>(); // select a menu / restaurant
+  const [menuToDisplay, setMenuToDisplay] = useState<string>(''); //stock which menu will be fetched
   const user = useAuth()?.user;
   const UserProfileContainer = {
     display: 'flex',
@@ -71,10 +74,23 @@ export function UserProfilePage() {
       return;
     }
 
-    GetUserProfilePicture(user.email).then((res) => {
+    getUserProfilePicture(user.email).then((res) => {
       setProfilePicture(res);
     });
   }, [user]);
+
+  useEffect(() => {
+    getRestaurantList().then((response) => {
+      setMenuList(response);
+    });
+  }, []);
+
+  useEffect(() => {
+    getFullMenu(menuToDisplay).then((response) => {
+      setSelectedMenu(response);
+      console.log(response);
+    });
+  }, [menuToDisplay]);
 
   if (!user) {
     return null;
@@ -82,32 +98,42 @@ export function UserProfilePage() {
 
   return (
     <>
-      <Navbar user={{ ...user, profilePicture }} />
+      {/* <Navbar user={{ ...user, profilePicture }} /> */}
 
       {/* row */}
       <Box sx={mainContainer}>
         {/* row */}
-        <Grid container spacing={0}>
-          <Grid sx={UserProfileContainer} height={'fit-content'}>
+        <Grid container spacing={0} columnGap={10}>
+          <Grid size={'auto'} sx={UserProfileContainer} height={'fit-content'}>
             <UserDisplay user={user} />
           </Grid>
 
-          <Grid size={12}>
-            <Button
-              variant="outlined"
-              onClick={async () => {
-                setRestaurants(await GetRestaurantList());
-                console.log(restaurants);
-              }}
-            >
-              Fetch Data
-            </Button>
-
-            {restaurants && restaurants.length > 1 && (
+          <Grid size={'auto'}>
+            {menuList && menuList.length > 1 && (
               <Box sx={{ display: 'flex' }}>
-                <RestaurantList restaurants={restaurants} />
+                <RestaurantList
+                  setMenuToDisplay={setMenuToDisplay}
+                  menuList={menuList}
+                />
               </Box>
             )}
+          </Grid>
+
+          <Grid
+            size={12}
+            sx={{
+              bgcolor: '#bbdefb',
+              borderRadius: '15px',
+              boxShadow: 4,
+            }}
+          >
+            <Typography>
+              The current menu is : {selectedMenu?.restaurantName}
+              This menu features :
+              {selectedMenu?.menuItems.map((value: MenuItems, index) => (
+                <p key={index}>{value.name}</p> // TODO ----- CORRECT THE MAPPING WHEN FETCHING DATA FROM BE TO FE
+              ))}
+            </Typography>
           </Grid>
         </Grid>
       </Box>
