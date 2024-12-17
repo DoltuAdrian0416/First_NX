@@ -1,4 +1,13 @@
-import { Grid2 as Grid, Button, Box, Typography } from '@mui/material';
+import {
+  Grid2 as Grid,
+  Button,
+  Box,
+  Typography,
+  Card,
+  CardActionArea,
+  CardMedia,
+  CardContent,
+} from '@mui/material';
 import Navbar from './Navbar';
 import UserDisplay from './UserDisplay';
 import curvedbg from '../assets/curvedbg.jpg';
@@ -98,7 +107,7 @@ export function UserProfilePage() {
 
   return (
     <>
-      {/* <Navbar user={{ ...user, profilePicture }} /> */}
+      <Navbar user={{ ...user, profilePicture }} />
 
       {/* row */}
       <Box sx={mainContainer}>
@@ -119,6 +128,7 @@ export function UserProfilePage() {
             )}
           </Grid>
 
+          {/* menu items will be displayed here */}
           <Grid
             size={12}
             sx={{
@@ -130,10 +140,66 @@ export function UserProfilePage() {
             <Typography>
               The current menu is : {selectedMenu?.restaurantName}
               This menu features :
-              {selectedMenu?.menuItems.map((value: MenuItems, index) => (
-                <p key={index}>{value.name}</p> // TODO ----- CORRECT THE MAPPING WHEN FETCHING DATA FROM BE TO FE
-              ))}
             </Typography>
+
+            <Grid
+              container
+              spacing={0}
+              columnGap={5}
+              rowGap={5}
+              sx={{ display: 'flex', justifyContent: 'center', mt: 5 }}
+            >
+              <Grid container size={1}>
+                Sidenav
+              </Grid>
+              <Grid container size={10} columnGap={3} rowGap={3}>
+                {selectedMenu?.menuItems.map((value: MenuItems, index) => (
+                  <Grid size={2}>
+                    <Card
+                      key={index}
+                      sx={{
+                        maxHeight: 'fit-content',
+                        borderRadius: '20px',
+                        width: 'fit-content',
+                        minWidth: 250,
+                        minHeight: 200,
+                      }}
+                    >
+                      <CardActionArea
+                        sx={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          p: 1,
+                          width: 'fit-content',
+                        }}
+                      >
+                        <CardContent
+                          sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                          }}
+                        >
+                          <Typography gutterBottom variant="h5" component="div">
+                            {value.itemName}
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              color: 'text.secondary',
+                            }}
+                          >
+                            {value.description}
+                          </Typography>
+                          <Button variant="contained" sx={{ mt: 3 }}>
+                            Edit Product
+                          </Button>
+                        </CardContent>
+                      </CardActionArea>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Box>
