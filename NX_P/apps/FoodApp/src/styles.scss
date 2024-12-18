@@ -3,10 +3,28 @@
 @tailwind components;
 @tailwind utilities;
 
-#root {
-  height: 100vh;
-  width: 100vw;
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+body {
+  background-color: #fff; /* Ensure no transparency */
+  // overflow: hidden; /* Prevent scrollbars if required */
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 * {
   font-family: 'Montserrat', sans-serif !important ;
 }
