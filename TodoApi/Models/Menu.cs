@@ -5,7 +5,7 @@ namespace TodoApi.Models
 {
     public class Menu
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string RelatedRestaurant { get; set; }
 
         public string Description { get; set; }
@@ -15,7 +15,7 @@ namespace TodoApi.Models
 
     public class MenuItem
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Name { get; set; }
         public string Description { get; set; }
@@ -25,7 +25,7 @@ namespace TodoApi.Models
 
         [ForeignKey("Id")]
 
-        public int MenuId { get; set; }
+        public string MenuId { get; set; }
         [JsonIgnore]
         public virtual Menu Menu { get; set; }
     }

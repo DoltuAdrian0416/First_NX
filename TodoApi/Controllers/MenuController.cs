@@ -40,10 +40,21 @@ namespace TodoApi.Controllers
             return Ok(createdMenu);
         }
 
-       [HttpPut("updateMenu/{relatedRestaurant}")]
+        [HttpPut("updateMenu/{relatedRestaurant}")]
         public async Task<IActionResult> UpdateMenu(string relatedRestaurant, [FromForm] MenuInputDto updatedMenu)
         {
             var result = await _menuService.UpdateMenuNameAsync(relatedRestaurant, updatedMenu);
+            if (!result)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+        [HttpPut("updateMenu/{relatedRestaurant}/{menuItemId}")]
+        public async Task<IActionResult> UpdateMenuItem(string relatedRestaurant, string menuItemId, [FromForm] MenuItemInputDto updatedMenu)
+        {
+            var result = await _menuService.UpdateMenuItemAsync(relatedRestaurant, menuItemId, updatedMenu);
             if (!result)
             {
                 return NotFound();
@@ -81,12 +92,12 @@ namespace TodoApi.Controllers
 
             return Ok(createdMenuItem);
         }
-        
+
 
 
         [HttpDelete("{menuId}")]
 
-        public async Task<IActionResult> DeleteMenu(int menuId)
+        public async Task<IActionResult> DeleteMenu(string menuId)
         {
             var result = await _menuService.DeleteMenuAsync(menuId);
             if (!result)
@@ -98,7 +109,7 @@ namespace TodoApi.Controllers
         }
 
         [HttpDelete("items/{menuItemId}")]
-        public async Task<IActionResult> DeleteMenuItem(int menuItemId)
+        public async Task<IActionResult> DeleteMenuItem(string menuItemId)
         {
             var result = await _menuService.DeleteMenuItemAsync(menuItemId);
             if (!result)
@@ -136,7 +147,5 @@ namespace TodoApi.Controllers
         }
     }
 
-    internal class HtppPutAttribute : Attribute
-    {
-    }
+
 }

@@ -22,7 +22,6 @@ export function RestaurantList({
 }: IRestaurantListProps) {
   return (
     <Box>
-      {' '}
       <Carousel
         sx={{ width: '500px', overflow: 'visible' }}
         NextIcon={<SkipNextOutlined />}

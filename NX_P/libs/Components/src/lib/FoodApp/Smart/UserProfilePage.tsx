@@ -47,7 +47,7 @@ export function UserProfilePage() {
 
   return (
     <Box sx={{ height: '100%' }}>
-      <Box sx={{ border: '5px solid red' }}>
+      <Box>
         <Navbar user={{ ...user, profilePicture }} />
       </Box>
 
@@ -90,11 +90,23 @@ export function UserProfilePage() {
                 columns={20}
                 sx={{ display: 'flex', justifyContent: 'center', p: 5 }}
               >
-                <Grid container size={2}>
-                  Sidenav
+                <Grid size={2} sx={{ border: '5px solid red' }}>
+                  <Typography sx={{ width: '100%' }}>Sidenav</Typography>
                 </Grid>
-                <Grid container size={18} columnGap={2} rowGap={4} columns={20}>
-                  <MenuProducts menuItems={selectedMenu?.menuItems} />
+                <Grid
+                  container
+                  size={18}
+                  columnGap={0}
+                  rowGap={4}
+                  columns={12}
+                  alignItems={'center'}
+                  sx={{ border: '5px solid red' }}
+                >
+                  <MenuProducts
+                    setMenuToDisplay={setMenuToDisplay}
+                    restaurantName={selectedMenu.restaurantName}
+                    menuItems={selectedMenu?.menuItems}
+                  />
                 </Grid>
               </Grid>
             </Box>

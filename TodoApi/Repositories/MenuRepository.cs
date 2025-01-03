@@ -9,12 +9,15 @@ namespace TodoApi.Models
     {
         Task<Menu> CreateMenuAsync(Menu menu);
         Task<MenuItem> AddMenuItemAsync(MenuItem menuItem, string relatedRestaurant);
-        Task<bool> DeleteMenuAsync(int menuId);
-        Task<bool> DeleteMenuItemAsync(int menuItemId);
+        Task<bool> DeleteMenuAsync(string menuId);
+        Task<bool> DeleteMenuItemAsync(string menuItemId);
         Task<Menu> GetMenuByRestaurantAsync(string relatedRestaurant);
+
         Task<IEnumerable<MenuItem>> GetMenuItemsByRestaurantAsync(string relatedRestaurant);
         Task<IEnumerable<object>> GetMenusWithItemCountAsync();
         Task UpdateMenuAsync(Menu menu);
+        Task UpdateMenuItemAsync(MenuItem menuItem);
+        Task<MenuItem> GetMenuItemAsync(string relatedRestaurant, string menuItemId);
     }
     public class MenuRepository : IMenuRepository
     {
@@ -48,8 +51,13 @@ namespace TodoApi.Models
             _context.Entry(menu).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
+        public async Task UpdateMenuItemAsync(MenuItem menuItem)
+        {
+            _context.Entry(menuItem).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
 
-        public async Task<bool> DeleteMenuAsync(int menuId)
+        public async Task<bool> DeleteMenuAsync(string menuId)
         {
             var menu = await _context.Menus.Include(m => m.MenuItems).FirstOrDefaultAsync(m => m.Id == menuId);
             if (menu != null)
@@ -61,7 +69,7 @@ namespace TodoApi.Models
             return false;
         }
 
-        public async Task<bool> DeleteMenuItemAsync(int menuItemId)
+        public async Task<bool> DeleteMenuItemAsync(string menuItemId)
         {
             var menuItem = await _context.MenuItems.FindAsync(menuItemId);
             if (menuItem != null)
@@ -86,6 +94,14 @@ namespace TodoApi.Models
                                             .FirstOrDefaultAsync(m => m.RelatedRestaurant == relatedRestaurant);
 
             return menu?.MenuItems ?? new List<MenuItem>();
+        }
+        public async Task<MenuItem> GetMenuItemAsync(string relatedRestaurant, string menuItemId)
+        {
+            var menu = await _context.Menus.Include(m => m.MenuItems)
+                                            .FirstOrDefaultAsync(m => m.RelatedRestaurant == relatedRestaurant);
+
+            var menuItem = menu.MenuItems.ElementAt(int.Parse(menuItemId) - 1);
+            return menuItem;
         }
 
         public async Task<IEnumerable<object>> GetMenusWithItemCountAsync()
