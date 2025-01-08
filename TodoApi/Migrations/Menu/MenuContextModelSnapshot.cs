@@ -18,9 +18,8 @@ namespace TodoApi.Migrations.Menu
 
             modelBuilder.Entity("TodoApi.Models.Menu", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -41,16 +40,20 @@ namespace TodoApi.Migrations.Menu
 
             modelBuilder.Entity("TodoApi.Models.MenuItem", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("MenuId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("MenuId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()

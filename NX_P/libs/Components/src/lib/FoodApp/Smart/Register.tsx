@@ -1,10 +1,7 @@
 import { AccountCircle, PasswordRounded } from '@mui/icons-material';
 import {
-  Alert,
   Box,
   Button,
-  Collapse,
-  FormControl,
   InputAdornment,
   TextField,
   Typography,
@@ -35,7 +32,7 @@ export function Register() {
     });
 
     if (data.ok) {
-      const result = await data.json();
+      const result = await data.json(); // FIX REGISTER
     }
   }
 
@@ -156,7 +153,7 @@ export function Register() {
               setErrorText(dynamicText[0]);
               return;
             }
-            if (password != confirmPassword) {
+            if (password !== confirmPassword) {
               setErrorText(dynamicText[1]);
               return;
             }

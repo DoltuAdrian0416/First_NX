@@ -38,10 +38,11 @@ export function UserDisplay(props: IUserDisplay) {
       img
     );
     const updateUserNameStatus = await updateUsername(Email, username);
-    if (UpdateProfilePictureStatus == 200 || updateUserNameStatus == 200) {
+    if (UpdateProfilePictureStatus === 200 || updateUserNameStatus === 200) {
       const User: User = await verifyUserModifications(Email);
       const { id, email, username } = User;
       const UpdatedUser: User = { id, email, username };
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       session?.setCredentials(session.token!, UpdatedUser);
     }
   }
@@ -91,6 +92,7 @@ export function UserDisplay(props: IUserDisplay) {
       <Button
         variant="contained"
         color="warning"
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         onClick={() => updateUsernamePFP(props.user.email, img!, username)}
         startIcon={<ControlPoint />}
         sx={{ marginTop: '10px' }}

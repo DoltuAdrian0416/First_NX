@@ -27,7 +27,7 @@ export function Auth() {
   const auth = useAuth();
   useEffect(() => {
     auth?.removeCredentials();
-  }, [location]);
+  }, [auth, location]);
 
   if (!auth?.token) {
     return (

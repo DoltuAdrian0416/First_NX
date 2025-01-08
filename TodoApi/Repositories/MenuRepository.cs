@@ -12,12 +12,13 @@ namespace TodoApi.Models
         Task<bool> DeleteMenuAsync(string menuId);
         Task<bool> DeleteMenuItemAsync(string menuItemId);
         Task<Menu> GetMenuByRestaurantAsync(string relatedRestaurant);
-
         Task<IEnumerable<MenuItem>> GetMenuItemsByRestaurantAsync(string relatedRestaurant);
         Task<IEnumerable<object>> GetMenusWithItemCountAsync();
         Task UpdateMenuAsync(Menu menu);
         Task UpdateMenuItemAsync(MenuItem menuItem);
         Task<MenuItem> GetMenuItemAsync(string relatedRestaurant, string menuItemId);
+        Task<List<string>> GetMenuCategoriesAsync(string relatedRestaurant);
+        Task<IEnumerable<MenuItem>> GetMenuItemsByCategoryAsync(string relatedRestaurant, string category);
     }
     public class MenuRepository : IMenuRepository
     {
@@ -117,7 +118,18 @@ namespace TodoApi.Models
                 .ToListAsync();
         }
 
-
+        public async Task<List<string>> GetMenuCategoriesAsync(string relatedRestaurant)
+        {
+            var menu = await _context.Menus.Include(m => m.MenuItems)
+                                            .FirstOrDefaultAsync(m => m.RelatedRestaurant == relatedRestaurant);
+            return menu.MenuItems.Select(m => m.Category).Distinct().ToList();
+        }
+        public async Task<IEnumerable<MenuItem>> GetMenuItemsByCategoryAsync(string relatedRestaurant, string category)
+        {
+            var menu = await _context.Menus.Include(m => m.MenuItems)
+                                            .FirstOrDefaultAsync(m => m.RelatedRestaurant == relatedRestaurant);
+            return menu.MenuItems.Where(m => m.Category == category).ToList();
+        }
     }
 
 

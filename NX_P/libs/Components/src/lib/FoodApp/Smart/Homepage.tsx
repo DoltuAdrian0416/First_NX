@@ -21,7 +21,7 @@ export function Homepage() {
         variant="contained"
         sx={{ margin: '2px' }}
         onClick={() => {
-          auth?.removeToken();
+          auth?.removeCredentials();
         }}
       >
         Log out

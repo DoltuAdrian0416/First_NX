@@ -14,6 +14,10 @@ namespace TodoApi.Models
         Task<IEnumerable<object>> GetMenusWithItemCountAsync();
         Task<bool> UpdateMenuNameAsync(string relatedRestaurant, MenuInputDto updateRequest);
         Task<bool> UpdateMenuItemAsync(string relatedRestaurant, string menuItemId, MenuItemInputDto updateRequest);
+        Task<List<string>> GetMenuCategoriesAsync(string relatedRestaurant);
+        Task<IEnumerable<MenuItem>> GetMenuItemsByCategoryAsync(string relatedRestaurant, string category);
+
+
     }
     public class MenuService : IMenuService
     {
@@ -94,8 +98,23 @@ namespace TodoApi.Models
             return menuItems ?? new List<MenuItem>();
         }
 
-        public Task<IEnumerable<object>> GetMenusWithItemCountAsync() =>
-            _repository.GetMenusWithItemCountAsync();
+        public Task<IEnumerable<object>> GetMenusWithItemCountAsync()
+        {
+            return _repository.GetMenusWithItemCountAsync();
+        }
+
+        public Task<List<string>> GetMenuCategoriesAsync(string relatedRestaurant)
+        {
+
+            return _repository.GetMenuCategoriesAsync(relatedRestaurant);
+        }
+
+        public Task<IEnumerable<MenuItem>> GetMenuItemsByCategoryAsync(string relatedRestaurant, string category)
+        {
+
+
+            return _repository.GetMenuItemsByCategoryAsync(relatedRestaurant, category);
+        }
     }
 
 

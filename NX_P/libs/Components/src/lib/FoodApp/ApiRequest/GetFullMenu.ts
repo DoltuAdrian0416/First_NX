@@ -12,6 +12,7 @@ export async function getFullMenu(menu: string) {
       menuItems: backendMenu.menuItems.map((item: any) => ({
         id: item.id,
         itemName: item.name,
+        category: item.category,
         description: item.description,
         price: item.price,
         productImage: item.productImage.toString('base64'), // Convert byte array to base64 string if needed

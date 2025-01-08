@@ -1,9 +1,7 @@
 import { AccountCircle, PasswordRounded } from '@mui/icons-material';
 import {
-  Alert,
   Box,
   Button,
-  Collapse,
   InputAdornment,
   TextField,
   Typography,
@@ -36,7 +34,7 @@ export function Login() {
       }),
     });
 
-    if (data.ok && data.status == 200) {
+    if (data.ok && data.status === 200) {
       const token = await data.text();
       return token;
     }

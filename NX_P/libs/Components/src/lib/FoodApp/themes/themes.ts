@@ -38,7 +38,7 @@ export const mainContainer = {
   height: '100%',
   padding: '30px',
   position: 'relative',
-  bgcolor: 'rgb(255, 255, 255, 0.125)',
+  bgColor: 'rgb(255, 255, 255, 0.125)',
 
   '&::before': {
     content: '""',
@@ -54,3 +54,16 @@ export const mainContainer = {
     zIndex: -1,
   },
 };
+
+export const category = {
+  display:'flex',
+  justifyContent:'flex-start',
+  alignItems:'center',
+  p:"7px",
+  m:2,
+  borderRadius:"10px",
+  border:'none',
+  transition:'.3s ease-in-out',
+  '&:hover':{background:'yellow',},
+
+}

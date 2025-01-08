@@ -4,5 +4,6 @@ export interface MenuItems {
   price: string;
   description: string;
   productImage: string;
+  category : string;
   menuId: string;
 }

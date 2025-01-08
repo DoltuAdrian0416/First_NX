@@ -145,6 +145,25 @@ namespace TodoApi.Controllers
             var menusWithItemCount = await _menuService.GetMenusWithItemCountAsync();
             return Ok(menusWithItemCount);
         }
+
+        [HttpGet("{relatedRestaurant}/categories")]
+
+        public async Task<IActionResult> GetMenuCategoriesAsync(string relatedRestaurant)
+        {
+
+            var menuCategories = await _menuService.GetMenuCategoriesAsync(relatedRestaurant);
+
+            return Ok(menuCategories);
+        }
+
+        [HttpGet("{relatedRestaurant}/{category}/items")]
+        public async Task<IActionResult> GetMenuItemsByCategoryAsync(string relatedRestaurant, string category)
+        {
+
+            var menuCategoryItems = await _menuService.GetMenuItemsByCategoryAsync(relatedRestaurant, category);
+
+            return Ok(menuCategoryItems);
+        }
     }
 
 

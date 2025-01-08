@@ -6010,6 +6010,24 @@
         "hash": "sha512-+PmQX0PiAYPMeVYe237LJAYvOMYW1j2rH5YROyS3b4CTVJum34HfRvKvAzozHAQG0TnHNdUfY9nCeUyRAs//cw=="
       }
     },
+    "npm:@tabler/icons": {
+      "type": "npm",
+      "name": "npm:@tabler/icons",
+      "data": {
+        "version": "3.28.1",
+        "packageName": "@tabler/icons",
+        "hash": "sha512-h7nqKEvFooLtFxhMOC1/2eiV+KRXhBUuDUUJrJlt6Ft6tuMw2eU/9GLQgrTk41DNmIEzp/LI83K9J9UUU8YBYQ=="
+      }
+    },
+    "npm:@tabler/icons-react": {
+      "type": "npm",
+      "name": "npm:@tabler/icons-react",
+      "data": {
+        "version": "3.28.1",
+        "packageName": "@tabler/icons-react",
+        "hash": "sha512-KNBpA2kbxr3/2YK5swt7b/kd/xpDP1FHYZCxDFIw54tX8slELRFEf95VMxsccQHZeIcUbdoojmUUuYSbt/sM5Q=="
+      }
+    },
     "npm:@testing-library/dom": {
       "type": "npm",
       "name": "npm:@testing-library/dom",
@@ -15847,6 +15865,11 @@
       },
       {
         "source": "Components",
+        "target": "npm:@tabler/icons-react",
+        "type": "static"
+      },
+      {
+        "source": "Components",
         "target": "npm:@testing-library/react",
         "type": "static"
       },
@@ -22388,6 +22411,18 @@
       {
         "source": "npm:@szmarczak/http-timer",
         "target": "npm:defer-to-connect",
+        "type": "static"
+      }
+    ],
+    "npm:@tabler/icons-react": [
+      {
+        "source": "npm:@tabler/icons-react",
+        "target": "npm:react",
+        "type": "static"
+      },
+      {
+        "source": "npm:@tabler/icons-react",
+        "target": "npm:@tabler/icons",
         "type": "static"
       }
     ],
