@@ -46,6 +46,7 @@ namespace TodoApi.Models
                 existingMenu.RelatedRestaurant = updateRequest.RelatedRestaurant;
             }
 
+
             if (updateRequest.Image != null)
             {
                 using (var memoryStream = new MemoryStream())
@@ -70,6 +71,14 @@ namespace TodoApi.Models
             if (!string.IsNullOrWhiteSpace(updateRequest.Name))
             {
                 existingMenuItem.Name = updateRequest.Name;
+            }
+            if (!string.IsNullOrWhiteSpace(updateRequest.Category))
+            {
+                existingMenuItem.Category = updateRequest.Category;
+            }
+            if (!string.IsNullOrWhiteSpace(updateRequest.Description))
+            {
+                existingMenuItem.Description = updateRequest.Description;
             }
 
             if (updateRequest.ProductImage != null)

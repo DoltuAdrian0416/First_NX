@@ -7,7 +7,6 @@ import {
   Typography,
 } from '@mui/material';
 import EditProductPopup from './EditProductPopup';
-// import EditProductPopup from './EditProductPopup';
 interface IMenuProductsProps {
   selectedCategory: string;
   menuItems: MenuItems[];
@@ -17,7 +16,11 @@ interface IMenuProductsProps {
 
 export function MenuProducts(props: IMenuProductsProps) {
   return props.menuItems
-    .filter((item) => item.category === props.selectedCategory)
+    .filter(
+      (item) =>
+        item.category === props.selectedCategory ||
+        props.selectedCategory === 'all'
+    )
     .map((value: MenuItems, index) => (
       <Grid key={index} size={4} container justifyContent={'center'}>
         <Card
@@ -67,7 +70,7 @@ export function MenuProducts(props: IMenuProductsProps) {
               setMenuToDisplay={props.setMenuToDisplay}
               restaurantName={props.restaurantName}
               value={value}
-            />{' '}
+            />
             implement the admin only feature
           </CardContent>
         </Card>

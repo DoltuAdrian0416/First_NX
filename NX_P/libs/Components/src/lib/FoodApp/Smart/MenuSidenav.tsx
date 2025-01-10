@@ -1,4 +1,4 @@
-import { Paper, Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import {
   IconPig,
   IconBurger,
@@ -10,6 +10,7 @@ import { category as categoryStyle } from '../themes/themes';
 
 interface IUserSidenav {
   categories: string[];
+  setSelectedCategory: (category: string) => void;
 }
 
 enum Icons {
@@ -35,12 +36,12 @@ export function MenuSidenav({ categories }: IUserSidenav) {
     const IconComponent = iconMap[categoryName as Icons]; // Type assertion to ensure categoryName is treated as Icons enum
 
     return (
-      <Paper key={index} sx={categoryStyle}>
+      <Button variant="contained" key={index} sx={categoryStyle}>
         {IconComponent}
         <Typography sx={{ ml: '10px' }} variant={'body2'}>
           {categoryName}
         </Typography>
-      </Paper>
+      </Button>
     );
   });
 }

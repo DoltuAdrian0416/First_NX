@@ -1,5 +1,6 @@
 import { MenuItems } from '@./Models';
 import {
+  Article,
   Description,
   FileCopy,
   Label,
@@ -25,7 +26,6 @@ interface IEditProductPopup {
 
 function base64ToFile(base64String: string, filename: string): File {
   const arr = base64String.split(',');
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const mime = arr[0].match(/:(.*?);/)![1];
   const bstr = atob(arr[1]);
   let n = bstr.length;
@@ -39,6 +39,7 @@ function base64ToFile(base64String: string, filename: string): File {
 export function EditProductPopup(props: IEditProductPopup) {
   const [productImage, setProductImage] = useState<File | null>(null);
   const [productName, setProductName] = useState(props.value.itemName);
+  const [category, setCategory] = useState(props.value.category);
   const [productDescription, setProductDescription] = useState(
     props.value.description
   );
@@ -51,6 +52,7 @@ export function EditProductPopup(props: IEditProductPopup) {
         'productImage.jpg'
       );
       setProductImage(file);
+      console.log('Product image set from props');
     }
   }, [props.value.productImage]);
 
@@ -67,17 +69,24 @@ export function EditProductPopup(props: IEditProductPopup) {
   });
 
   const handleSubmit = async () => {
-    if (productImage) {
+    console.log('Submit clicked');
+    if (productImage != null) {
+      console.log('Product image is set');
       const response = await updateMenuItem(
         props.restaurantName,
         props.value.id,
         productName,
+        category,
         productDescription,
         productPrice,
         productImage
       );
-
-      props.setMenuToDisplay(props.restaurantName);
+      if (response === 204) {
+        console.log('Update successful');
+        props.setMenuToDisplay(props.restaurantName);
+      }
+    } else {
+      console.log('No product image');
     }
   };
 
@@ -126,7 +135,7 @@ export function EditProductPopup(props: IEditProductPopup) {
         <TextField
           variant="filled"
           type="item"
-          label="Item Price"
+          label="Category"
           placeholder="Item Price"
           value={productPrice}
           onChange={(e) => setProductPrice(e.target.value)}
@@ -136,6 +145,26 @@ export function EditProductPopup(props: IEditProductPopup) {
               startAdornment: (
                 <InputAdornment position="start">
                   <MonetizationOn />
+                </InputAdornment>
+              ),
+            },
+          }}
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          variant="filled"
+          type="item"
+          label="Item Category"
+          placeholder="Item Category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          color="primary"
+          slotProps={{
+            input: {
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Article />
                 </InputAdornment>
               ),
             },
@@ -186,6 +215,7 @@ export function EditProductPopup(props: IEditProductPopup) {
             onChange={(e) => {
               if (e.target.files && e.target.files.length > 0) {
                 setProductImage(e.target.files[0]);
+                console.log('Product image updated from file input');
               }
             }}
           />

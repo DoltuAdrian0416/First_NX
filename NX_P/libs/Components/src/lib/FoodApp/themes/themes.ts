@@ -56,6 +56,7 @@ export const mainContainer = {
 };
 
 export const category = {
+  width:'90%',
   display:'flex',
   justifyContent:'flex-start',
   alignItems:'center',
@@ -64,6 +65,14 @@ export const category = {
   borderRadius:"10px",
   border:'none',
   transition:'.3s ease-in-out',
-  '&:hover':{background:'yellow',},
+  '&:hover':{background:'white', color:'#2a2a2a'},
 
+}
+export const FlexColumn ={
+  display : 'flex',
+  flexDirection : 'column',
+}
+export const FlexRow ={
+  display : 'flex',
+  flexDirection : 'row',
 }

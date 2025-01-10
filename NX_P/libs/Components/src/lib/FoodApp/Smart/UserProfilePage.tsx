@@ -9,7 +9,12 @@ import { Menu, MenuList } from '@./Models';
 import { RestaurantList } from '../Dumb/RestaurantList';
 import { getFullMenu } from '../ApiRequest/getFullMenu';
 import MenuProducts from '../Dumb/MenuProducts';
-import { mainContainer, UserProfileContainer } from '../themes/themes';
+import {
+  FlexColumn,
+  FlexRow,
+  mainContainer,
+  UserProfileContainer,
+} from '../themes/themes';
 import { getMenuCategories } from '../ApiRequest/getMenuCategories';
 import MenuSidenav from './MenuSidenav';
 
@@ -19,6 +24,7 @@ export function UserProfilePage() {
   const [selectedMenu, setSelectedMenu] = useState<Menu>(); // select a menu / restaurant
   const [menuToDisplay, setMenuToDisplay] = useState<string>(''); //stock which menu will be fetched
   const [categories, setCategories] = useState<string[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState('all');
   const user = useAuth()?.user;
 
   useEffect(() => {
@@ -45,7 +51,7 @@ export function UserProfilePage() {
 
     getMenuCategories(menuToDisplay).then((response) => {
       setCategories(response);
-      console.log(response);
+      // console.log(response);
     });
   }, [menuToDisplay]);
 
@@ -94,13 +100,19 @@ export function UserProfilePage() {
                 padding: '0px',
               }}
             >
-              <Grid
-                container
-                columns={20}
-                sx={{ display: 'flex', justifyContent: 'center', p: 0 }}
-              >
-                <Grid size={2} sx={{ border: '5px solid red' }}>
-                  <MenuSidenav categories={categories} />
+              <Grid container columns={20} sx={{ ...FlexRow }}>
+                <Grid
+                  size={2}
+                  sx={{
+                    ...FlexColumn,
+
+                    height: 'fit-content',
+                  }}
+                >
+                  <MenuSidenav
+                    categories={categories}
+                    setSelectedCategory={setSelectedCategory}
+                  />
                 </Grid>
                 <Grid
                   container
@@ -112,7 +124,7 @@ export function UserProfilePage() {
                   sx={{ border: '5px solid red', p: 3 }}
                 >
                   <MenuProducts
-                    selectedCategory="Desserts"
+                    selectedCategory={selectedCategory}
                     setMenuToDisplay={setMenuToDisplay}
                     restaurantName={selectedMenu.restaurantName}
                     menuItems={selectedMenu?.menuItems}
