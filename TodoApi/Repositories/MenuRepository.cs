@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,7 @@ namespace TodoApi.Models
         Task<MenuItem> GetMenuItemAsync(string relatedRestaurant, string menuItemId);
         Task<List<string>> GetMenuCategoriesAsync(string relatedRestaurant);
         Task<IEnumerable<MenuItem>> GetMenuItemsByCategoryAsync(string relatedRestaurant, string category);
+        Task<bool> UpdateImagesFromDb();
     }
     public class MenuRepository : IMenuRepository
     {
@@ -130,6 +132,28 @@ namespace TodoApi.Models
                                             .FirstOrDefaultAsync(m => m.RelatedRestaurant == relatedRestaurant);
             return menu.MenuItems.Where(m => m.Category == category).ToList();
         }
+        public async Task<bool> UpdateImagesFromDb()
+        {
+            DirectoryInfo di = new DirectoryInfo(@"C:\Users\adoltu\Downloads\archive\Fast Food Classification V2\Train\Pizza");
+
+            FileInfo[] Images = di.GetFiles("*.jpeg");
+
+            for (int i = 0; i < _context.MenuItems.Count(); i++)
+            {
+                var existingMenuItem = _context.MenuItems.ElementAt(i);
+                using (FileStream fs = Images[i].OpenRead())
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await fs.CopyToAsync(memoryStream);
+                        existingMenuItem.ProductImage = memoryStream.ToArray();
+                    }
+                }
+            }
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
     }
 
 

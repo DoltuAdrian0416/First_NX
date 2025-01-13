@@ -44,6 +44,13 @@ export function UserProfilePage() {
   }, []);
 
   useEffect(() => {
+    fetchMenuToDisplay();
+  }, [menuToDisplay]);
+
+  const fetchMenuToDisplay = () => {
+    if (menuToDisplay === '') {
+      return;
+    }
     getFullMenu(menuToDisplay).then((response) => {
       setSelectedMenu(response);
       console.log(response);
@@ -53,8 +60,7 @@ export function UserProfilePage() {
       setCategories(response);
       // console.log(response);
     });
-  }, [menuToDisplay]);
-
+  };
   if (!user) {
     return <h1>Error while loading the page</h1>;
   }
@@ -128,6 +134,8 @@ export function UserProfilePage() {
                     setMenuToDisplay={setMenuToDisplay}
                     restaurantName={selectedMenu.restaurantName}
                     menuItems={selectedMenu?.menuItems}
+                    setSelectedMenu={setSelectedMenu}
+                    selectedMenu={selectedMenu}
                   />
                 </Grid>
               </Grid>

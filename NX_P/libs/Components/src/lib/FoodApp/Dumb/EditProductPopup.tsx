@@ -1,4 +1,4 @@
-import { MenuItems } from '@./Models';
+import { Menu, MenuItems } from '@./Models';
 import {
   Article,
   Description,
@@ -21,7 +21,9 @@ import { updateMenuItem } from '../ApiRequest/updateMenuItem';
 interface IEditProductPopup {
   value: MenuItems;
   restaurantName: string;
+  selectedMenu: Menu;
   setMenuToDisplay: (MenuToDisplay: string) => void;
+  setSelectedMenu: (selectedMenu: Menu) => void;
 }
 
 function base64ToFile(base64String: string, filename: string): File {
@@ -81,9 +83,20 @@ export function EditProductPopup(props: IEditProductPopup) {
         productPrice,
         productImage
       );
-      if (response === 204) {
-        console.log('Update successful');
-        props.setMenuToDisplay(props.restaurantName);
+      if (response.status === 200) {
+        const updatedItem: MenuItems = await response.json();
+        const oldItemIndex = props.selectedMenu.menuItems.findIndex(
+          (item) => item.id === updatedItem.id
+        );
+        const updatedMenuItems = [...props.selectedMenu.menuItems];
+        updatedMenuItems[oldItemIndex] = updatedItem;
+        const updatedMenu = {
+          ...props.selectedMenu,
+          menuItems: updatedMenuItems,
+        };
+
+        props.setSelectedMenu(updatedMenu);
+        console.log(updatedMenu);
       }
     } else {
       console.log('No product image');

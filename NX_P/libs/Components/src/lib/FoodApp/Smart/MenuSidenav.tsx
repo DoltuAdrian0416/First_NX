@@ -31,12 +31,20 @@ const iconMap = {
   [Icons.Burgers]: <IconBurger size={25} />,
 };
 
-export function MenuSidenav({ categories }: IUserSidenav) {
+export function MenuSidenav({ categories, setSelectedCategory }: IUserSidenav) {
   return categories.map((categoryName, index) => {
     const IconComponent = iconMap[categoryName as Icons]; // Type assertion to ensure categoryName is treated as Icons enum
 
+    const changeCategory = () => {
+      setSelectedCategory(categoryName);
+    };
     return (
-      <Button variant="contained" key={index} sx={categoryStyle}>
+      <Button
+        variant="contained"
+        key={index}
+        sx={categoryStyle}
+        onClick={changeCategory}
+      >
         {IconComponent}
         <Typography sx={{ ml: '10px' }} variant={'body2'}>
           {categoryName}

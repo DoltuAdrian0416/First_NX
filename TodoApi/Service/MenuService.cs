@@ -13,10 +13,10 @@ namespace TodoApi.Models
         Task<IEnumerable<MenuItem>> GetMenuItemsByRestaurantAsync(string relatedRestaurant);
         Task<IEnumerable<object>> GetMenusWithItemCountAsync();
         Task<bool> UpdateMenuNameAsync(string relatedRestaurant, MenuInputDto updateRequest);
-        Task<bool> UpdateMenuItemAsync(string relatedRestaurant, string menuItemId, MenuItemInputDto updateRequest);
+        Task<MenuItem> UpdateMenuItemAsync(string relatedRestaurant, string menuItemId, MenuItemInputDto updateRequest);
         Task<List<string>> GetMenuCategoriesAsync(string relatedRestaurant);
         Task<IEnumerable<MenuItem>> GetMenuItemsByCategoryAsync(string relatedRestaurant, string category);
-
+        Task<bool> UpdateImagesFromDb();
 
     }
     public class MenuService : IMenuService
@@ -60,12 +60,12 @@ namespace TodoApi.Models
             await _repository.UpdateMenuAsync(existingMenu);
             return true;
         }
-        public async Task<bool> UpdateMenuItemAsync(string relatedRestaurant, string menuItemId, MenuItemInputDto updateRequest)
+        public async Task<MenuItem> UpdateMenuItemAsync(string relatedRestaurant, string menuItemId, MenuItemInputDto updateRequest)
         {
             var existingMenuItem = await _repository.GetMenuItemAsync(relatedRestaurant, menuItemId);
             if (existingMenuItem == null)
             {
-                return false;
+                return null;
             }
 
             if (!string.IsNullOrWhiteSpace(updateRequest.Name))
@@ -92,7 +92,7 @@ namespace TodoApi.Models
 
 
             await _repository.UpdateMenuItemAsync(existingMenuItem);
-            return true;
+            return existingMenuItem;
         }
         public Task<bool> DeleteMenuAsync(string menuId) => _repository.DeleteMenuAsync(menuId);
 
@@ -123,6 +123,12 @@ namespace TodoApi.Models
 
 
             return _repository.GetMenuItemsByCategoryAsync(relatedRestaurant, category);
+        }
+
+        public async Task<bool> UpdateImagesFromDb()
+        {
+            await _repository.UpdateImagesFromDb();
+            return true;
         }
     }
 

@@ -1,4 +1,4 @@
-import { MenuItems } from '@./Models';
+import { Menu, MenuItems } from '@./Models';
 import {
   Card,
   CardContent,
@@ -11,7 +11,9 @@ interface IMenuProductsProps {
   selectedCategory: string;
   menuItems: MenuItems[];
   restaurantName: string;
+  selectedMenu: Menu;
   setMenuToDisplay: (MenuToDisplay: string) => void;
+  setSelectedMenu: (selectedMenu: Menu) => void;
 }
 
 export function MenuProducts(props: IMenuProductsProps) {
@@ -70,6 +72,8 @@ export function MenuProducts(props: IMenuProductsProps) {
               setMenuToDisplay={props.setMenuToDisplay}
               restaurantName={props.restaurantName}
               value={value}
+              setSelectedMenu={props.setSelectedMenu}
+              selectedMenu={props.selectedMenu}
             />
             implement the admin only feature
           </CardContent>

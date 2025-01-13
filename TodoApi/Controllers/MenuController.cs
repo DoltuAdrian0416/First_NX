@@ -55,12 +55,12 @@ namespace TodoApi.Controllers
         public async Task<IActionResult> UpdateMenuItem(string relatedRestaurant, string menuItemId, [FromForm] MenuItemInputDto updatedMenu)
         {
             var result = await _menuService.UpdateMenuItemAsync(relatedRestaurant, menuItemId, updatedMenu);
-            if (!result)
+            if (result == null)
             {
                 return NotFound();
             }
 
-            return NoContent();
+            return Ok(result);
         }
 
         [HttpPost("{relatedRestaurant}/items")]
@@ -163,6 +163,13 @@ namespace TodoApi.Controllers
             var menuCategoryItems = await _menuService.GetMenuItemsByCategoryAsync(relatedRestaurant, category);
 
             return Ok(menuCategoryItems);
+        }
+
+        [HttpGet("InsertPhotosInDB")]
+        public async Task<IActionResult> UpdateImagesFromDb()
+        {
+            await _menuService.UpdateImagesFromDb();
+            return Ok();
         }
     }
 

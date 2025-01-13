@@ -23,5 +23,5 @@ export async function updateMenuItem(
     }
   );
 
-  return response.status;
+  return response;
 }

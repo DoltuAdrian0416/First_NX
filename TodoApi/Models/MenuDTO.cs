@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace TodoApi.Models
 {
     public class MenuInputDto
@@ -11,6 +13,7 @@ namespace TodoApi.Models
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        [RegularExpression("Beef|Sodas", ErrorMessage = "Invalid category")]
         public string Category { get; set; }
         public decimal Price { get; set; }
         public IFormFile ProductImage { get; set; }
