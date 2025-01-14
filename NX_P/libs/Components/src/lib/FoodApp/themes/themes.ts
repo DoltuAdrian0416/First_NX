@@ -76,3 +76,8 @@ export const FlexRow ={
   display : 'flex',
   flexDirection : 'row',
 }
+
+export const CartStyle = {
+      p:5,
+      minWidth:400,
+}

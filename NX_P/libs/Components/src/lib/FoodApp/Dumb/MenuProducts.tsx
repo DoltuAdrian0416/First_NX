@@ -1,5 +1,7 @@
 import { Menu, MenuItems } from '@./Models';
 import {
+  Box,
+  Button,
   Card,
   CardContent,
   CardMedia,
@@ -7,16 +9,31 @@ import {
   Typography,
 } from '@mui/material';
 import EditProductPopup from './EditProductPopup';
+import { FlexRow } from '../themes/themes';
 interface IMenuProductsProps {
   selectedCategory: string;
   menuItems: MenuItems[];
   restaurantName: string;
   selectedMenu: Menu;
+  cartItems: MenuItems[];
+  setCartItems: (cartItems: MenuItems[]) => void;
   setMenuToDisplay: (MenuToDisplay: string) => void;
   setSelectedMenu: (selectedMenu: Menu) => void;
 }
 
 export function MenuProducts(props: IMenuProductsProps) {
+  const handleAddToCart = (item: MenuItems) => {
+    const foundItem = props.cartItems.find(
+      (i) => i.itemName === item.itemName && i.menuId === item.menuId
+    );
+
+    if (foundItem) {
+      foundItem.amount += 1;
+    } else {
+      props.setCartItems([...props.cartItems, { ...item, amount: 1 }]);
+    }
+  };
+
   return props.menuItems
     .filter(
       (item) =>
@@ -46,36 +63,26 @@ export function MenuProducts(props: IMenuProductsProps) {
               sx={{ maxHeight: '200px' }}
               src={`data:image/jpeg;base64,${value.productImage}`}
             />
-            <Typography
-              variant="body2"
-              sx={{
-                color: 'text.secondary',
-                width: '100%',
-                height: '50px',
-                overflow: 'hidden',
-                position: 'relative',
-                '&:after': {
-                  content: '""',
-                  position: 'absolute',
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  height: '20px',
-                  background:
-                    'linear-gradient(to top, white, rgba(255, 255, 255, 0))',
-                },
-              }}
-            >
-              {value.description}
-            </Typography>
-            <EditProductPopup
+            <Typography variant="body2">{value.description}</Typography>
+
+            <Box sx={{ ...FlexRow, justifyContent: 'space-between', pt: 2 }}>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  handleAddToCart(value);
+                }}
+              >
+                Add to cart
+              </Button>
+              <Typography variant="h6">Price : {value.price} $</Typography>
+            </Box>
+            {/* <EditProductPopup
               setMenuToDisplay={props.setMenuToDisplay}
               restaurantName={props.restaurantName}
               value={value}
               setSelectedMenu={props.setSelectedMenu}
               selectedMenu={props.selectedMenu}
-            />
-            implement the admin only feature
+            /> */}
           </CardContent>
         </Card>
       </Grid>

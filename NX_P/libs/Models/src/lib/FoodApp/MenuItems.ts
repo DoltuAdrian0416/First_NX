@@ -1,9 +1,10 @@
 export interface MenuItems {
   id: string;
   itemName: string;
-  price: string;
+  price: number;
   description: string;
   productImage: string;
   category : string;
+  amount : number;
   menuId: string;
 }

@@ -5,6 +5,7 @@ import {
   IconBottleFilled,
   IconCookie,
   IconMeat,
+  IconBorderAll,
 } from '@tabler/icons-react';
 import { category as categoryStyle } from '../themes/themes';
 
@@ -32,26 +33,43 @@ const iconMap = {
 };
 
 export function MenuSidenav({ categories, setSelectedCategory }: IUserSidenav) {
-  return categories.map((categoryName, index) => {
-    const IconComponent = iconMap[categoryName as Icons]; // Type assertion to ensure categoryName is treated as Icons enum
-
-    const changeCategory = () => {
-      setSelectedCategory(categoryName);
-    };
-    return (
+  return (
+    <>
       <Button
         variant="contained"
-        key={index}
         sx={categoryStyle}
-        onClick={changeCategory}
+        onClick={() => {
+          setSelectedCategory('all');
+        }}
       >
-        {IconComponent}
+        <IconBorderAll />
         <Typography sx={{ ml: '10px' }} variant={'body2'}>
-          {categoryName}
+          All
         </Typography>
       </Button>
-    );
-  });
+
+      {categories.map((categoryName, index) => {
+        const IconComponent = iconMap[categoryName as Icons]; // Type assertion to ensure categoryName is treated as Icons enum
+
+        const changeCategory = () => {
+          setSelectedCategory(categoryName);
+        };
+        return (
+          <Button
+            variant="contained"
+            key={index}
+            sx={categoryStyle}
+            onClick={changeCategory}
+          >
+            {IconComponent}
+            <Typography sx={{ ml: '10px' }} variant={'body2'}>
+              {categoryName}
+            </Typography>
+          </Button>
+        );
+      })}
+    </>
+  );
 }
 
 export default MenuSidenav;

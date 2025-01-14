@@ -1,11 +1,11 @@
-import { Grid2 as Grid, Box } from '@mui/material';
+import { Grid2 as Grid, Box, Button } from '@mui/material';
 import { Navbar } from '../Dumb/Navbar';
 import UserDisplay from './UserDisplay';
 import { useAuth } from '../AuthProvider';
 import { useEffect, useState } from 'react';
 import { getUserProfilePicture } from '../ApiRequest/getUserProfilePicture';
 import { getRestaurantList } from '../ApiRequest/getRestaurantList';
-import { Menu, MenuList } from '@./Models';
+import { Menu, MenuItems, MenuList } from '@./Models';
 import { RestaurantList } from '../Dumb/RestaurantList';
 import { getFullMenu } from '../ApiRequest/getFullMenu';
 import MenuProducts from '../Dumb/MenuProducts';
@@ -17,6 +17,7 @@ import {
 } from '../themes/themes';
 import { getMenuCategories } from '../ApiRequest/getMenuCategories';
 import MenuSidenav from './MenuSidenav';
+import { Cart } from './Cart';
 
 export function UserProfilePage() {
   const [profilePicture, setProfilePicture] = useState<string>();
@@ -25,6 +26,8 @@ export function UserProfilePage() {
   const [menuToDisplay, setMenuToDisplay] = useState<string>(''); //stock which menu will be fetched
   const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [cartDisplayToggle, setCartDisplayToggle] = useState<boolean>(false);
+  const [cartItems, setCartItems] = useState<MenuItems[]>([]);
   const user = useAuth()?.user;
 
   useEffect(() => {
@@ -53,24 +56,29 @@ export function UserProfilePage() {
     }
     getFullMenu(menuToDisplay).then((response) => {
       setSelectedMenu(response);
-      console.log(response);
     });
 
     getMenuCategories(menuToDisplay).then((response) => {
       setCategories(response);
-      // console.log(response);
     });
   };
   if (!user) {
     return <h1>Error while loading the page</h1>;
   }
 
+  console.log(cartItems);
   return (
     <Box sx={{ height: '100%' }}>
+      <Cart
+        cartDisplayToggle={cartDisplayToggle}
+        setCartDisplayToggle={setCartDisplayToggle}
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+      ></Cart>
+
       <Box>
         <Navbar user={{ ...user, profilePicture }} />
       </Box>
-
       <Box sx={mainContainer}>
         {/* row */}
         <Grid
@@ -81,6 +89,15 @@ export function UserProfilePage() {
           alignItems="center"
           justifyContent="center"
         >
+          <Button
+            variant="contained"
+            onClick={() => {
+              setCartDisplayToggle(!cartDisplayToggle);
+            }}
+          >
+            Open Drawer
+          </Button>
+
           {/* column */}
           <Grid size={'auto'} sx={UserProfileContainer} height={'fit-content'}>
             <UserDisplay user={user} />
@@ -127,7 +144,7 @@ export function UserProfilePage() {
                   rowGap={4}
                   columns={12}
                   alignItems={'center'}
-                  sx={{ border: '5px solid red', p: 3 }}
+                  sx={{ p: 3 }}
                 >
                   <MenuProducts
                     selectedCategory={selectedCategory}
@@ -136,6 +153,8 @@ export function UserProfilePage() {
                     menuItems={selectedMenu?.menuItems}
                     setSelectedMenu={setSelectedMenu}
                     selectedMenu={selectedMenu}
+                    setCartItems={setCartItems}
+                    cartItems={cartItems}
                   />
                 </Grid>
               </Grid>
