@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import EditProductPopup from './EditProductPopup';
 import { FlexRow } from '../themes/themes';
+import { handleAddToCart } from '../Utils/addToCard';
 interface IMenuProductsProps {
   selectedCategory: string;
   menuItems: MenuItems[];
@@ -22,18 +23,6 @@ interface IMenuProductsProps {
 }
 
 export function MenuProducts(props: IMenuProductsProps) {
-  const handleAddToCart = (item: MenuItems) => {
-    const foundItem = props.cartItems.find(
-      (i) => i.itemName === item.itemName && i.menuId === item.menuId
-    );
-
-    if (foundItem) {
-      foundItem.amount += 1;
-    } else {
-      props.setCartItems([...props.cartItems, { ...item, amount: 1 }]);
-    }
-  };
-
   return props.menuItems
     .filter(
       (item) =>
@@ -69,7 +58,10 @@ export function MenuProducts(props: IMenuProductsProps) {
               <Button
                 variant="contained"
                 onClick={() => {
-                  handleAddToCart(value);
+                  handleAddToCart(value, {
+                    cartItems: props.cartItems,
+                    setCartItems: props.setCartItems,
+                  });
                 }}
               >
                 Add to cart

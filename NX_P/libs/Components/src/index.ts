@@ -7,5 +7,3 @@ export * from './lib/FoodApp/Smart/Login'
 export * from './lib/FoodApp/Smart/Register'
 export * from './lib/FoodApp/AuthProvider'
 export * from './lib/FoodApp/Smart/Routes'
-
-
