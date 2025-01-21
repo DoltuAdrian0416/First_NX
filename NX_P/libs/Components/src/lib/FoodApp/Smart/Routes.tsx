@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import UserProfilePage from './UserProfilePage';
 import { ProtectedRoute } from './ProtectedRoute';
 import { UnprotectedRoute } from './UnprotectedRoute';
+import PaymentForm from './PaymentForm';
 
 export function Routes() {
   const auth = useAuth();
@@ -44,6 +45,10 @@ export function Routes() {
         {
           path: '/user',
           element: <UserProfilePage />,
+        },
+        {
+          path: '/payment',
+          element: <PaymentForm />,
         },
       ],
     },

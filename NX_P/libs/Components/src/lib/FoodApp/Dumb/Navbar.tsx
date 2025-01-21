@@ -11,14 +11,13 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
-
 import { DeliveryDiningOutlined } from '@mui/icons-material';
 import { useState } from 'react';
 import LogoutButton from '../Dumb/LogoutButton';
 import { User } from '@./Models';
 
 export function Navbar(props: { user: User }) {
-  const pages = ['Products', 'Pricing', 'Blog'];
+  const pages = ['Home', 'View menus', 'TBA'];
   const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);

@@ -1,6 +1,6 @@
 import { Box, Button, Drawer } from '@mui/material';
 import { CartStyle, FlexRow } from '../themes/themes';
-import { MenuItems } from '@./Models';
+import { MenuItems, MenuList } from '@./Models';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import CardOverflow from '@mui/joy/CardOverflow';
@@ -13,6 +13,7 @@ import { AddCircle, Cancel, RemoveCircle } from '@mui/icons-material';
 import { IconShoppingCartFilled, IconReceiptFilled } from '@tabler/icons-react';
 
 interface ICart {
+  menuList: MenuList[];
   cartDisplayToggle: boolean;
   cartItems: MenuItems[];
   setCartItems: (cartItems: MenuItems[]) => void;
@@ -29,6 +30,7 @@ function groupItemsByMenuId(items: MenuItems[]) {
 }
 
 export function Cart({
+  menuList,
   cartItems,
   cartDisplayToggle,
   setCartItems,
@@ -92,7 +94,7 @@ export function Cart({
                 borderBottom: '1px solid #ccc',
               }}
             >
-              Menu ID: {menuId}
+              {menuList[Number(menuId) - 1].menuName}
             </Typography>
             {groupedItems[menuId].map((item, index) => (
               <Box key={index}>

@@ -5695,6 +5695,24 @@
         "hash": "sha512-V4BG07kuYSUkTCSBHG8G8TNhM+F19jXFWnQtzj+we8DrkpSBCee9Z3Ms8yiGer/dlmhe35/Xdgyo3/0rQKg7YA=="
       }
     },
+    "npm:@stripe/react-stripe-js": {
+      "type": "npm",
+      "name": "npm:@stripe/react-stripe-js",
+      "data": {
+        "version": "3.1.1",
+        "packageName": "@stripe/react-stripe-js",
+        "hash": "sha512-+JzYFgUivVD7koqYV7LmLlt9edDMAwKH7XhZAHFQMo7NeRC+6D2JmQGzp9tygWerzwttwFLlExGp4rAOvD6l9g=="
+      }
+    },
+    "npm:@stripe/stripe-js": {
+      "type": "npm",
+      "name": "npm:@stripe/stripe-js",
+      "data": {
+        "version": "5.5.0",
+        "packageName": "@stripe/stripe-js",
+        "hash": "sha512-lkfjyAd34aeMpTKKcEVfy8IUyEsjuAT3t9EXr5yZDtdIUncnZpedl/xLV16Dkd4z+fQwixScsCCDxSMNtBOgpQ=="
+      }
+    },
     "npm:@svgr/babel-plugin-add-jsx-attribute": {
       "type": "npm",
       "name": "npm:@svgr/babel-plugin-add-jsx-attribute",
@@ -14767,6 +14785,15 @@
         "hash": "sha512-Op+UycaUt/8FbN/Z2TWPBLge3jWrP3xj10f3fnYxf052bKuS3EKs1ZQcVGjnEMdsNVAM+plXRdmjrZ/KgG3Skw=="
       }
     },
+    "npm:stripe": {
+      "type": "npm",
+      "name": "npm:stripe",
+      "data": {
+        "version": "17.5.0",
+        "packageName": "stripe",
+        "hash": "sha512-kcyeAkDFjGsVl17FqnG7q/+xIjt0ZjOo9Dm+q8deAvs2Xe4iAHrhxyoP4etUVFc+/LZJANjIPVR+ZOnt9hr/Ug=="
+      }
+    },
     "npm:strtok3": {
       "type": "npm",
       "name": "npm:strtok3",
@@ -15929,6 +15956,21 @@
       },
       {
         "source": "Components",
+        "target": "npm:@stripe/react-stripe-js",
+        "type": "static"
+      },
+      {
+        "source": "Components",
+        "target": "npm:@stripe/stripe-js",
+        "type": "static"
+      },
+      {
+        "source": "Components",
+        "target": "npm:stripe",
+        "type": "static"
+      },
+      {
+        "source": "Components",
         "target": "npm:@testing-library/react",
         "type": "static"
       },
@@ -16078,6 +16120,16 @@
       {
         "source": "FoodApp",
         "target": "Components",
+        "type": "static"
+      },
+      {
+        "source": "FoodApp",
+        "target": "npm:@stripe/react-stripe-js",
+        "type": "static"
+      },
+      {
+        "source": "FoodApp",
+        "target": "npm:@stripe/stripe-js",
         "type": "static"
       },
       {
@@ -22249,6 +22301,28 @@
       {
         "source": "npm:@sinonjs/fake-timers",
         "target": "npm:@sinonjs/commons",
+        "type": "static"
+      }
+    ],
+    "npm:@stripe/react-stripe-js": [
+      {
+        "source": "npm:@stripe/react-stripe-js",
+        "target": "npm:@stripe/stripe-js",
+        "type": "static"
+      },
+      {
+        "source": "npm:@stripe/react-stripe-js",
+        "target": "npm:react",
+        "type": "static"
+      },
+      {
+        "source": "npm:@stripe/react-stripe-js",
+        "target": "npm:react-dom",
+        "type": "static"
+      },
+      {
+        "source": "npm:@stripe/react-stripe-js",
+        "target": "npm:prop-types",
         "type": "static"
       }
     ],
@@ -34265,6 +34339,18 @@
       {
         "source": "npm:strip-literal",
         "target": "npm:js-tokens@9.0.0",
+        "type": "static"
+      }
+    ],
+    "npm:stripe": [
+      {
+        "source": "npm:stripe",
+        "target": "npm:@types/node",
+        "type": "static"
+      },
+      {
+        "source": "npm:stripe",
+        "target": "npm:qs",
         "type": "static"
       }
     ],

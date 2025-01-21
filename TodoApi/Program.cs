@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using TodoApi.Extensions;
 using TodoApi;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSwaggerGenWithAuth();
@@ -35,6 +36,7 @@ builder.Services.AddScoped<IMenuContext, MenuContext>();
 builder.Services.AddScoped<IMenuRepository, MenuRepository>();
 builder.Services.AddScoped<IMenuService, MenuService>();
 
+builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
 
 builder.Services.AddSingleton<TokenProvider>();
 builder.Services.AddControllers();
@@ -54,13 +56,12 @@ builder.Services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =
 {
     builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
 }));
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

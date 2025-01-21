@@ -53,6 +53,7 @@ export function Login() {
       id: userData.id,
       email: userData.email,
       username: userData.username,
+      isAdmin: false,
     };
     return user;
   }

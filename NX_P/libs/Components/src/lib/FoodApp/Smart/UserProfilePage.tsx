@@ -1,4 +1,4 @@
-import { Grid2 as Grid, Box, Button } from '@mui/material';
+import { Grid2 as Grid, Box, Fab } from '@mui/material';
 import { Navbar } from '../Dumb/Navbar';
 import UserDisplay from './UserDisplay';
 import { useAuth } from '../AuthProvider';
@@ -18,10 +18,11 @@ import {
 import { getMenuCategories } from '../ApiRequest/getMenuCategories';
 import MenuSidenav from './MenuSidenav';
 import { Cart } from './Cart';
+import { ShoppingCart } from '@mui/icons-material';
 
 export function UserProfilePage() {
   const [profilePicture, setProfilePicture] = useState<string>();
-  const [menuList, setMenuList] = useState<MenuList[]>(); // stock all menus / restaurants
+  const [menuList, setMenuList] = useState<MenuList[]>([]); // stock all menus / restaurants
   const [selectedMenu, setSelectedMenu] = useState<Menu>(); // select a menu / restaurant
   const [menuToDisplay, setMenuToDisplay] = useState<string>(''); //stock which menu will be fetched
   const [categories, setCategories] = useState<string[]>([]);
@@ -48,6 +49,7 @@ export function UserProfilePage() {
 
   useEffect(() => {
     fetchMenuToDisplay();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuToDisplay]);
 
   const fetchMenuToDisplay = () => {
@@ -66,16 +68,31 @@ export function UserProfilePage() {
     return <h1>Error while loading the page</h1>;
   }
 
-  console.log(cartItems);
   return (
     <Box sx={{ height: '100%' }}>
       <Cart
+        menuList={menuList}
         cartDisplayToggle={cartDisplayToggle}
         setCartDisplayToggle={setCartDisplayToggle}
         cartItems={cartItems}
         setCartItems={setCartItems}
       ></Cart>
-
+      <Fab
+        sx={{
+          position: 'fixed',
+          right: 10,
+          bottom: 10,
+          background: '#2196f3',
+          color: 'white',
+          '&:hover': { background: '#1976d2' },
+        }}
+        onClick={() => {
+          setCartDisplayToggle(!cartDisplayToggle);
+        }}
+      >
+        <ShoppingCart />
+        {cartItems.length}
+      </Fab>
       <Box>
         <Navbar user={{ ...user, profilePicture }} />
       </Box>
@@ -89,15 +106,6 @@ export function UserProfilePage() {
           alignItems="center"
           justifyContent="center"
         >
-          <Button
-            variant="contained"
-            onClick={() => {
-              setCartDisplayToggle(!cartDisplayToggle);
-            }}
-          >
-            Open Drawer
-          </Button>
-
           {/* column */}
           <Grid size={'auto'} sx={UserProfileContainer} height={'fit-content'}>
             <UserDisplay user={user} />
